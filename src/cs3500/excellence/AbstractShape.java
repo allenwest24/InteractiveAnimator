@@ -16,6 +16,10 @@ abstract class AbstractShape {
 
   }
 
+  // Branch demonstration
+  // Imagine this was a ton of crazy changes
+  // that may affect files we both are working on
+
 
 
 
