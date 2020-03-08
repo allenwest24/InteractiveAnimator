@@ -36,7 +36,7 @@ public class AnimationModel implements IAnimation {
   private void x() {
     //TODOluke ENSURE SHAPES ARE IMMUTABLE
     Collection<AbstractShape> allShapes = this.declaredShapes.values();
-    
+
   }
 
   @Override

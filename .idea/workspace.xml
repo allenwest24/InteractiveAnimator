@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d27255c2-eb8e-46ed-a6fc-3e9a676e4ead" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cs3500/excellence/AbstractShape.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cs3500/excellence/Color.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cs3500/excellence/Motion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cs3500/excellence/Rectangle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/AnimationModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/AnimationModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/IAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/IAnimation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
