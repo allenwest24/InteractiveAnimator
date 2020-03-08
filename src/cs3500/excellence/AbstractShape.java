@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 abstract class AbstractShape {
 
+  //Push test
   ShapeType type;
   final ArrayList<Motion> motions;
 
