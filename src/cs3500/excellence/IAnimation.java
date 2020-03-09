@@ -12,7 +12,10 @@ public interface IAnimation {
 //# (w,h) == dimensions
 //# (r,g,b) == color (with values between 0 and 255)
 
-  void applyMotion(String shapeName, Motion start, Motion end);
+  // TODOluke account for still motions
+  void applyMotion(int startTick, int endTick, String shapeName,
+                   int startX, int startY, int endX, int endY,
+                   int startWidth, int startHeight);
 
 
 

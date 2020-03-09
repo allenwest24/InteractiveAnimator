@@ -6,4 +6,13 @@ public class Rectangle extends AbstractShape {
     super(type);
   }
 
+  @Override
+  int positionAtTick(int tick) {
+    Motion pertinentMotion = null;
+    for (Motion each: this.motions) {
+      // Is given tick in the range of this motion?
+    }
+  }
+
+
 }

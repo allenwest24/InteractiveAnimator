@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 abstract class AbstractShape {
 
-  //Push test
   ShapeType type;
   final ArrayList<Motion> motions;
 
@@ -16,11 +15,6 @@ abstract class AbstractShape {
 
   }
 
-  // Branch demonstration
-  // Imagine this was a ton of crazy changes
-  // that may affect files we both are working on
-
-
-
+  abstract int positionAtTick(int tick);
 
 }

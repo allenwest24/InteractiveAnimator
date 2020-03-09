@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d27255c2-eb8e-46ed-a6fc-3e9a676e4ead" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/AbstractShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/AbstractShape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/AnimationModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/AnimationModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/IAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/IAnimation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/Motion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/Motion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/Rectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/Rectangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/ShapeType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/ShapeType.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,9 +65,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="632" y="215" key="#com.intellij.ide.util.MemberChooser" timestamp="1582848846448">
-      <screen x="0" y="23" width="1680" height="973" />
+    <state x="632" y="215" key="#com.intellij.ide.util.MemberChooser" timestamp="1583714641997">
+      <screen x="0" y="23" width="1680" height="971" />
     </state>
+    <state x="632" y="215" key="#com.intellij.ide.util.MemberChooser/0.23.1680.971@0.23.1680.971" timestamp="1583714641996" />
     <state x="632" y="215" key="#com.intellij.ide.util.MemberChooser/0.23.1680.973@0.23.1680.973" timestamp="1582848846448" />
     <state x="484" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1582848033332">
       <screen x="0" y="23" width="1680" height="973" />

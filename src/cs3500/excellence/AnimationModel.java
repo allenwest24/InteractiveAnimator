@@ -23,7 +23,7 @@ public class AnimationModel implements IAnimation {
     }
 
     switch (type) {
-      case SQUARE:
+      case ELLIPSE:
         break;
       case RECTANGLE:
         declaredShapes.put(name, new Rectangle(type));
@@ -39,8 +39,4 @@ public class AnimationModel implements IAnimation {
 
   }
 
-  @Override
-  public void applyMotion(String shapeName, Motion start, Motion end) {
-
-  }
 }
