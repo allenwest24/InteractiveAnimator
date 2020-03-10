@@ -39,4 +39,13 @@ public class AnimationModel implements IAnimation {
 
   }
 
+  @Override
+  public void applyMotion(int startTick, int endTick, String shapeName,
+                   int startX, int startY, int endX, int endY,
+                   int startWidth, int startHeight) {
+
+    // Here is where we create the motions
+    //Motion motion = new Motion(shape, x, y, etc....)
+
+  }
 }

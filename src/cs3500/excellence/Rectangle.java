@@ -12,6 +12,7 @@ public class Rectangle extends AbstractShape {
     for (Motion each: this.motions) {
       // Is given tick in the range of this motion?
     }
+    return 0;
   }
 
 
