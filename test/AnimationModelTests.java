@@ -12,13 +12,11 @@ import static org.junit.Assert.assertTrue;
 
 
 // Shit to do
-// Test every possible exception lmao fuck that bullshit
+//// Test every possible exception lmao fuck that bullshit
 // Mark all methods that yoss exceptions in javadoc
 // Lot of emphasis on implicit dependencies, so we gotta make sure javadocs reflect all those
 // Get rid of all print statements
 // Enforce positive numbers where they should be enforced
-// Make sure copy shit works out
-
 
 public class AnimationModelTests {
   AnimationModel animation = new AnimationModel();
@@ -45,10 +43,10 @@ public class AnimationModelTests {
     animation = new AnimationModel();
     IAnimation controllerPerspective = animation;
     AnimationDelegate viewPerspective = animation;
-    controllerPerspective.declareShape(ShapeType.ELLIPSE, "Oval");
+    controllerPerspective.declareShape(ShapeType.ELLIPSE, "R");
     controllerPerspective.declareShape(ShapeType.RECTANGLE, "Rect");
     System.out.println(viewPerspective.getStringAnimation());
-    assertTrue(viewPerspective.getStringAnimation().equals("shape Oval ellipse"
+    assertTrue(viewPerspective.getStringAnimation().equals("shape R ellipse"
             + "\n" + "shape Rect rectangle"));
   }
 
@@ -71,13 +69,13 @@ public class AnimationModelTests {
     AnimationDelegate viewPerspective = animation;
     controllerPerspective.declareShape(ShapeType.ELLIPSE, "Oval");
     controllerPerspective.declareShape(ShapeType.RECTANGLE, "Rect");
-    controllerPerspective.applyMotion(1,2,"Rect",13,14,
+    controllerPerspective.applyMotion(10,12,"Rect",13,14,
             15,15,45,23,45,23,1,2,
             3,1,2,3);
     System.out.println(viewPerspective.getStringAnimation());
     assertTrue(viewPerspective.getStringAnimation().equals("shape Oval ellipse"
             + "\n" + "shape Rect rectangle" + "\n"
-            + "motion Rect 1 13 14 45 23 1 2 3 2 15 15 45 23 1 2 3"));
+            + "motion Rect 10 13 14 45 23 1 2 3 12 15 15 45 23 1 2 3"));
   }
 
   @Test
@@ -135,11 +133,6 @@ public class AnimationModelTests {
   // TODOluke -> Tests that we need to do
 //  @Test
 //  public void testMotionJustChangingColor() {
-//    //TODO
-//  }
-//
-//  @Test
-//  public void testMotionJustChangingWidth() {
 //    //TODO
 //  }
 //

@@ -1,5 +1,8 @@
 package cs3500.excellence;
 
+/**
+ * Immutable value type class representing a motion.
+ */
 public class Motion extends UserInteraction {
   protected final String associatedShape;
   protected final int startTick;
@@ -7,7 +10,11 @@ public class Motion extends UserInteraction {
   protected final MotionComponent startComp;
   protected final MotionComponent endComp;
 
-  // Specify non null associatedType
+  /**
+   * Protected constructor for the motion object.
+   *
+   * @throws IllegalArgumentException in the case of a null associatedShape String.
+   */
   protected Motion(String associatedShape, int startTick, Integer startX, Integer startY,
          Integer startWidth, Integer startHeight, Color startColor,
          int endTick, Integer endX, Integer endY, Integer endWidth, Integer endHeight,
@@ -23,7 +30,6 @@ public class Motion extends UserInteraction {
     this.endComp = new MotionComponent(endTick, endX, endY, endWidth, endHeight, endColor);
   }
 
-  // Enforce positive numbers
   protected static final Motion computeNextMotion(Motion proposedMotion, Motion current) {
     if (current.endTick != proposedMotion.startTick) {
       return null;
@@ -79,7 +85,7 @@ public class Motion extends UserInteraction {
   }
 
   @Override
-  public String userMove() {
+  protected String userMove() {
     return "motion " + associatedShape + " " +
             startComp.getInformation() + " " + endComp.getInformation();
   }
@@ -127,28 +133,4 @@ public class Motion extends UserInteraction {
       return this.height == null;
     }
   }
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

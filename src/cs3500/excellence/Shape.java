@@ -2,19 +2,31 @@ package cs3500.excellence;
 
 import java.util.ArrayList;
 
+/**
+ * Immutable value type class representing a shape.
+ */
 public class Shape extends UserInteraction {
 
   protected final ShapeType type;
   protected final String name;
   protected final ArrayList<Motion> motions;
 
+  /**
+   * Protected constructor for creating an immutable shape.
+   *
+   * @param type Non-Null ShapeType representing a shape type.
+   * @param name Non-Null String representing a shape name.
+   * @throws IllegalArgumentException for null parameters.
+   */
   protected Shape(ShapeType type, String name) {
+    if (type == null || name == null) {
+      throw new IllegalArgumentException("Null parameter detected");
+    }
     this.type = type;
     this.name = name;
     motions = new ArrayList<Motion>();
   }
 
-  // Note in javadoc that only shallow copy is necessary here due to Motion being a value (immutable) type.
   protected Shape(Shape shape) {
     ShapeType typeCopy = shape.type;
     this.type = typeCopy;
@@ -26,7 +38,7 @@ public class Shape extends UserInteraction {
     }
   }
 
-  // Can return null
+  // Nullable function (optional emulation)
   protected final Motion retrieveLatestMotion() {
     if (this.motions.isEmpty()) {
       return null;
@@ -35,7 +47,6 @@ public class Shape extends UserInteraction {
     }
   }
 
-  //Implicit dependency - first motion on a shape needs to have everything (must be in doc)
   protected final boolean conditionallyAddMotionToShape(Motion motion) {
     if (this.retrieveLatestMotion() == null && !motion.completeMotion()) {
       return false;
@@ -55,7 +66,7 @@ public class Shape extends UserInteraction {
   }
 
   @Override
-  public String userMove() {
+  protected String userMove() {
     return "shape " + name + " " + type.getName(type);
   }
 

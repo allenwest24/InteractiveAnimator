@@ -3,20 +3,33 @@ package cs3500.excellence;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-// Comments needed here TODOluke
+/**
+ * Copy-Safe interface for affording "read only" access to potential views.
+ */
 public interface AnimationDelegate<T, K> {
 
+  /**
+   * Method to retrieve the current state of the animation, represented as a String.
+   */
   String getStringAnimation();
 
-  // ESSENTIALTODO -> JUSTIFY THAT THIS IS SAFE IN JAVADOC
-  // COPIES OF STRING NAME, COPY OF HASHMAP, COPY OF SHAPE ARRAY
-  // SHAPES AND MOTIONS ARE COMPLETELY IMMUTABLE + SUBCLASSABLE (Note that in desc)
+  /**
+   * Method to retrieve a COPY-SAFE representation of the state of the animation,
+   * represented as a HashMap of Object names mapped to generic types.
+   *
+   * All objects that implement this interface should only pass immutable or copy-safe
+   * types via this method.
+   *
+   */
   HashMap<String, T> retrieveCurrentGameState();
 
 
-  // Throws for bad name
+  /**
+   * Retrieve the K associated with the object correlating with the NON-NULL String name.
+   *
+   * @param name a non-null String representing the name to be associated with the new shape.
+   * @throws IllegalArgumentException if the provided String is null.
+   */
   ArrayList<K> retrieveMotionsForObjectWithName(String name);
-
-
 
 }

@@ -1,11 +1,17 @@
 package cs3500.excellence;
 
+/**
+ * Immutable value object representing an RGB color.
+ */
 public class Color {
 
   protected final int red;
   protected final int green;
   protected final int blue;
 
+  /**
+   * Constructor for a color object.
+   */
   Color(int red, int green, int blue) {
     if (red <= 255 && red >= 0 && green <= 255 && green >= 0 && blue <= 255 && blue >= 0) {
       this.red = red;

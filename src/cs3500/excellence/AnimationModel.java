@@ -42,6 +42,50 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
     allMoves.add(shape);
   }
 
+  /**
+   * Method to apply various modifications (motions) to previously declared shapes.
+   *
+   * @param startTick   int to represent the starting tick.
+   * @param endTick     int to represent the ending tick.
+   * @param shapeName   non-null String representing the name of the Shape the motion is applied
+   *                    to.
+   * @param startX      Nullable Integer representing the optional startX coordinate of this
+   *                    motion.
+   * @param startY      Nullable Integer representing the optional startY coordinate of this
+   *                    motion.
+   * @param endX        Nullable Integer representing the optional endX coordinate of this motion.
+   * @param endY        Nullable Integer representing the optional endY coordinate of this motion.
+   * @param startWidth  Nullable Integer representing the optional startWidth value of this motion.
+   * @param startHeight Nullable Integer representing the optional startHeight value of this
+   *                    motion.
+   * @param endWidth    Nullable Integer representing the optional endWidth value of this motion.
+   * @param endHeight   Nullable Integer representing the optional endHeight value of this motion.
+   * @param red         Nullable Integer representing the optional startRed RGB value of this
+   *                    motion.
+   * @param green       Nullable Integer representing the optional startGreen RGB value of this
+   *                    motion.
+   * @param blue        Nullable Integer representing the optional startBlue RGB value of this
+   *                    motion.
+   * @param red         Nullable Integer representing the optional startRed RGB value of this
+   *                    motion.
+   * @param green       Nullable Integer representing the optional startGreen RGB value of this
+   *                    motion.
+   * @param blue        Nullable Integer representing the optional startBlue RGB value of this
+   *                    motion.
+   * @throws IllegalArgumentException if the provided String shapeName is null or already in use.
+   * @throws IllegalArgumentException if the type is unhandled or null.
+   * @throws IllegalArgumentException if only some coordinates are provided (only start, only end,
+   *                                  or any other incomplete combination).
+   * @throws IllegalArgumentException if only some RGB values are provided (only start, only end, or
+   *                                  any other incomplete combination).
+   * @throws IllegalArgumentException if only some a startHeight or endHeight is provided, or vice
+   *                                  versa.
+   * @throws IllegalArgumentException if only some a startHeight or endHeight is provided, or vice
+   *                                  versa.
+   * @throws IllegalArgumentException if the motion is incompatible with the most recent motion
+   * of a shape, or if an incomplete motion is the first to be applied to a given shape.
+   * @throws IllegalArgumentException for invalid height or width dimensions (less than 0).
+   */
   @Override
   public void applyMotion(int startTick, int endTick, String shapeName, Integer startX,
                           Integer startY, Integer endX, Integer endY, Integer startWidth,
@@ -65,7 +109,6 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
     }
   }
 
-  // This bad boy explicitly enforces all the "implicit" dependencies they talk about
   private Motion optionallyDeriveMotion(int startTick, int endTick, String shapeName,
                                         Integer startX, Integer startY, Integer endX, Integer endY,
                                         Integer startWidth, Integer startHeight, Integer endWidth,
@@ -74,11 +117,11 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
     Color startColor = null;
     Color endColor = null;
     boolean color = true;
+    boolean height = true;
+    boolean width = true;
     if (startTick > endTick) {
       return null;
     }
-    // IMPLICIT DEPENDENCY -> must be added to applyMotion javadoc in interface
-    // We either get all color vals or none
     if (red == null || blue == null || green == null
             || redEnd == null || greenEnd == null || blueEnd == null) {
       if (red != null || blue != null || green != null
@@ -95,16 +138,18 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
         return null;
       }
     }
-    // IMPLICIT DEPENDENCIES
-    // Height / Width can be independent of one another
     if (startHeight == null || endHeight == null) {
       if (startHeight != null || endHeight != null) {
         return null;
+      } else {
+        height = false;
       }
     }
     if (startWidth == null || endWidth == null) {
       if (startWidth != null || endWidth != null) {
         return null;
+      } else {
+        width = false;
       }
     }
     if (startX == null || startY == null || endX == null || endY == null) {
@@ -112,10 +157,23 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
         return null;
       }
     }
+    if (height) {
+      if (startHeight < 0|| endHeight < 0) {
+        throw new IllegalArgumentException("Invalid dimensions");
+      }
+    }
+    if (height) {
+      if (startHeight < 0|| endHeight < 0) {
+        throw new IllegalArgumentException("Invalid dimensions");
+      }
+    }
     return new Motion(shapeName, startTick, startX, startY, startWidth, startHeight, startColor,
             endTick, endX, endY, endWidth, endHeight, endColor);
   }
 
+  /**
+   * Method to retrieve the current state of the animation, represented as a String.
+   */
   @Override
   public String getStringAnimation() {
     String acc = "";
@@ -129,6 +187,14 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
     return acc;
   }
 
+  /**
+   * Method to retrieve a COPY-SAFE representation of the state of the animation,
+   * represented as a HashMap of Object names mapped to generic types.
+   *
+   * All objects that implement this interface should only pass immutable or copy-safe
+   * types via this method.
+   *
+   */
   @Override
   public HashMap<String, Shape> retrieveCurrentGameState() {
     HashMap<String, Shape> safeCopy = new HashMap<String, Shape>();
@@ -140,6 +206,12 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
     return safeCopy;
   }
 
+  /**
+   * Retrieve the K associated with the object correlating with the NON-NULL String name.
+   *
+   * @param name a non-null String representing the name to be associated with the new shape.
+   * @throws IllegalArgumentException if the provided String is null.
+   */
   @Override
   public ArrayList<Motion> retrieveMotionsForObjectWithName(String name) {
     HashMap<String, Shape> safeCopy = this.retrieveCurrentGameState();
@@ -150,13 +222,3 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
