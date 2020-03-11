@@ -2,9 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d27255c2-eb8e-46ed-a6fc-3e9a676e4ead" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/cs3500/excellence/AnimationDelegate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cs3500/excellence/Shape.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cs3500/excellence/UserInteraction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/AnimationModelTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignment5.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment5.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/AbstractShape.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/AnimationModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/AnimationModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/Rectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/Rectangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/Color.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/Color.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/IAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/IAnimation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/Motion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/Motion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/Rectangle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/ShapeType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/ShapeType.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,8 +24,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -31,9 +41,73 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
+  </component>
+  <component name="RunManager" selected="JUnit.AnimationModelTests">
+    <configuration name="AnimationModelTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Assignment5" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AnimationModelTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AnimationModelTests.testJustWidth" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Assignment5" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AnimationModelTests" />
+      <option name="METHOD_NAME" value="testJustWidth" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AnimationModelTests.testMotionForDoingNothingAtAllStayingTheSame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Assignment5" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AnimationModelTests" />
+      <option name="METHOD_NAME" value="testMotionForDoingNothingAtAllStayingTheSame" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AnimationModelTests.testMotionWithAllNullStaysSame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Assignment5" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AnimationModelTests" />
+      <option name="METHOD_NAME" value="testMotionWithAllNullStaysSame" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AnimationModelTests.testValidMotionWithShape" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Assignment5" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AnimationModelTests" />
+      <option name="METHOD_NAME" value="testValidMotionWithShape" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.AnimationModelTests" />
+        <item itemvalue="JUnit.AnimationModelTests.testJustWidth" />
+        <item itemvalue="JUnit.AnimationModelTests.testMotionForDoingNothingAtAllStayingTheSame" />
+        <item itemvalue="JUnit.AnimationModelTests.testMotionWithAllNullStaysSame" />
+        <item itemvalue="JUnit.AnimationModelTests.testValidMotionWithShape" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -61,11 +135,47 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="632" y="215" key="#com.intellij.ide.util.MemberChooser" timestamp="1583714641997">
+    <state x="284" y="160" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583898424402">
       <screen x="0" y="23" width="1680" height="971" />
     </state>
-    <state x="632" y="215" key="#com.intellij.ide.util.MemberChooser/0.23.1680.971@0.23.1680.971" timestamp="1583714641996" />
+    <state x="284" y="160" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.971@0.23.1680.971" timestamp="1583898424402" />
+    <state x="632" y="215" key="#com.intellij.ide.util.MemberChooser" timestamp="1583924155456">
+      <screen x="0" y="23" width="1680" height="971" />
+    </state>
+    <state x="632" y="215" key="#com.intellij.ide.util.MemberChooser/0.23.1680.971@0.23.1680.971" timestamp="1583924155456" />
     <state x="632" y="215" key="#com.intellij.ide.util.MemberChooser/0.23.1680.973@0.23.1680.973" timestamp="1582848846448" />
+    <state x="594" y="365" width="451" height="276" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1583900100691">
+      <screen x="0" y="23" width="1680" height="971" />
+    </state>
+    <state x="594" y="365" width="451" height="276" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.23.1680.971@0.23.1680.971" timestamp="1583900100691" />
+    <state x="557" y="252" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1583910188702">
+      <screen x="0" y="23" width="1680" height="971" />
+    </state>
+    <state x="557" y="252" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.971@0.23.1680.971" timestamp="1583910188702" />
+    <state width="1597" height="243" key="GridCell.Tab.0.bottom" timestamp="1583925382548">
+      <screen x="0" y="23" width="1680" height="971" />
+    </state>
+    <state width="1597" height="243" key="GridCell.Tab.0.bottom/0.23.1680.971@0.23.1680.971" timestamp="1583925382548" />
+    <state width="1597" height="243" key="GridCell.Tab.0.center" timestamp="1583925382547">
+      <screen x="0" y="23" width="1680" height="971" />
+    </state>
+    <state width="1597" height="243" key="GridCell.Tab.0.center/0.23.1680.971@0.23.1680.971" timestamp="1583925382547" />
+    <state width="1597" height="243" key="GridCell.Tab.0.left" timestamp="1583925382547">
+      <screen x="0" y="23" width="1680" height="971" />
+    </state>
+    <state width="1597" height="243" key="GridCell.Tab.0.left/0.23.1680.971@0.23.1680.971" timestamp="1583925382547" />
+    <state width="1597" height="243" key="GridCell.Tab.0.right" timestamp="1583925382548">
+      <screen x="0" y="23" width="1680" height="971" />
+    </state>
+    <state width="1597" height="243" key="GridCell.Tab.0.right/0.23.1680.971@0.23.1680.971" timestamp="1583925382548" />
+    <state x="531" y="399" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1583900302441">
+      <screen x="0" y="23" width="1680" height="971" />
+    </state>
+    <state x="531" y="399" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.23.1680.971@0.23.1680.971" timestamp="1583900302441" />
+    <state x="213" y="121" key="new project wizard" timestamp="1583893516736">
+      <screen x="0" y="23" width="1680" height="971" />
+    </state>
+    <state x="213" y="121" key="new project wizard/0.23.1680.971@0.23.1680.971" timestamp="1583893516736" />
     <state x="484" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1582848033332">
       <screen x="0" y="23" width="1680" height="973" />
     </state>
