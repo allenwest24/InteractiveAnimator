@@ -74,8 +74,6 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
     Color startColor = null;
     Color endColor = null;
     boolean color = true;
-    // Discuss with Allen, do we think this bad mothafucka should be <=? Can we make
-    // alterations to a shape if it occurs when startTick == endTick? Instant? Probably not...
     if (startTick > endTick) {
       return null;
     }
