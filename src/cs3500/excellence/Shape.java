@@ -33,7 +33,7 @@ public class Shape extends UserInteraction {
     String nameCopy = shape.name;
     this.name = nameCopy;
     motions = new ArrayList<Motion>();
-    for (Motion each: shape.motions) {
+    for (Motion each : shape.motions) {
       this.motions.add(each);
     }
   }

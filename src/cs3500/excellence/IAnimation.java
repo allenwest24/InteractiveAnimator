@@ -2,8 +2,8 @@ package cs3500.excellence;
 
 /**
  * An interface representing the mandatory functionality for an Animation model.
- * <p>
- * This interface is parameterized generically for loose coupling.
+ *
+ * <p>This interface is parameterized generically for loose coupling.
  */
 public interface IAnimation<K> {
 
@@ -41,11 +41,10 @@ public interface IAnimation<K> {
    *                    motion.
    * @param blue        Nullable Integer representing the optional startBlue RGB value of this
    *                    motion.
-   * @param red         Nullable Integer representing the optional startRed RGB value of this
+   * @param redEnd      Nullable Integer representing the optional endRed RGB value of this motion.
+   * @param greenEnd    Nullable Integer representing the optional endGreen RGB value of this
    *                    motion.
-   * @param green       Nullable Integer representing the optional startGreen RGB value of this
-   *                    motion.
-   * @param blue        Nullable Integer representing the optional startBlue RGB value of this
+   * @param blueEnd     Nullable Integer representing the optional endBlue RGB value of this
    *                    motion.
    * @throws IllegalArgumentException if the provided String shapeName is null or already in use.
    * @throws IllegalArgumentException if the type is unhandled or null.
@@ -57,8 +56,9 @@ public interface IAnimation<K> {
    *                                  versa.
    * @throws IllegalArgumentException if only some a startHeight or endHeight is provided, or vice
    *                                  versa.
-   * @throws IllegalArgumentException if the motion is incompatible with the most recent motion
-   * of a shape, or if an incomplete motion is the first to be applied to a given shape.
+   * @throws IllegalArgumentException if the motion is incompatible with the most recent motion of a
+   *                                  shape, or if an incomplete motion is the first to be applied
+   *                                  to a given shape.
    */
   void applyMotion(int startTick, int endTick, String shapeName,
                    Integer startX, Integer startY, Integer endX, Integer endY,

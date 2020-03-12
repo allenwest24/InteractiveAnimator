@@ -1,4 +1,5 @@
 package cs3500.excellence;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -66,11 +67,10 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
    *                    motion.
    * @param blue        Nullable Integer representing the optional startBlue RGB value of this
    *                    motion.
-   * @param red         Nullable Integer representing the optional startRed RGB value of this
+   * @param redEnd      Nullable Integer representing the optional endRed RGB value of this motion.
+   * @param greenEnd    Nullable Integer representing the optional endGreen RGB value of this
    *                    motion.
-   * @param green       Nullable Integer representing the optional startGreen RGB value of this
-   *                    motion.
-   * @param blue        Nullable Integer representing the optional startBlue RGB value of this
+   * @param blueEnd     Nullable Integer representing the optional endBlue RGB value of this
    *                    motion.
    * @throws IllegalArgumentException if the provided String shapeName is null or already in use.
    * @throws IllegalArgumentException if the type is unhandled or null.
@@ -82,8 +82,9 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
    *                                  versa.
    * @throws IllegalArgumentException if only some a startHeight or endHeight is provided, or vice
    *                                  versa.
-   * @throws IllegalArgumentException if the motion is incompatible with the most recent motion
-   * of a shape, or if an incomplete motion is the first to be applied to a given shape.
+   * @throws IllegalArgumentException if the motion is incompatible with the most recent motion of a
+   *                                  shape, or if an incomplete motion is the first to be applied
+   *                                  to a given shape.
    * @throws IllegalArgumentException for invalid height or width dimensions (less than 0).
    */
   @Override
@@ -158,12 +159,12 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
       }
     }
     if (height) {
-      if (startHeight < 0|| endHeight < 0) {
+      if (startHeight < 0 || endHeight < 0) {
         throw new IllegalArgumentException("Invalid dimensions");
       }
     }
-    if (height) {
-      if (startHeight < 0|| endHeight < 0) {
+    if (width) {
+      if (startWidth < 0 || endWidth < 0) {
         throw new IllegalArgumentException("Invalid dimensions");
       }
     }
@@ -188,17 +189,16 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
   }
 
   /**
-   * Method to retrieve a COPY-SAFE representation of the state of the animation,
-   * represented as a HashMap of Object names mapped to generic types.
-   *
-   * All objects that implement this interface should only pass immutable or copy-safe
-   * types via this method.
-   *
+   * Method to retrieve a COPY-SAFE representation of the state of the animation, represented as a
+   * HashMap of Object names mapped to generic types.
+   * <p>
+   * All objects that implement this interface should only pass immutable or copy-safe types via
+   * this method.
    */
   @Override
   public HashMap<String, Shape> retrieveCurrentGameState() {
     HashMap<String, Shape> safeCopy = new HashMap<String, Shape>();
-    for (String shapeName: this.declaredShapes.keySet()) {
+    for (String shapeName : this.declaredShapes.keySet()) {
       Shape safeShapeCopy = new Shape(this.declaredShapes.get(shapeName));
       String safeStringCopy = shapeName;
       safeCopy.put(safeStringCopy, safeShapeCopy);

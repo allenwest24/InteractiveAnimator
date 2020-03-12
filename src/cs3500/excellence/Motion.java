@@ -16,9 +16,9 @@ public class Motion extends UserInteraction {
    * @throws IllegalArgumentException in the case of a null associatedShape String.
    */
   protected Motion(String associatedShape, int startTick, Integer startX, Integer startY,
-         Integer startWidth, Integer startHeight, Color startColor,
-         int endTick, Integer endX, Integer endY, Integer endWidth, Integer endHeight,
-         Color endColor) {
+                   Integer startWidth, Integer startHeight, Color startColor,
+                   int endTick, Integer endX, Integer endY, Integer endWidth, Integer endHeight,
+                   Color endColor) {
     if (associatedShape == null) {
       throw new IllegalArgumentException("No shape name provided.");
     }
@@ -86,8 +86,8 @@ public class Motion extends UserInteraction {
 
   @Override
   protected String userMove() {
-    return "motion " + associatedShape + " " +
-            startComp.getInformation() + " " + endComp.getInformation();
+    return "motion " + associatedShape + " "
+            + startComp.getInformation() + " " + endComp.getInformation();
   }
 
   protected class MotionComponent {
@@ -99,7 +99,7 @@ public class Motion extends UserInteraction {
     final Color color;
 
     protected MotionComponent(int tick, Integer x, Integer y, Integer width, Integer height,
-                            Color color) {
+                              Color color) {
       this.tick = tick;
       this.x = x;
       this.y = y;

@@ -3,7 +3,7 @@ package cs3500.excellence;
 /**
  * Enum for representing possible shapeTypes.
  *
- * Simply adding a new case and associated String to the getName method completes new shape
+ * <p>Simply adding a new case and associated String to the getName method completes new shape
  * implementation without any other changes in the program.
  */
 public enum ShapeType {

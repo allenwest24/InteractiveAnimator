@@ -14,21 +14,20 @@ public interface AnimationDelegate<T, K> {
   String getStringAnimation();
 
   /**
-   * Method to retrieve a COPY-SAFE representation of the state of the animation,
-   * represented as a HashMap of Object names mapped to generic types.
+   * Method to retrieve a COPY-SAFE representation of the state of the animation, represented as a
+   * HashMap of Object names mapped to generic types.
    *
-   * All objects that implement this interface should only pass immutable or copy-safe
+   * <p>All objects that implement this interface should only pass immutable or copy-safe
    * types via this method.
-   *
    */
   HashMap<String, T> retrieveCurrentGameState();
-
 
   /**
    * Retrieve the K associated with the object correlating with the NON-NULL String name.
    *
    * @param name a non-null String representing the name to be associated with the new shape.
-   * @throws IllegalArgumentException if the provided String is null.
+   * @throws IllegalArgumentException if the provided String is null, or the name is not associated
+   *                                  with a Shape.
    */
   ArrayList<K> retrieveMotionsForObjectWithName(String name);
 
