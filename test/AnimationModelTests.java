@@ -316,29 +316,80 @@ public class AnimationModelTests {
             null,
             null, null, null, null);
   }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testAddMotionException1() {
+    IAnimation controllerPerspective = animation;
+    AnimationDelegate viewPerspective = animation;
+    controllerPerspective.declareShape(ShapeType.ELLIPSE, "Oval");
+    controllerPerspective.declareShape(ShapeType.RECTANGLE, "Rect");
+    controllerPerspective.applyMotion(10, 12, "Rect", 13, 14,
+            15, 15, 45, 23, 45, 23, 1, 2,
+            3, 1, 3, 10);
+    controllerPerspective.applyMotion(12, -3, "Rect", null, null,
+            null, null, null, null, null, null, null,
+            null,
+            null, null, null, null);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testAddMotionException2() {
+    IAnimation controllerPerspective = animation;
+    AnimationDelegate viewPerspective = animation;
+    controllerPerspective.declareShape(ShapeType.ELLIPSE, "Oval");
+    controllerPerspective.declareShape(ShapeType.RECTANGLE, "Rect");
+    controllerPerspective.applyMotion(10, 12, "Rect", 13, 14,
+            15, 15, 45, 23, 45, 23, null, 2,
+            3, 1, 3, 10);
+    controllerPerspective.applyMotion(12, 13, "Rect", null, null,
+            null, null, null, null, null, null, null,
+            null,
+            null, null, null, null);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testAddMotionException3() {
+    IAnimation controllerPerspective = animation;
+    AnimationDelegate viewPerspective = animation;
+    controllerPerspective.declareShape(ShapeType.ELLIPSE, "Oval");
+    controllerPerspective.declareShape(ShapeType.RECTANGLE, "Rect");
+    controllerPerspective.applyMotion(10, 12, "Rect", 13, 14,
+            15, 15, null, 23, 45, 23, 1, 2,
+            3, 1, 3, 10);
+    controllerPerspective.applyMotion(12, 13, "Rect", null, null,
+            null, null, null, null, null, null, null,
+            null,
+            null, null, null, null);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testAddMotionException4() {
+    IAnimation controllerPerspective = animation;
+    AnimationDelegate viewPerspective = animation;
+    controllerPerspective.declareShape(ShapeType.ELLIPSE, "Oval");
+    controllerPerspective.declareShape(ShapeType.RECTANGLE, "Rect");
+    controllerPerspective.applyMotion(10, 12, "Rect", 13, 14,
+            15, 15, 45, null, 45, 23, 1, 2,
+            3, 1, 3, 10);
+    controllerPerspective.applyMotion(12, 13, "Rect", null, null,
+            null, null, null, null, null, null, null,
+            null,
+            null, null, null, null);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testAddMotionException5() {
+    IAnimation controllerPerspective = animation;
+    AnimationDelegate viewPerspective = animation;
+    controllerPerspective.declareShape(ShapeType.ELLIPSE, "Oval");
+    controllerPerspective.declareShape(ShapeType.RECTANGLE, "Rect");
+    controllerPerspective.applyMotion(10, 12, "Rect", 13, 14,
+            15, 15, 45, null, 45, 23, 1, 2,
+            3, 1, 3, 10);
+    controllerPerspective.applyMotion(12, 13, "Rect", null, null,
+            null, null, null, null, null, null, null,
+            null,
+            null, null, null, null);
+  }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

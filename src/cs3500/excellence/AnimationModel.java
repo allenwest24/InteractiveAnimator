@@ -78,7 +78,7 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
    *                                  or any other incomplete combination).
    * @throws IllegalArgumentException if only some RGB values are provided (only start, only end, or
    *                                  any other incomplete combination).
-   * @throws IllegalArgumentException if only some a startHeight or endHeight is provided, or vice
+   * @throws IllegalArgumentException if only some a startWidth or endWidth is provided, or vice
    *                                  versa.
    * @throws IllegalArgumentException if only some a startHeight or endHeight is provided, or vice
    *                                  versa.
@@ -191,8 +191,8 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
   /**
    * Method to retrieve a COPY-SAFE representation of the state of the animation, represented as a
    * HashMap of Object names mapped to generic types.
-   * <p>
-   * All objects that implement this interface should only pass immutable or copy-safe types via
+   *
+   * <p>All objects that implement this interface should only pass immutable or copy-safe types via
    * this method.
    */
   @Override

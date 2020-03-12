@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d27255c2-eb8e-46ed-a6fc-3e9a676e4ead" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/AnimationDelegate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/AnimationDelegate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/AnimationModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/AnimationModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/IAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/IAnimation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/Motion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/Motion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/ShapeType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/ShapeType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/AnimationModelTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/AnimationModelTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,6 +48,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="AnimationModelTests.testJustHeight" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Assignment5" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AnimationModelTests" />
+      <option name="METHOD_NAME" value="testJustHeight" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AnimationModelTests.testMotionJustChangingColor" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Assignment5" />
       <option name="PACKAGE_NAME" value="" />
@@ -73,16 +78,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AnimationModelTests.testValidMotionThenShape" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Assignment5" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="AnimationModelTests" />
-      <option name="METHOD_NAME" value="testValidMotionThenShape" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="AnimationModelTests.testValidMotionThenShapes" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Assignment5" />
       <option name="PACKAGE_NAME" value="" />
@@ -96,10 +91,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.AnimationModelTests" />
+        <item itemvalue="JUnit.AnimationModelTests.testJustHeight" />
         <item itemvalue="JUnit.AnimationModelTests.testTickGapException" />
         <item itemvalue="JUnit.AnimationModelTests.testMotionJustChangingColor" />
         <item itemvalue="JUnit.AnimationModelTests.testValidMotionThenShapes" />
-        <item itemvalue="JUnit.AnimationModelTests.testValidMotionThenShape" />
       </list>
     </recent_temporary>
   </component>
@@ -146,22 +141,22 @@
       <screen x="0" y="23" width="1680" height="971" />
     </state>
     <state x="557" y="252" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.971@0.23.1680.971" timestamp="1583910188702" />
-    <state width="1597" height="222" key="GridCell.Tab.0.bottom" timestamp="1583973746825">
+    <state width="1597" height="222" key="GridCell.Tab.0.bottom" timestamp="1583974343484">
       <screen x="0" y="23" width="1680" height="971" />
     </state>
-    <state width="1597" height="222" key="GridCell.Tab.0.bottom/0.23.1680.971@0.23.1680.971" timestamp="1583973746825" />
-    <state width="1597" height="222" key="GridCell.Tab.0.center" timestamp="1583973746824">
+    <state width="1597" height="222" key="GridCell.Tab.0.bottom/0.23.1680.971@0.23.1680.971" timestamp="1583974343484" />
+    <state width="1597" height="222" key="GridCell.Tab.0.center" timestamp="1583974343483">
       <screen x="0" y="23" width="1680" height="971" />
     </state>
-    <state width="1597" height="222" key="GridCell.Tab.0.center/0.23.1680.971@0.23.1680.971" timestamp="1583973746824" />
-    <state width="1597" height="222" key="GridCell.Tab.0.left" timestamp="1583973746823">
+    <state width="1597" height="222" key="GridCell.Tab.0.center/0.23.1680.971@0.23.1680.971" timestamp="1583974343483" />
+    <state width="1597" height="222" key="GridCell.Tab.0.left" timestamp="1583974343483">
       <screen x="0" y="23" width="1680" height="971" />
     </state>
-    <state width="1597" height="222" key="GridCell.Tab.0.left/0.23.1680.971@0.23.1680.971" timestamp="1583973746823" />
-    <state width="1597" height="222" key="GridCell.Tab.0.right" timestamp="1583973746824">
+    <state width="1597" height="222" key="GridCell.Tab.0.left/0.23.1680.971@0.23.1680.971" timestamp="1583974343483" />
+    <state width="1597" height="222" key="GridCell.Tab.0.right" timestamp="1583974343483">
       <screen x="0" y="23" width="1680" height="971" />
     </state>
-    <state width="1597" height="222" key="GridCell.Tab.0.right/0.23.1680.971@0.23.1680.971" timestamp="1583973746824" />
+    <state width="1597" height="222" key="GridCell.Tab.0.right/0.23.1680.971@0.23.1680.971" timestamp="1583974343483" />
     <state x="531" y="399" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1583900302441">
       <screen x="0" y="23" width="1680" height="971" />
     </state>
