@@ -26,28 +26,28 @@ public class AnimationReader {
    * </ul>
    * </p>
    *
-   * TODO: we gotta delete all these notes before submitting this shit @Luke @Allen
-   * Main method takes in string representing file name
-   * Main method then grabs the file associated with the string file name, and creates a
-   * Readable object from it. (readable file)
-   * Main then Creates an animationBuilder object
-   * Model now has to implement the AnimationBuilder interface, and we then (still in Main method):
-   * Proceed to spin up a new model, then cast that bitch to a AnimationBuilder and pass it
-   * (STILL in the Main method) to the AnimationReader, along with the Readable file we spun up
-   * earlier in this same method.
-   *
-   * This object (the thing we are currently in) then translates all the bullshit from the files
-   * BY ITSELF LOL and CALLS THE METHODS ON OUR MODEL BY ITSELF, such that we DON'T EVEN HAVE TO
-   * DO SHIT OTHERWISE.
-   *
-   * ALL WE HAVE TO DO is cook up the swing shit independently of of all this BS, connect it to our
-   * model that's already done, and THATS IT! This will produce all the animations for us.
-   *
    * @param readable The source of data for the animation
    * @param builder  A builder for helping to construct a new animation
    * @param <Doc>    The main model interface type describing animations
    * @return
    */
+
+  //   * TODO: we gotta delete all these notes before submitting this shit @Luke @Allen
+  //   * Main method takes in string representing file name
+  //   * Main method then grabs the file associated with the string file name, and creates a
+  //   * Readable object from it. (readable file)
+  //   * Main then Creates an animationBuilder object
+  //   * Model now has to implement the AnimationBuilder interface, and we then (still in Main method):
+  //   * Proceed to spin up a new model, then cast that bitch to a AnimationBuilder and pass it
+  //   * (STILL in the Main method) to the AnimationReader, along with the Readable file we spun up
+  //   * earlier in this same method.
+  //   *
+  //   * This object (the thing we are currently in) then translates all the bullshit from the files
+  //   * BY ITSELF LOL and CALLS THE METHODS ON OUR MODEL BY ITSELF, such that we DON'T EVEN HAVE TO
+  //   * DO SHIT OTHERWISE.
+  //   *
+  //   * ALL WE HAVE TO DO is cook up the swing shit independently of of all this BS, connect it to our
+  //   * model that's already done, and THATS IT! This will produce all the animations for us.
   public static <Doc> Doc parseFile(Readable readable, AnimationBuilder<Doc> builder) {
     Objects.requireNonNull(readable, "Must have non-null readable source");
     Objects.requireNonNull(builder, "Must provide a non-null AnimationBuilder");

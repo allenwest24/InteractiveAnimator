@@ -1,61 +1,53 @@
 package cs3500.excellence;
 
-import cs3500.excellence.controller.AnimationController;
-import cs3500.excellence.controller.Controller;
-import cs3500.excellence.view.SVGView;
-import cs3500.excellence.view.TextView;
-import cs3500.excellence.view.View;
-import cs3500.excellence.view.VisualView;
+import cs3500.animator.util.AnimationBuilder;
+import cs3500.animator.util.AnimationReader;
 
 public final class Excellence {
   public static void main(String[] args) {
     String in = null;
     String out = null;
     String view = null;
-    int speed = 1;
-    // args.length - 1 because we never want to switch on the last argument.
-    for (int ii = 0; ii < args.length - 1; ii++) {
+    String speed = "1";
+    Appendable output = System.out;
+
+    for (int ii = 0; ii < args.length; ii += 2) {
       switch (args[ii]) {
-        case ("-in"):
-          in = args[ii+1];
+        case "-in":
+          in = args[ii + 1];
           ii++;
           break;
-        case ("-out"):
-          out = args[ii+1];
+        case "-out":
+          out = args[ii + 1];
           ii++;
           break;
-        case ("-view"):
-          view = args[ii+1];
+        case "-view":
+          view = args[ii + 1];
           ii++;
           break;
-        case ("-speed"):
-          speed = Integer.parseInt(args[ii+1]);
+        case "-speed":
+          speed = args[ii + 1];
           ii++;
           break;
         default:
-          throw new IllegalStateException("Unexpected value: " + args[ii]);
+          break;
       }
     }
+
     if (in == null || view == null) {
-      throw new IllegalArgumentException("Must provide and input file and view.");
+      throw new IllegalArgumentException("Requirements not satisfied.");
+    } else if (out != null) {
+
     }
-    AnimationModel model = new AnimationModel();
-    View viewType;
-    switch (view) {
-      case "svg":
-        viewType = new SVGView(model);
-        break;
-      case "visual":
-        viewType = new VisualView(model);
-        break;
-      case "text":
-        viewType = new TextView(model);
-        break;
-      default:
-        throw new IllegalArgumentException("Should not be able to throw this error.");
-    }
-    AnimationController controller = new Controller(viewType, speed, in, out);
-    controller.animate(model);
+
+    int numSpeed = Integer.parseInt(speed);
+
+    AnimationReader reader = new AnimationReader();
+    AnimationBuilder<IAnimation<ShapeType>> builder = new AnimationModel.Builder();
+
+
+
+    //reader.parseFile()
 
     // Spin up a model (already spun up above)
     // Translate the fileName given into a Readable file

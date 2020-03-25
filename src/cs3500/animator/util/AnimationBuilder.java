@@ -7,7 +7,6 @@ public interface AnimationBuilder<Doc> {
    */
   Doc build();
 
-
   /**
    * Specify the bounding box to be used for the animation.
    * @param x The leftmost x value

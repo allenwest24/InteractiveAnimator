@@ -19,4 +19,15 @@ public enum ShapeType {
         throw new UnsupportedOperationException("No associated type.");
     }
   }
+
+  protected static ShapeType optionallyDeriveShapeType(String type) {
+    switch (type) {
+      case "rectangle":
+        return ShapeType.RECTANGLE;
+      case "ellipse":
+        return ShapeType.ELLIPSE;
+      default:
+        return null;
+    }
+  }
 }
