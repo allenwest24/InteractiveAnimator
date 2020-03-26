@@ -1,6 +1,5 @@
 package cs3500.animator;
 
-
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -19,7 +18,13 @@ import cs3500.excellence.Motion;
 import cs3500.excellence.Shape;
 import cs3500.excellence.ShapeType;
 
+/**
+ * Run the animator based on command line inputs.
+ */
 public final class Excellence {
+  /**
+   * This is the main method, used to run the animator based on command line inputs.
+   */
   public static void main(String[] args) {
     String in = null;
     String out = "testdFile";
