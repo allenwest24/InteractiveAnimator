@@ -26,5 +26,4 @@ public class AnimationViewTests {
   // Test makeVisible() for text.
   // Test makeVisible() for svg.
   // Test actionPerformed(ActionEvent e) for visual.
-
 }
