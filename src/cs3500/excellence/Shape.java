@@ -56,7 +56,10 @@ public class Shape extends UserInteraction {
       return true;
     }
     Motion prevMotion = this.retrieveLatestMotion();
-    Motion validComputedMotion = Motion.computeNextMotion(motion, prevMotion);
+    Motion validComputedMotion = motion;
+    if (!motion.completeMotion()) {
+      validComputedMotion = Motion.computeNextMotion(motion, prevMotion);
+    }
     if (validComputedMotion != null) {
       this.motions.add(validComputedMotion);
       return true;

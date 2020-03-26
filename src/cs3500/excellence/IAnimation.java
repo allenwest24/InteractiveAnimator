@@ -68,6 +68,8 @@ public interface IAnimation<K> {
 
   void setBounds(Bounds bounds);
 
+  String stringRep();
+
   class Bounds {
 
     final int x;

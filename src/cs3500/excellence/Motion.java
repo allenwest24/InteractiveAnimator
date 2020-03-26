@@ -31,7 +31,7 @@ public class Motion extends UserInteraction {
   }
 
   protected static final Motion computeNextMotion(Motion proposedMotion, Motion current) {
-    if (current.endTick != proposedMotion.startTick) {
+    if (current.endTick != proposedMotion.startComp.tick) {
       return null;
     }
     int newStartTick = proposedMotion.startTick;

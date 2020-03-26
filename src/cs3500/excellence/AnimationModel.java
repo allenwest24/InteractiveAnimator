@@ -107,8 +107,10 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
     Motion potentialMotion = this.optionallyDeriveMotion(startTick, endTick, shapeName, startX,
             startY, endX, endY, startWidth, startHeight, endWidth, endHeight, red, green, blue,
             redEnd, greenEnd, blueEnd);
+
     if (potentialMotion == null || !relevantShape.conditionallyAddMotionToShape(potentialMotion)) {
-      throw new IllegalArgumentException("Unacceptable motion.");
+      String message = potentialMotion == null ? "Null motion" : "Motion not accepted";
+      throw new IllegalArgumentException(message);
     } else {
       allMoves.add(relevantShape.retrieveLatestMotion());
     }
@@ -119,6 +121,12 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
   public void setBounds(Bounds bounds) {
     this.bounds = bounds;
   }
+
+  @Override
+  public String stringRep() {
+    return this.getStringAnimation();
+  }
+
 
   private Motion optionallyDeriveMotion(int startTick, int endTick, String shapeName,
                                         Integer startX, Integer startY, Integer endX, Integer endY,
@@ -326,7 +334,7 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
         this.model.applyMotion(t1, t2, name, x1, y1, x2, y2, w1, h1, w2,
                 h2, r1, g1, b1, r2, g2, b2);
       } catch (IllegalArgumentException e) {
-        System.out.println("Unacceptable motion parameter.");
+        System.out.println(e.getMessage());
       }
       return this;
     }
