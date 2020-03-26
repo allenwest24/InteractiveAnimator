@@ -28,12 +28,12 @@ public class TextView implements IView {
 
   @Override
   public void refresh() {
-
+    return;
   }
 
   @Override
   public void makeVisible() {
-
+    return;
   }
 
 }

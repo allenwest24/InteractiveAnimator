@@ -27,8 +27,8 @@ public final class Excellence {
    */
   public static void main(String[] args) {
     String in = null;
-    String out = "testdFile";
-    String view = "visual";
+    String out = null;
+    String view = null;
     String speed = "1";
     Appendable output = System.out;
 
@@ -54,21 +54,17 @@ public final class Excellence {
           break;
       }
     }
-
-//    if (in == null || view == null) {
-//      throw new IllegalArgumentException("Requirements not satisfied.");
-//    }
-
+    if (in == null || view == null) {
+      throw new IllegalArgumentException("Requirements not satisfied.");
+    }
     int numSpeed = Integer.parseInt(speed);
-
     AnimationReader reader = new AnimationReader();
     AnimationBuilder<IAnimation<ShapeType>> builder = new AnimationModel.Builder();
-
     FileReader readableFile = null;
     try {
-      readableFile = new FileReader("src/" + "smalldemo.txt");
+      readableFile = new FileReader("src/" + in);
     } catch (FileNotFoundException e) {
-      System.out.println("Failed");
+      System.out.println("Failed to find file.");
     }
 
     IAnimation<ShapeType> model = reader.parseFile(readableFile, builder);
@@ -90,7 +86,6 @@ public final class Excellence {
         e.printStackTrace();
       }
     }
-    //System.out.println(delegateRef.getStringAnimation());
   }
 
   private static IView deriveCorrectView(String viewType, AnimationDelegate<Shape, Motion> model,
@@ -101,7 +96,7 @@ public final class Excellence {
         view = new TextView(model);
         break;
       case "svg":
-        view = new SVGView(model);
+        view = new SVGView(model, speed);
         break;
       case "visual":
         view = new VisualView(model, speed);

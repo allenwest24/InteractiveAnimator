@@ -31,10 +31,7 @@ public interface AnimationDelegate<T, K> {
    */
   ArrayList<K> retrieveMotionsForObjectWithName(String name);
 
-  // set color
-  // g2. fill set
-
-
+  // TODOluke javadoc
   Bounds retrieveCanvasBoundaries();
 
 }

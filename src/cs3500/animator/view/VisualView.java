@@ -37,11 +37,10 @@ public class VisualView extends JFrame implements IView, ActionListener {
     this.timer = new Timer(1000 / speed, this::actionPerformed);
     this.setTitle("Animator");
     Bounds canvasBounds = delegate.retrieveCanvasBoundaries();
-    // todo luke fix this shit mothafucka
     this.setSize(1000, 1000);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setLayout(new FlowLayout());
-    panel = new VisualViewPanel(delegate, canvasBounds.x, canvasBounds.y);
+    panel = new VisualViewPanel(delegate, 1000, 1000);
     panel.setPreferredSize(new Dimension(1000, 1000));
     this.setVisible(true);
     this.add(panel);

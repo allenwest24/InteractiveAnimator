@@ -1,9 +1,5 @@
 package cs3500.animator.view;
 
-import cs3500.excellence.AnimationDelegate;
-import cs3500.excellence.Motion;
-import cs3500.excellence.Shape;
-
 /**
  * A view for our Animator: display the listed animations to provide the visual component to the
  * animator for the viewer.
