@@ -85,11 +85,14 @@ public class Motion extends UserInteraction {
   }
 
   @Override
-  protected String userMove() {
+  public String userMove() {
     return "motion " + associatedShape + " "
             + startComp.getInformation() + " " + endComp.getInformation();
   }
 
+  /**
+   * Immutable nested value type class representing the components of a motion.
+   */
   public class MotionComponent {
     public final int tick;
     public final Integer x;

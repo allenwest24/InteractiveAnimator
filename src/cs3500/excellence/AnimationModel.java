@@ -116,18 +116,10 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
     }
   }
 
-  // TODOluke specify non null bounds in javadoc
   @Override
   public void setBounds(Bounds bounds) {
     this.bounds = bounds;
   }
-
-  //TODOluke get rid of this, was for testing before architecture worked fully
-  @Override
-  public String stringRep() {
-    return this.getStringAnimation();
-  }
-
 
   private Motion optionallyDeriveMotion(int startTick, int endTick, String shapeName,
                                         Integer startX, Integer startY, Integer endX, Integer endY,
@@ -196,7 +188,7 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
    */
   @Override
   public String getStringAnimation() {
-    String acc = this.bounds.userMove();
+    String acc = "";
     for (UserInteraction each : this.allMoves) {
       if (acc.equals("")) {
         acc = acc + each.userMove();
@@ -246,6 +238,11 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
     return this.bounds;
   }
 
+  /**
+   * A static builder class that implements the AnimationBuilder interface, such that clients can
+   * utilize the animationBuilder interface to construct instances of this specific model
+   * implemenation.
+   */
   public static final class Builder implements AnimationBuilder<IAnimation<ShapeType>> {
 
     private static AnimationModel model = new AnimationModel();
@@ -346,7 +343,8 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
     }
 
     /**
-     * Adds an individual keyframe to the growing document.
+     * Adds an individual keyframe to the growing document (not yet implemented per Professor
+     * Freifeld's instructions on Piazza.
      *
      * @param name The name of the shape (added with {@link AnimationBuilder#declareShape})
      * @param t    The time for this keyframe

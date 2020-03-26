@@ -31,7 +31,12 @@ public interface AnimationDelegate<T, K> {
    */
   ArrayList<K> retrieveMotionsForObjectWithName(String name);
 
-  // TODOluke javadoc
+  /**
+   * Retrieve the Bounds object associated with this model, such that delegate views can aptly
+   * construct their bounds.
+   *
+   * @return Nullable Bounds object (value type, therefore safe for passing).
+   */
   Bounds retrieveCanvasBoundaries();
 
 }

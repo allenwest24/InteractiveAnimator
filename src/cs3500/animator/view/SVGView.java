@@ -13,10 +13,10 @@ import cs3500.excellence.ShapeType;
  * Concrete implementation of a svg "IView" with the mandatory functionality demanded by that
  * interface.
  */
-public class SVGView implements IView {
+public final class SVGView implements IView {
 
-  AnimationDelegate<Shape, Motion> delegate;
-  int speed;
+  private AnimationDelegate<Shape, Motion> delegate;
+  private int speed;
 
   /**
    * Public constructor for this object.

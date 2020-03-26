@@ -3,7 +3,6 @@ package cs3500.animator.view;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.concurrent.Flow;
 
 import javax.swing.*;
 
@@ -12,12 +11,11 @@ import cs3500.excellence.Bounds;
 import cs3500.excellence.Motion;
 import cs3500.excellence.Shape;
 
-// TODOluke revise all access modifiers and make a bunch of shit final
 /**
  * Concrete implementation of a visual "IView" with the mandatory functionality demanded by that
  * interface.
  */
-public class VisualView extends JFrame implements IView, ActionListener {
+public final class VisualView extends JFrame implements IView, ActionListener {
 
   private AnimationDelegate<Shape, Motion> delegate;
   private VisualViewPanel panel;
@@ -28,7 +26,7 @@ public class VisualView extends JFrame implements IView, ActionListener {
    * Public constructor for this object.
    *
    * @param delegate model with "read only" access to its states.
-   * @param speed indicates the desired speed for the animation to be played.
+   * @param speed    indicates the desired speed for the animation to be played.
    */
   public VisualView(AnimationDelegate<Shape, Motion> delegate, int speed) {
     super();
@@ -40,7 +38,7 @@ public class VisualView extends JFrame implements IView, ActionListener {
     this.setSize(1000, 1000);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setLayout(new FlowLayout());
-    panel = new VisualViewPanel(delegate, 1000, 1000);
+    panel = new VisualViewPanel(delegate, canvasBounds.x, canvasBounds.y);
     panel.setPreferredSize(new Dimension(1000, 1000));
     this.setVisible(true);
     this.add(panel);
@@ -52,7 +50,7 @@ public class VisualView extends JFrame implements IView, ActionListener {
     return "";
   }
 
-    /**
+  /**
    * Refresh the view to reflect any changes in the game state.
    */
   @Override

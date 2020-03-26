@@ -66,8 +66,11 @@ public interface IAnimation<K> {
                    Integer red, Integer green, Integer blue, Integer redEnd, Integer greenEnd,
                    Integer blueEnd);
 
+  /**
+   * A method for informing the implementor of this object of Bounds associated with an animation.
+   *
+   * @param bounds a nullable Bounds object.
+   */
   void setBounds(Bounds bounds);
-
-  String stringRep();
 
 }

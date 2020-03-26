@@ -5,6 +5,9 @@ package cs3500.excellence;
  */
 abstract class UserInteraction {
 
-  protected abstract String userMove();
+  /**
+   * Method for deriving String representations of objects that are user-facing.
+   */
+  public abstract String userMove();
 
 }

@@ -66,7 +66,6 @@ public final class Excellence {
     } catch (FileNotFoundException e) {
       System.out.println("Failed to find file.");
     }
-
     IAnimation<ShapeType> model = reader.parseFile(readableFile, builder);
     AnimationDelegate<Shape, Motion> delegateRef = (AnimationDelegate<Shape, Motion>) model;
     IView viewObject = Excellence.deriveCorrectView(view, delegateRef, numSpeed);

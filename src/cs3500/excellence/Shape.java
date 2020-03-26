@@ -69,7 +69,7 @@ public class Shape extends UserInteraction {
   }
 
   @Override
-  protected String userMove() {
+  public String userMove() {
     return "shape " + name + " " + type.getName(type);
   }
 

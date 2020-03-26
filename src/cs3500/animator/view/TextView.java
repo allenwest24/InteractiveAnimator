@@ -1,6 +1,7 @@
 package cs3500.animator.view;
 
 import cs3500.excellence.AnimationDelegate;
+import cs3500.excellence.Bounds;
 import cs3500.excellence.Motion;
 import cs3500.excellence.Shape;
 
@@ -8,9 +9,9 @@ import cs3500.excellence.Shape;
  * Concrete implementation of a textual "IView" with the mandatory functionality demanded by that
  * interface.
  */
-public class TextView implements IView {
+public final class TextView implements IView {
 
-  AnimationDelegate<Shape, Motion> delegate;
+  private AnimationDelegate<Shape, Motion> delegate;
 
   /**
    * Public constructor for this object.
@@ -23,7 +24,8 @@ public class TextView implements IView {
 
   @Override
   public String stringOutputForFile() {
-    return delegate.getStringAnimation();
+    Bounds bounds = this.delegate.retrieveCanvasBoundaries();
+    return bounds.userMove() + "\n" + delegate.getStringAnimation();
   }
 
   @Override
