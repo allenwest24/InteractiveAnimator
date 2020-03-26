@@ -22,8 +22,8 @@ import cs3500.excellence.ShapeType;
 public final class Excellence {
   public static void main(String[] args) {
     String in = null;
-    String out = null;
-    String view = null;
+    String out = "testdFile";
+    String view = "visual";
     String speed = "1";
     Appendable output = System.out;
 
@@ -52,14 +52,6 @@ public final class Excellence {
 
 //    if (in == null || view == null) {
 //      throw new IllegalArgumentException("Requirements not satisfied.");
-//    } else if (out != null) {
-////      try {
-////        FileWriter writer = new FileWriter(out);
-////        writer.write("TODOlukeOutput");
-////        writer.close();
-////      } catch (IOException e) {
-////        e.printStackTrace();
-////      }
 //    }
 
     int numSpeed = Integer.parseInt(speed);
@@ -76,22 +68,38 @@ public final class Excellence {
 
     IAnimation<ShapeType> model = reader.parseFile(readableFile, builder);
     AnimationDelegate<Shape, Motion> delegateRef = (AnimationDelegate<Shape, Motion>) model;
-    IView viewObject = Excellence.deriveCorrectView(view);
-    viewObject.acceptDelegate(delegateRef);
-    System.out.println(delegateRef.getStringAnimation());
+    IView viewObject = Excellence.deriveCorrectView(view, delegateRef, numSpeed);
+    viewObject.makeVisible();
+    if (out != null && view != "visual") {
+      try {
+        FileWriter writer = new FileWriter(out);
+        writer.write(viewObject.stringOutputForFile());
+        writer.close();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    } else if (view != "visual") {
+      try {
+        output.append(viewObject.stringOutputForFile());
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    }
+    //System.out.println(delegateRef.getStringAnimation());
   }
 
-  private static IView deriveCorrectView(String viewType) {
+  private static IView deriveCorrectView(String viewType, AnimationDelegate<Shape, Motion> model,
+                                         int speed) {
     IView view = null;
     switch (viewType) {
       case "text":
-        view = new TextView();
+        view = new TextView(model);
         break;
       case "svg":
-        view = new SVGView();
+        view = new SVGView(model);
         break;
       case "visual":
-        view = new VisualView();
+        view = new VisualView(model, speed);
         break;
     }
     return view;

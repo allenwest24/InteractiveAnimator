@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class Shape extends UserInteraction {
 
-  protected final ShapeType type;
+  public final ShapeType type;
   protected final String name;
   protected final ArrayList<Motion> motions;
 

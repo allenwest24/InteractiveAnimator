@@ -2,13 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d27255c2-eb8e-46ed-a6fc-3e9a676e4ead" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/cs3500/animator/view/IView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cs3500/animator/view/VisualViewPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cs3500/excellence/Bounds.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/animator/Excellence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/Excellence.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/view/SVGView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/SVGView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/view/TextView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/TextView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/view/View.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/view/VisualView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/VisualView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/view/IView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/IView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/view/SVGView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/SVGView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/view/TextView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/TextView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/view/VisualView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/VisualView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/AnimationDelegate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/AnimationDelegate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/AnimationModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/AnimationModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/Color.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/Color.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/IAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/IAnimation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/Motion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/Motion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/Shape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/Shape.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +62,7 @@
       <recent name="cs3500.excellence" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Excellence (2)">
+  <component name="RunManager" selected="JUnit.AnimationModelTests.testMotionForDoingNothingAtAllStayingTheSame">
     <configuration name="Excellence (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="cs3500.animator.Excellence.Excellence" />
       <module name="Assignment5" />
@@ -104,11 +111,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AnimationModelTests.testJustHeight" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AnimationModelTests.testMotionForDoingNothingAtAllStayingTheSame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Assignment5" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="AnimationModelTests" />
-      <option name="METHOD_NAME" value="testJustHeight" />
+      <option name="METHOD_NAME" value="testMotionForDoingNothingAtAllStayingTheSame" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -116,11 +123,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Excellence (2)" />
+        <item itemvalue="JUnit.AnimationModelTests.testMotionForDoingNothingAtAllStayingTheSame" />
         <item itemvalue="JUnit.AnimationModelTests" />
+        <item itemvalue="Application.Excellence (2)" />
         <item itemvalue="Application.Excellence (1)" />
         <item itemvalue="Application.Excellence" />
-        <item itemvalue="JUnit.AnimationModelTests.testJustHeight" />
       </list>
     </recent_temporary>
   </component>
@@ -154,11 +161,15 @@
       <screen x="0" y="23" width="1680" height="971" />
     </state>
     <state x="284" y="160" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.971@0.23.1680.971" timestamp="1583898424402" />
-    <state x="632" y="215" key="#com.intellij.ide.util.MemberChooser" timestamp="1585185451830">
+    <state x="553" y="307" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1585191519422">
+      <screen x="0" y="23" width="1680" height="971" />
+    </state>
+    <state x="553" y="307" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1680.971@0.23.1680.971" timestamp="1585191519422" />
+    <state x="632" y="215" key="#com.intellij.ide.util.MemberChooser" timestamp="1585198660291">
       <screen x="0" y="23" width="1680" height="971" />
     </state>
     <state x="514" y="152" key="#com.intellij.ide.util.MemberChooser/0.0.1366.768@0.0.1366.768" timestamp="1584722658836" />
-    <state x="632" y="215" key="#com.intellij.ide.util.MemberChooser/0.23.1680.971@0.23.1680.971" timestamp="1585185451830" />
+    <state x="632" y="215" key="#com.intellij.ide.util.MemberChooser/0.23.1680.971@0.23.1680.971" timestamp="1585198660291" />
     <state x="632" y="215" key="#com.intellij.ide.util.MemberChooser/0.23.1680.973@0.23.1680.973" timestamp="1582848846448" />
     <state x="457" y="420" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1585184587231">
       <screen x="0" y="23" width="1680" height="971" />
@@ -181,26 +192,26 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="120" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1584553027495" />
-    <state width="1597" height="168" key="GridCell.Tab.0.bottom" timestamp="1585186136534">
+    <state width="1597" height="168" key="GridCell.Tab.0.bottom" timestamp="1585198572842">
       <screen x="0" y="23" width="1680" height="971" />
     </state>
     <state width="1323" height="192" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1584731307573" />
-    <state width="1597" height="168" key="GridCell.Tab.0.bottom/0.23.1680.971@0.23.1680.971" timestamp="1585186136534" />
-    <state width="1597" height="168" key="GridCell.Tab.0.center" timestamp="1585186136533">
+    <state width="1597" height="168" key="GridCell.Tab.0.bottom/0.23.1680.971@0.23.1680.971" timestamp="1585198572842" />
+    <state width="1597" height="168" key="GridCell.Tab.0.center" timestamp="1585198572841">
       <screen x="0" y="23" width="1680" height="971" />
     </state>
     <state width="1323" height="192" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1584731307572" />
-    <state width="1597" height="168" key="GridCell.Tab.0.center/0.23.1680.971@0.23.1680.971" timestamp="1585186136533" />
-    <state width="1597" height="168" key="GridCell.Tab.0.left" timestamp="1585186136533">
+    <state width="1597" height="168" key="GridCell.Tab.0.center/0.23.1680.971@0.23.1680.971" timestamp="1585198572841" />
+    <state width="1597" height="168" key="GridCell.Tab.0.left" timestamp="1585198572841">
       <screen x="0" y="23" width="1680" height="971" />
     </state>
     <state width="1323" height="192" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1584731307571" />
-    <state width="1597" height="168" key="GridCell.Tab.0.left/0.23.1680.971@0.23.1680.971" timestamp="1585186136533" />
-    <state width="1597" height="168" key="GridCell.Tab.0.right" timestamp="1585186136534">
+    <state width="1597" height="168" key="GridCell.Tab.0.left/0.23.1680.971@0.23.1680.971" timestamp="1585198572841" />
+    <state width="1597" height="168" key="GridCell.Tab.0.right" timestamp="1585198572842">
       <screen x="0" y="23" width="1680" height="971" />
     </state>
     <state width="1323" height="192" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1584731307573" />
-    <state width="1597" height="168" key="GridCell.Tab.0.right/0.23.1680.971@0.23.1680.971" timestamp="1585186136534" />
+    <state width="1597" height="168" key="GridCell.Tab.0.right/0.23.1680.971@0.23.1680.971" timestamp="1585198572842" />
     <state x="348" y="64" width="699" height="600" key="NewModule_or_Project.wizard" timestamp="1584553033013">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

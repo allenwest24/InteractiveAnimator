@@ -122,6 +122,7 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
     this.bounds = bounds;
   }
 
+  //TODOluke get rid of this, was for testing before architecture worked fully
   @Override
   public String stringRep() {
     return this.getStringAnimation();
@@ -195,7 +196,7 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
    */
   @Override
   public String getStringAnimation() {
-    String acc = "";
+    String acc = this.bounds.userMove();
     for (UserInteraction each : this.allMoves) {
       if (acc.equals("")) {
         acc = acc + each.userMove();
@@ -238,6 +239,11 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
     } else {
       return safeCopy.get(name).motions;
     }
+  }
+
+  @Override
+  public Bounds retrieveCanvasBoundaries() {
+    return this.bounds;
   }
 
   public static final class Builder implements AnimationBuilder<IAnimation<ShapeType>> {

@@ -5,23 +5,26 @@ import cs3500.excellence.Motion;
 import cs3500.excellence.Shape;
 
 public class TextView implements IView {
+
+  AnimationDelegate<Shape, Motion> delegate;
+
+  public TextView(AnimationDelegate<Shape, Motion> delegate) {
+    this.delegate = delegate;
+  }
+
   @Override
   public String stringOutputForFile() {
-    return null;
+    return delegate.getStringAnimation();
   }
 
   @Override
-  public void displayVisuallyIfPossible() {
-
-  }
-
-  @Override
-  public void adjustSpeed(int newSpeed) {
+  public void refresh() {
 
   }
 
   @Override
-  public void acceptDelegate(AnimationDelegate<Shape, Motion> delegator) {
+  public void makeVisible() {
 
   }
+
 }

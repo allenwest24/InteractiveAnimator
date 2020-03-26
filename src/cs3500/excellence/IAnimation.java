@@ -70,22 +70,4 @@ public interface IAnimation<K> {
 
   String stringRep();
 
-  class Bounds {
-
-    final int x;
-    final int y;
-    final int width;
-    final int height;
-
-    Bounds(int x, int y, int width, int height) {
-      if (x < 0 || y < 0 || width < 0 || height < 0) {
-        throw new IllegalArgumentException("Negative parameters");
-      }
-      this.x = x;
-      this.y = y;
-      this.width = width;
-      this.height = height;
-    }
-
-  }
 }

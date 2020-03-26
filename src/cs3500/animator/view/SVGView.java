@@ -6,7 +6,11 @@ import cs3500.excellence.Shape;
 
 public class SVGView implements IView {
 
-  private AnimationDelegate<Shape, Motion> delegate;
+  AnimationDelegate<Shape, Motion> delegate;
+
+  public SVGView(AnimationDelegate<Shape, Motion> delegate) {
+    this.delegate = delegate;
+  }
 
   @Override
   public String stringOutputForFile() {
@@ -14,17 +18,12 @@ public class SVGView implements IView {
   }
 
   @Override
-  public void displayVisuallyIfPossible() {
+  public void refresh() {
 
   }
 
   @Override
-  public void adjustSpeed(int newSpeed) {
-
-  }
-
-  @Override
-  public void acceptDelegate(AnimationDelegate<Shape, Motion> delegator) {
+  public void makeVisible() {
 
   }
 }

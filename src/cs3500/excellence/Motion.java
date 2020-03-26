@@ -4,11 +4,11 @@ package cs3500.excellence;
  * Immutable value type class representing a motion.
  */
 public class Motion extends UserInteraction {
-  protected final String associatedShape;
-  protected final int startTick;
-  protected final int endTick;
-  protected final MotionComponent startComp;
-  protected final MotionComponent endComp;
+  public final String associatedShape;
+  public final int startTick;
+  public final int endTick;
+  public final MotionComponent startComp;
+  public final MotionComponent endComp;
 
   /**
    * Protected constructor for the motion object.
@@ -90,13 +90,13 @@ public class Motion extends UserInteraction {
             + startComp.getInformation() + " " + endComp.getInformation();
   }
 
-  protected class MotionComponent {
-    final int tick;
-    final Integer x;
-    final Integer y;
-    final Integer width;
-    final Integer height;
-    final Color color;
+  public class MotionComponent {
+    public final int tick;
+    public final Integer x;
+    public final Integer y;
+    public final Integer width;
+    public final Integer height;
+    public final Color color;
 
     protected MotionComponent(int tick, Integer x, Integer y, Integer width, Integer height,
                               Color color) {

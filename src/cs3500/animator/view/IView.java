@@ -8,9 +8,7 @@ public interface IView {
 
   String stringOutputForFile();
 
-  void displayVisuallyIfPossible();
+  void refresh();
 
-  void adjustSpeed(int newSpeed);
-
-  void acceptDelegate(AnimationDelegate<Shape, Motion> delegator);
+  void makeVisible();
 }

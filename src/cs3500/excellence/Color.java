@@ -5,9 +5,9 @@ package cs3500.excellence;
  */
 public class Color {
 
-  protected final int red;
-  protected final int green;
-  protected final int blue;
+  public final int red;
+  public final int green;
+  public final int blue;
 
   /**
    * Constructor for a color object.
