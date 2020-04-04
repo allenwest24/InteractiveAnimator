@@ -7,10 +7,7 @@ import java.io.IOException;
 
 import cs3500.animator.util.AnimationBuilder;
 import cs3500.animator.util.AnimationReader;
-import cs3500.animator.view.IView;
-import cs3500.animator.view.SVGView;
-import cs3500.animator.view.TextView;
-import cs3500.animator.view.VisualView;
+import cs3500.animator.view.*;
 import cs3500.excellence.AnimationDelegate;
 import cs3500.excellence.AnimationModel;
 import cs3500.excellence.IAnimation;
@@ -28,8 +25,8 @@ public final class Excellence {
   public static void main(String[] args) {
     String in = null;
     String out = null;
-    String view = null;
-    String speed = "1";
+    String view = "edit";
+    String speed = "10";
     Appendable output = System.out;
 
     for (int ii = 0; ii < args.length; ii += 2) {
@@ -50,15 +47,15 @@ public final class Excellence {
           break;
       }
     }
-    if (in == null || view == null) {
+    /*if (in == null || view == null) {
       throw new IllegalArgumentException("Requirements not satisfied.");
-    }
+    }*/
     int numSpeed = Integer.parseInt(speed);
     AnimationReader reader = new AnimationReader();
     AnimationBuilder<IAnimation<ShapeType>> builder = new AnimationModel.Builder();
     FileReader readableFile = null;
     try {
-      readableFile = new FileReader("src/" + in);
+      readableFile = new FileReader("src/" + "smalldemo.txt");
     } catch (FileNotFoundException e) {
       System.out.println("Failed to find file.");
     }
@@ -95,6 +92,9 @@ public final class Excellence {
         break;
       case "visual":
         view = new VisualView(model, speed);
+        break;
+      case "edit":
+        view = new EditorView(model, speed);
         break;
     }
     return view;

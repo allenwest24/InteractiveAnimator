@@ -26,6 +26,7 @@ public final class VisualViewPanel extends JPanel {
   private int speed;
   private int ticks;
   private HashMap<String, Shape> state;
+  private boolean shouldLoop;
 
   /**
    * Public constructor for this object.
@@ -38,6 +39,7 @@ public final class VisualViewPanel extends JPanel {
    */
   VisualViewPanel(AnimationDelegate<Shape, Motion> delegate, int xOrigin, int yOrigin) {
     super();
+    this.shouldLoop = false;
     this.setBackground(Color.WHITE);
     this.delegate = delegate;
     this.xOffset = xOrigin;
@@ -56,7 +58,33 @@ public final class VisualViewPanel extends JPanel {
   }
 
   protected void updateTick() {
-    this.ticks += 1;
+    if (shouldLoop && this.ticks == this.getLastTick()) {
+      this.resetTick();
+    }
+    else {
+      this.ticks += 1;
+    }
+  }
+
+  protected void resetTick() {
+    this.ticks = 0;
+  }
+
+  protected void shouldLoop(boolean shouldLoop) {
+    this.shouldLoop = shouldLoop;
+  }
+
+  private int getLastTick() {
+    int acc = 0;
+    for(String each: this.state.keySet()) {
+      ArrayList<Motion> currMotions = delegate.retrieveMotionsForObjectWithName(each);
+      for(Motion every: currMotions) {
+        if(every.endComp.tick >= acc) {
+          acc = every.endComp.tick;
+        }
+      }
+    }
+    return acc;
   }
 
   @Override
