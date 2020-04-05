@@ -6,15 +6,17 @@ import java.awt.event.ActionListener;
 
 public class DropDownPanel extends JMenu implements ActionListener {
   private ViewDelegate delegate;
+  private JFrame dialogFrame;
 
-  public DropDownPanel(ViewDelegate delegate) {
+  public DropDownPanel(ViewDelegate delegate, JFrame dialogFrame) {
     super("Settings");
+    this.dialogFrame = dialogFrame;
     this.delegate = delegate;
     // Start the animation wherever we left off.
     JMenuItem play = new JMenuItem("Play");
     // Stop wherever the animation is currently at.
     JMenuItem pause = new JMenuItem("Pause");
-    // This will be a checkbox of a boolean loophuh.
+    // This will be a checkbox of a boolean loopHuh.
     JMenuItem loop = new JMenuItem("Loop");
     // Triggers popup menu to set the desired speed.
     JMenuItem speed = new JMenuItem("Speed");
@@ -58,7 +60,8 @@ public class DropDownPanel extends JMenu implements ActionListener {
         delegate.loopAnimation();
         break;
       case "speed":
-        // delegate.setSpeed();
+        this.promptUserForSpeedInput();
+        //delegate.setSpeed();
         break;
       case "reset":
         delegate.resetAnimation();
@@ -67,6 +70,32 @@ public class DropDownPanel extends JMenu implements ActionListener {
         //TODOallen: something here
         break;
     }
+  }
+
+  private void promptUserForSpeedInput() {
+    String s = (String) JOptionPane.showInputDialog(this.dialogFrame,
+        "Input Number Indicating Speed:",
+        "Alter speed",
+        JOptionPane.PLAIN_MESSAGE,
+        null, null, "1");
+    Integer i = null;
+    try {
+      i = Integer.parseInt(s);
+    } catch (NumberFormatException e) {
+      if (s != null && i == null) {
+        this.displayErrorInfo("Input must be a number!\n");
+      }
+      return;
+    }
+    if (i != null && i > 0) {
+      delegate.setSpeed(i);
+    } else if (s != null && i == null) {
+      this.displayErrorInfo("Input must be a positive number!\n");
+    }
+  }
+
+  private void displayErrorInfo(String s) {
+    JOptionPane.showMessageDialog(this.dialogFrame, s);
   }
 }
 

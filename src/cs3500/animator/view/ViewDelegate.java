@@ -10,5 +10,5 @@ public interface ViewDelegate {
 
   void loopAnimation();
 
-  void setSpeed(int speed);
+  void setSpeed(int newSpeed);
 }

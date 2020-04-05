@@ -38,14 +38,14 @@ public final class EditorView extends JFrame implements IView, ActionListener, V
     this.currentlyPaused = false;
     this.speed = speed;
     this.delegate = delegate;
-    this.timer = new Timer(1000 / speed, this::actionPerformed);
+    this.timer = new Timer(1000 / this.speed, this::actionPerformed);
     this.setTitle("Animator");
     Bounds canvasBounds = delegate.retrieveCanvasBoundaries();
     this.setSize(1000, 1000);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setLayout(new FlowLayout());
     this.bar = new JMenuBar();
-    this.settings = new DropDownPanel(this);
+    this.settings = new DropDownPanel(this, this);
     this.bar.add(this.settings);
     this.setJMenuBar(this.bar);
     panel = new VisualViewPanel(delegate, canvasBounds.x, canvasBounds.y);
@@ -113,7 +113,10 @@ public final class EditorView extends JFrame implements IView, ActionListener, V
   }
 
   @Override
-  public void setSpeed(int speed) {
-
+  public void setSpeed(int newSpeed) {
+    this.speed = newSpeed;
+    this.timer.stop();
+    this.timer = new Timer(1000 / this.speed, this::actionPerformed);
+    this.timer.start();
   }
 }
