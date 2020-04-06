@@ -121,6 +121,20 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
     this.bounds = bounds;
   }
 
+  @Override
+  public void deleteShape(String s) {
+    if(this.declaredShapes.containsKey(s)) {
+      this.declaredShapes.remove(s);
+      ArrayList<UserInteraction> revisedArray = new ArrayList<UserInteraction>();
+      for(UserInteraction each: this.allMoves) {
+        if(!each.objectAssociatedWithName(s)) {
+          revisedArray.add(each);
+        }
+      }
+      this.allMoves = revisedArray;
+    }
+  }
+
   private Motion optionallyDeriveMotion(int startTick, int endTick, String shapeName,
                                         Integer startX, Integer startY, Integer endX, Integer endY,
                                         Integer startWidth, Integer startHeight, Integer endWidth,

@@ -22,7 +22,6 @@ public class DropDownPanel extends JMenu implements ActionListener {
     loop.setSelected(this.loopChecked);
     JMenuItem speed = new JMenuItem("Speed");
     JMenuItem reset = new JMenuItem("Reset");
-    // Future addition: keystroke.
     JMenuItem addShape = new JMenuItem("Add Shape");
     JMenuItem delShape = new JMenuItem("Delete Shape");
     JMenuItem addKeyFrame = new JMenuItem("Add Key Frame");
@@ -125,6 +124,8 @@ public class DropDownPanel extends JMenu implements ActionListener {
       case DELETE_SHAPE:
         if(delegate.doesShapeExistForName(s)) {
           // Tell delegate we need to delete the shape of given name.
+          delegate.userRequestsDeleteShape(s);
+
         }
          else {
           this.displayErrorInfo("Must give an existing shape to delete!\n");

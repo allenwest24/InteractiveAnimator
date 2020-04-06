@@ -73,4 +73,9 @@ public class Shape extends UserInteraction {
     return "shape " + name + " " + type.getName(type);
   }
 
+  @Override
+  public boolean objectAssociatedWithName(String name) {
+    return this.name.equals(name);
+  }
+
 }

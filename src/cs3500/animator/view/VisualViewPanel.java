@@ -49,7 +49,13 @@ public final class VisualViewPanel extends JPanel {
     state = delegate.retrieveCurrentGameState();
   }
 
+  /**
+   * CHANGE:
+   * Now we get an updated version of the state at each tick. To ensure our visual is in alignment
+   * with the model's updated state.
+   */
   protected void updateTick() {
+    this.state = delegate.retrieveCurrentGameState();
     if (shouldLoop && this.ticks == this.getLastTick()) {
       this.resetTick();
     }

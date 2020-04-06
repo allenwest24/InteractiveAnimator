@@ -10,4 +10,8 @@ abstract class UserInteraction {
    */
   public abstract String userMove();
 
+  public boolean objectAssociatedWithName(String name) {
+    return false;
+  }
+
 }

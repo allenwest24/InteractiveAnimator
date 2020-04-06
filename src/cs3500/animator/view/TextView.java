@@ -1,5 +1,6 @@
 package cs3500.animator.view;
 
+import cs3500.animator.controller.VCDelegate;
 import cs3500.excellence.AnimationDelegate;
 import cs3500.excellence.Bounds;
 import cs3500.excellence.Motion;
@@ -36,6 +37,11 @@ public final class TextView implements IView {
   @Override
   public void makeVisible() {
     return;
+  }
+
+  @Override
+  public void acceptViewController(VCDelegate vcd) {
+    //TODOallen: soemthning
   }
 
 }

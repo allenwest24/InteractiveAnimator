@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import cs3500.animator.controller.VCDelegate;
 import cs3500.excellence.AnimationDelegate;
 import cs3500.excellence.Bounds;
 import cs3500.excellence.Motion;
@@ -25,6 +26,7 @@ public final class EditorView extends JFrame implements IView, ActionListener, V
   private JMenuBar bar;
   private boolean currentlyPaused;
   private boolean loopHuh;
+  private VCDelegate vcd;
 
   /**
    * Public constructor for this object.
@@ -74,6 +76,11 @@ public final class EditorView extends JFrame implements IView, ActionListener, V
   @Override
   public void makeVisible() {
     this.setVisible(true);
+  }
+
+  @Override
+  public void acceptViewController(VCDelegate vcd) {
+    this.vcd = vcd;
   }
 
 
@@ -129,5 +136,10 @@ public final class EditorView extends JFrame implements IView, ActionListener, V
       return false;
     }
     return true;
+  }
+
+  @Override
+  public void userRequestsDeleteShape(String s) {
+    this.vcd.userRequestsDeleteShape(s);
   }
 }

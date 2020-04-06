@@ -74,5 +74,10 @@ public interface IAnimation<K> {
   void setBounds(Bounds bounds);
 
 
-
+  /**
+   * TODOallen: write it up
+   *
+   * @param s
+   */
+  void deleteShape(String s);
 }

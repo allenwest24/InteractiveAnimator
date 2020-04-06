@@ -90,6 +90,11 @@ public class Motion extends UserInteraction {
             + startComp.getInformation() + " " + endComp.getInformation();
   }
 
+  @Override
+  public boolean objectAssociatedWithName(String name) {
+    return this.associatedShape.equals(name);
+  }
+
   /**
    * Immutable nested value type class representing the components of a motion.
    */

@@ -13,4 +13,6 @@ public interface ViewDelegate {
   void setSpeed(int newSpeed);
 
   boolean doesShapeExistForName(String name);
+
+  void userRequestsDeleteShape(String s);
 }

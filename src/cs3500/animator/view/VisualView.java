@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import cs3500.animator.controller.VCDelegate;
 import cs3500.excellence.AnimationDelegate;
 import cs3500.excellence.Bounds;
 import cs3500.excellence.Motion;
@@ -64,6 +65,11 @@ public final class VisualView extends JFrame implements IView, ActionListener {
   @Override
   public void makeVisible() {
     this.setVisible(true);
+  }
+
+  @Override
+  public void acceptViewController(VCDelegate vcd) {
+    throw new UnsupportedOperationException("Can't do that!");
   }
 
 

@@ -3,6 +3,7 @@ package cs3500.animator.view;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import cs3500.animator.controller.VCDelegate;
 import cs3500.excellence.AnimationDelegate;
 import cs3500.excellence.Bounds;
 import cs3500.excellence.Motion;
@@ -169,5 +170,10 @@ public final class SVGView implements IView {
   @Override
   public void makeVisible() {
     return;
+  }
+
+  @Override
+  public void acceptViewController(VCDelegate vcd) {
+    // TODOallen:
   }
 }
