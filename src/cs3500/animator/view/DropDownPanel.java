@@ -1,8 +1,13 @@
 package cs3500.animator.view;
 
+import cs3500.excellence.Shape;
+import cs3500.excellence.ShapeType;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.regex.PatternSyntaxException;
 
 public class DropDownPanel extends JMenu implements ActionListener {
   private ViewDelegate delegate;
@@ -85,9 +90,9 @@ public class DropDownPanel extends JMenu implements ActionListener {
         break;
       case "addshape":
         this.promptUserForChangeToModel(ModelPrompts.ADD_SHAPE,
-            "Input shape type (R || E) and name separated by a comma:\n",
+            "Input shape name and type (rectangle || ellipse) separated by a comma:\n",
             "Add a Shape.\n",
-            "Shape type,Shape name");
+            "shapeName,shapeType");
         break;
       case "delshape":
         this.promptUserForChangeToModel(ModelPrompts.DELETE_SHAPE,
@@ -111,6 +116,43 @@ public class DropDownPanel extends JMenu implements ActionListener {
     ADD_SHAPE, DELETE_SHAPE;
   }
 
+  private enum StringComponents {
+    SHAPE_NAME, SHAPE_TYPE;
+  }
+
+  private String deriveRelevantComponent(StringComponents comp, String userInput) {
+    String[] parsedInput;
+    try {
+     parsedInput = userInput.split(",");
+    }
+    catch(PatternSyntaxException e) {
+      return null;
+    }
+    catch(NullPointerException e) {
+      return null;
+    }
+    if(parsedInput.length == 0 || parsedInput.length > 9 || !userInput.contains(",")) {
+      return null;
+    }
+    switch(comp) {
+      case SHAPE_NAME:
+        if(parsedInput.length >= 1) {
+          return parsedInput[0];
+        }
+        else {
+          return null;
+        }      case SHAPE_TYPE:
+        if(parsedInput.length >= 2) {
+          return parsedInput[1];
+        }
+        else {
+          return null;
+        }
+      default:
+        return null;
+    }
+  }
+
   private void promptUserForChangeToModel(ModelPrompts type, String prompt, String titleString,
                                           String initialVal) {
     String s = (String) JOptionPane.showInputDialog(this.dialogFrame,
@@ -120,12 +162,28 @@ public class DropDownPanel extends JMenu implements ActionListener {
         null, null, initialVal);
     switch(type) {
       case ADD_SHAPE:
+        if(delegate.doesShapeExistForName(s)) {
+          this.displayErrorInfo("Shape by this name already exists!\n");
+        }
+        else {
+          String name = this.deriveRelevantComponent(StringComponents.SHAPE_NAME, s);
+          String shapeTypeString = this.deriveRelevantComponent(StringComponents.SHAPE_TYPE, s);
+          if(name == null || shapeTypeString == null) {
+            this.displayErrorInfo("Oops! Something went wrong with that request! Make sure the"
+                + " request follows the format: \"name,type\"\n");
+            return;
+          }
+          ShapeType shapeType = ShapeType.optionallyDeriveShapeType(shapeTypeString);
+          if(shapeType == null) {
+            this.displayErrorInfo("Invalid shape type!\n");
+            return;
+          }
+          delegate.userRequestsAddShape(shapeType, name);
+        }
         break;
       case DELETE_SHAPE:
         if(delegate.doesShapeExistForName(s)) {
-          // Tell delegate we need to delete the shape of given name.
           delegate.userRequestsDeleteShape(s);
-
         }
          else {
           this.displayErrorInfo("Must give an existing shape to delete!\n");

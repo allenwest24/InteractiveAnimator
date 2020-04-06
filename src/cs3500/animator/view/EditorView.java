@@ -7,9 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import cs3500.animator.controller.VCDelegate;
-import cs3500.excellence.AnimationDelegate;
-import cs3500.excellence.Bounds;
-import cs3500.excellence.Motion;
+import cs3500.excellence.*;
 import cs3500.excellence.Shape;
 
 /**
@@ -141,5 +139,10 @@ public final class EditorView extends JFrame implements IView, ActionListener, V
   @Override
   public void userRequestsDeleteShape(String s) {
     this.vcd.userRequestsDeleteShape(s);
+  }
+
+  @Override
+  public void userRequestsAddShape(ShapeType type, String name) {
+    this.vcd.userRequestsAddShape(type, name);
   }
 }

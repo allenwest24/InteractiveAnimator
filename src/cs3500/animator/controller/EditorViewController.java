@@ -26,4 +26,14 @@ public class EditorViewController implements IViewController, VCDelegate {
   public void userRequestsDeleteShape(String s) {
     this.model.deleteShape(s);
   }
+
+  @Override
+  public void userRequestsAddShape(ShapeType type, String name) {
+    try {
+      model.declareShape(type, name);
+    }
+    catch(IllegalArgumentException e) {
+      return;
+    }
+  }
 }

@@ -20,7 +20,10 @@ public enum ShapeType {
     }
   }
 
-  protected static ShapeType optionallyDeriveShapeType(String type) {
+  /**
+   * Changed from protected to public.
+   */
+  public static ShapeType optionallyDeriveShapeType(String type) {
     switch (type) {
       case "rectangle":
         return ShapeType.RECTANGLE;

@@ -64,6 +64,7 @@ public final class Excellence {
     AnimationDelegate<Shape, Motion> delegateRef = (AnimationDelegate<Shape, Motion>) model;
     IView viewObject = Excellence.deriveCorrectView(view, delegateRef, numSpeed);
     EditorViewController evc;
+    viewObject.makeVisible();
     if(view.equals("edit")) {
       evc = new EditorViewController(model, delegateRef, viewObject);
       evc.startUp();
