@@ -36,19 +36,15 @@ public final class Excellence {
       switch (args[ii]) {
         case "-in":
           in = args[ii + 1];
-          ii++;
           break;
         case "-out":
           out = args[ii + 1];
-          ii++;
           break;
         case "-view":
           view = args[ii + 1];
-          ii++;
           break;
         case "-speed":
           speed = args[ii + 1];
-          ii++;
           break;
         default:
           break;
