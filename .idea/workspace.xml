@@ -12,6 +12,8 @@
       <change beforePath="$PROJECT_DIR$/src/cs3500/animator/view/VisualViewPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/VisualViewPanel.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/cs3500/animator/view/ViewUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/IAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/IAnimation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cs3500/animator/controller/EditorViewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cs3500/animator/controller/IViewController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +24,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -245,10 +247,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="339" y="172" width="672" height="677" key="run.anything.popup/0.0.1366.768@0.0.1366.768" timestamp="1586125607069" />
-    <state x="394" y="166" width="672" height="534" key="search.everywhere.popup" timestamp="1586127150720">
+    <state x="394" y="166" width="672" height="534" key="search.everywhere.popup" timestamp="1586183175223">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="394" y="166" width="672" height="534" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1586127150720" />
+    <state x="394" y="166" width="672" height="534" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1586183175223" />
     <state x="484" y="233" width="670" height="675" key="search.everywhere.popup/0.23.1680.971@0.23.1680.971" timestamp="1585174094661" />
     <state x="484" y="233" width="670" height="676" key="search.everywhere.popup/0.23.1680.973@0.23.1680.973" timestamp="1582848033332" />
   </component>

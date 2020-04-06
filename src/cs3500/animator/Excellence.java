@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import cs3500.animator.controller.EditorViewController;
 import cs3500.animator.util.AnimationBuilder;
 import cs3500.animator.util.AnimationReader;
 import cs3500.animator.view.*;
@@ -62,8 +63,15 @@ public final class Excellence {
     IAnimation<ShapeType> model = reader.parseFile(readableFile, builder);
     AnimationDelegate<Shape, Motion> delegateRef = (AnimationDelegate<Shape, Motion>) model;
     IView viewObject = Excellence.deriveCorrectView(view, delegateRef, numSpeed);
-    viewObject.makeVisible();
-    if (out != null && view != "visual") {
+    EditorViewController evc;
+    if(view.equals("edit")) {
+      evc = new EditorViewController(model, delegateRef, viewObject);
+      evc.startUp();
+    }
+    else {
+      viewObject.makeVisible();
+    }
+    if (out != null && !view.equals("visual")) {
       try {
         FileWriter writer = new FileWriter(out);
         writer.write(viewObject.stringOutputForFile());
@@ -71,7 +79,7 @@ public final class Excellence {
       } catch (IOException e) {
         e.printStackTrace();
       }
-    } else if (view != "visual") {
+    } else if (!view.equals("visual")) {
       try {
         output.append(viewObject.stringOutputForFile());
       } catch (IOException e) {
