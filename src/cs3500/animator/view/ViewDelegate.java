@@ -11,4 +11,6 @@ public interface ViewDelegate {
   void loopAnimation();
 
   void setSpeed(int newSpeed);
+
+  boolean doesShapeExistForName(String name);
 }

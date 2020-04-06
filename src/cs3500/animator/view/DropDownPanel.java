@@ -7,48 +7,65 @@ import java.awt.event.ActionListener;
 public class DropDownPanel extends JMenu implements ActionListener {
   private ViewDelegate delegate;
   private JFrame dialogFrame;
+  private JMenuItem loopItem;
+  private boolean loopChecked;
 
   public DropDownPanel(ViewDelegate delegate, JFrame dialogFrame) {
     super("Settings");
     this.dialogFrame = dialogFrame;
     this.delegate = delegate;
-    // Start the animation wherever we left off.
     JMenuItem play = new JMenuItem("Play");
-    // Stop wherever the animation is currently at.
     JMenuItem pause = new JMenuItem("Pause");
-    // This will be a checkbox of a boolean loopHuh.
-    JMenuItem loop = new JMenuItem("Loop");
-    // Triggers popup menu to set the desired speed.
+    JMenuItem loop = new JCheckBoxMenuItem("Loop");
+    this.loopItem = loop;
+    this.loopChecked = false;
+    loop.setSelected(this.loopChecked);
     JMenuItem speed = new JMenuItem("Speed");
-    // On button push this will start over from the beginning. Will keep the same play/pause state.
     JMenuItem reset = new JMenuItem("Reset");
     // Future addition: keystroke.
+    JMenuItem addShape = new JMenuItem("Add Shape");
+    JMenuItem delShape = new JMenuItem("Delete Shape");
+    JMenuItem addKeyFrame = new JMenuItem("Add Key Frame");
+    JMenuItem delKeyFrame = new JMenuItem("Delete Key Frame");
+
 
     play.addActionListener(this::actionPerformed);
     pause.addActionListener(this::actionPerformed);
     loop.addActionListener(this::actionPerformed);
     speed.addActionListener(this::actionPerformed);
     reset.addActionListener(this::actionPerformed);
+    addShape.addActionListener(this::actionPerformed);
+    delShape.addActionListener(this::actionPerformed);
+    addKeyFrame.addActionListener(this::actionPerformed);
+    delKeyFrame.addActionListener(this::actionPerformed);
+
 
     play.setActionCommand("play");
     pause.setActionCommand("pause");
     loop.setActionCommand("loop");
     speed.setActionCommand("speed");
     reset.setActionCommand("reset");
+    addShape.setActionCommand("addshape");
+    delShape.setActionCommand("delshape");
+    addKeyFrame.setActionCommand("addkf");
+    delKeyFrame.setActionCommand("delkf");
+
 
     this.add(play);
     this.add(pause);
     this.add(loop);
     this.add(speed);
     this.add(reset);
+    this.add(addShape);
+    this.add(delShape);
+    this.add(addKeyFrame);
+    this.add(delKeyFrame);
 
   }
 
   @Override
   public void actionPerformed(ActionEvent e) {
     String buttonClicked = e.getActionCommand();
-    // To test if the buttons are being registered.
-    //System.out.println(buttonClicked);
     switch (buttonClicked) {
       case "play":
         delegate.play();
@@ -57,17 +74,63 @@ public class DropDownPanel extends JMenu implements ActionListener {
         delegate.pauseAnimation();
         break;
       case "loop":
+        this.loopChecked = !this.loopChecked;
+        this.loopItem.setSelected(this.loopChecked);
         delegate.loopAnimation();
         break;
       case "speed":
         this.promptUserForSpeedInput();
-        //delegate.setSpeed();
         break;
       case "reset":
         delegate.resetAnimation();
         break;
+      case "addshape":
+        this.promptUserForChangeToModel(ModelPrompts.ADD_SHAPE,
+            "Input shape type (R || E) and name separated by a comma:\n",
+            "Add a Shape.\n",
+            "Shape type,Shape name");
+        break;
+      case "delshape":
+        this.promptUserForChangeToModel(ModelPrompts.DELETE_SHAPE,
+            "Input shape name to delete:\n",
+            "Delete a Shape.\n",
+            "Shape name");
+        break;
+      case "addkf":
+       // this.promptUserForKeyFrameToAdd();
+        break;
+      case "delkf":
+        //this.promptUserForKeyFrameToRemove();
+        break;
       default:
         //TODOallen: something here
+        break;
+    }
+  }
+
+  private enum ModelPrompts {
+    ADD_SHAPE, DELETE_SHAPE;
+  }
+
+  private void promptUserForChangeToModel(ModelPrompts type, String prompt, String titleString,
+                                          String initialVal) {
+    String s = (String) JOptionPane.showInputDialog(this.dialogFrame,
+        prompt,
+        titleString,
+        JOptionPane.PLAIN_MESSAGE,
+        null, null, initialVal);
+    switch(type) {
+      case ADD_SHAPE:
+        break;
+      case DELETE_SHAPE:
+        if(delegate.doesShapeExistForName(s)) {
+          // Tell delegate we need to delete the shape of given name.
+        }
+         else {
+          this.displayErrorInfo("Must give an existing shape to delete!\n");
+        }
+        break;
+      default:
         break;
     }
   }

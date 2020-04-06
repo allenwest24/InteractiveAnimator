@@ -119,4 +119,15 @@ public final class EditorView extends JFrame implements IView, ActionListener, V
     this.timer = new Timer(1000 / this.speed, this::actionPerformed);
     this.timer.start();
   }
+
+  @Override
+  public boolean doesShapeExistForName(String name) {
+    try {
+      delegate.retrieveMotionsForObjectWithName(name);
+    }
+    catch(IllegalArgumentException e) {
+      return false;
+    }
+    return true;
+  }
 }
