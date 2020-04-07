@@ -56,7 +56,7 @@ public final class VisualViewPanel extends JPanel {
    */
   protected void updateTick() {
     this.state = delegate.retrieveCurrentGameState();
-    if (shouldLoop && this.ticks == this.getLastTick()) {
+    if (shouldLoop && this.ticks >= this.getLastTick()) {
       this.resetTick();
     }
     else {

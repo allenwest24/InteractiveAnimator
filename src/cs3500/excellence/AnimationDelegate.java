@@ -38,5 +38,4 @@ public interface AnimationDelegate<T, K> {
    * @return Nullable Bounds object (value type, therefore safe for passing).
    */
   Bounds retrieveCanvasBoundaries();
-
 }

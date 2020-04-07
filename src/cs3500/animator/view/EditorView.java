@@ -89,7 +89,7 @@ public final class EditorView extends JFrame implements IView, ActionListener, V
    */
   @Override
   public void actionPerformed(ActionEvent e) {
-    if(!currentlyPaused) {
+    if (!currentlyPaused) {
       this.panel.updateTick();
       this.refresh();
     }
@@ -129,8 +129,7 @@ public final class EditorView extends JFrame implements IView, ActionListener, V
   public boolean doesShapeExistForName(String name) {
     try {
       delegate.retrieveMotionsForObjectWithName(name);
-    }
-    catch(IllegalArgumentException e) {
+    } catch (IllegalArgumentException e) {
       return false;
     }
     return true;
@@ -156,10 +155,22 @@ public final class EditorView extends JFrame implements IView, ActionListener, V
     String potentialDisplay = null;
     try {
       potentialDisplay = this.vcd.userRequestAddKeyFrameInfo(shapeName, i);
-    }
-    catch(IllegalArgumentException e) {
+    } catch (IllegalArgumentException e) {
       return null;
     }
     return potentialDisplay;
+  }
+
+  @Override
+  public boolean passNewValuesOnKeyFrame(boolean b, Integer tempx2, Integer tempy2, Integer tempw2,
+                                         Integer temph2, Integer tempr2, Integer tempg2,
+                                         Integer tempb2) {
+    if(!b) {
+      vcd.passNewValuesOnKeyFrameAgain(false, null,  null, null,
+          null, null, null, null);
+      return b;
+    }
+    return vcd.passNewValuesOnKeyFrameAgain(true, tempx2, tempy2, tempw2, temph2,
+        tempr2, tempg2, tempb2);
   }
 }

@@ -44,6 +44,12 @@ public class Motion extends UserInteraction {
     this.endComp = endComp;
   }
 
+  protected MotionComponent spinUpComp(int tick, Integer x, Integer y, Integer width,
+                                              Integer height, Color color) {
+    return new MotionComponent(tick, x, y, width, height, color);
+  }
+
+
   protected static final Motion computeNextMotion(Motion proposedMotion, Motion current) {
     if (current.endTick != proposedMotion.startComp.tick) {
       return null;

@@ -23,4 +23,7 @@ public interface ViewDelegate {
   boolean deleteKeyFrame(String shapeName, Integer i);
 
   String canAddKeyFrameAtTick(String shapeName, Integer i);
+
+  boolean passNewValuesOnKeyFrame(boolean b, Integer tempx2, Integer tempy2, Integer tempw2,
+                               Integer temph2, Integer tempr2, Integer tempg2, Integer tempb2);
 }

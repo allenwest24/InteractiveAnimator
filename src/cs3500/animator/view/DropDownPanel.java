@@ -14,13 +14,11 @@ public class DropDownPanel extends JMenu implements ActionListener {
   private JFrame dialogFrame;
   private JMenuItem loopItem;
   private boolean loopChecked;
-  private boolean currDataObtianed;
 
   public DropDownPanel(ViewDelegate delegate, JFrame dialogFrame) {
     super("Settings");
     this.dialogFrame = dialogFrame;
     this.delegate = delegate;
-    this.currDataObtianed = false;
     JMenuItem play = new JMenuItem("Play");
     JMenuItem pause = new JMenuItem("Pause");
     JMenuItem loop = new JCheckBoxMenuItem("Loop");
@@ -121,7 +119,7 @@ public class DropDownPanel extends JMenu implements ActionListener {
   }
 
   private enum ModelPrompts {
-    ADD_SHAPE, DELETE_SHAPE, ADD_KEYFRAME, DELETE_KEYFRAME;
+    ADD_SHAPE, DELETE_SHAPE, ADD_KEYFRAME, DELETE_KEYFRAME, GET_KEYFRAME_USER;
   }
 
   private enum StringComponents {
@@ -198,6 +196,9 @@ public class DropDownPanel extends JMenu implements ActionListener {
         titleString,
         JOptionPane.PLAIN_MESSAGE,
         null, null, initialVal);
+    if(s == null) {
+      return;
+    }
     switch (type) {
       case ADD_SHAPE:
         if (delegate.doesShapeExistForName(s)) {
@@ -233,8 +234,56 @@ public class DropDownPanel extends JMenu implements ActionListener {
       case ADD_KEYFRAME:
         this.addKeyFramePrompt(s);
         break;
+      case GET_KEYFRAME_USER:
+        this.passOnNewParams(s);
+        break;
       default:
         break;
+    }
+  }
+
+  private Integer conditionalInt(String s) {
+    if(s == null) {
+      return null;
+    }
+    Integer tempVal = null;
+    try {
+      tempVal = Integer.parseInt(s);
+    } catch (NumberFormatException e) {
+      return null;
+    }
+    return tempVal;
+  }
+
+  //pos=(10,10), size=(50,50), color=(255,0,0)
+  private void passOnNewParams(String s) {
+    String tempx = this.deriveRelevantComponent(StringComponents.POSX, s);
+    String tempy = this.deriveRelevantComponent(StringComponents.POSY, s);
+    String tempw = this.deriveRelevantComponent(StringComponents.WIDTH, s);
+    String temph = this.deriveRelevantComponent(StringComponents.HEIGHT, s);
+    String tempr = this.deriveRelevantComponent(StringComponents.RED, s);
+    String tempg = this.deriveRelevantComponent(StringComponents.GREEN, s);
+    String tempb = this.deriveRelevantComponent(StringComponents.BLUE, s);
+
+    Integer tempx2 = this.conditionalInt(tempx);
+    Integer tempy2 = this.conditionalInt(tempy);
+    Integer tempw2 = this.conditionalInt(tempw);
+    Integer temph2 = this.conditionalInt(temph);
+    Integer tempr2 = this.conditionalInt(tempr);
+    Integer tempg2 = this.conditionalInt(tempg);
+    Integer tempb2 = this.conditionalInt(tempb);
+
+    System.out.println(s);
+    if((s != null) && (tempx2 == null || tempy2 == null || tempw2 == null || temph2 == null
+        || tempr2 == null || tempg2 == null || tempb2 == null)) {
+      this.delegate.passNewValuesOnKeyFrame(false, null, null,
+          null, null, null, null, null);
+      this.displayErrorInfo("Error 404: Clever line not found\n");
+      return;
+    }
+    else {
+      boolean success = this.delegate.passNewValuesOnKeyFrame(true, tempx2, tempy2, tempw2, temph2,
+          tempr2, tempg2, tempb2);
     }
   }
 
@@ -242,25 +291,27 @@ public class DropDownPanel extends JMenu implements ActionListener {
     String shapeName = this.deriveRelevantComponent(StringComponents.SHAPE_NAME, s);
     String shapeTick = this.deriveRelevantComponent(StringComponents.TICK, s);
     Integer i = null;
-    if(shapeName == null || shapeTick == null || !this.delegate.doesShapeExistForName(shapeName)) {
+    if (shapeName == null || shapeTick == null || !this.delegate.doesShapeExistForName(shapeName)) {
       this.displayErrorInfo("Must give an existing shape to add a KeyFrame to!\n");
       return;
-    }
-    else {
+    } else {
       try {
         i = Integer.parseInt(shapeTick);
       } catch (NumberFormatException e) {
         this.displayErrorInfo("That tick be janky yo!\n");
         return;
       }
-      if(i < 0) {
+      if (i < 0) {
         this.displayErrorInfo("Invalid KeyFrame for shape!\n");
         return;
       }
-      String st = delegate.canAddKeyFrameAtTick(shapeName, i);
-      if(st == null) {
-        
-      }
+      String st = delegate.canAddKeyFrameAtTick(shapeName, i)
+          == null ? "0,0,0,0,0,0,0" : delegate.canAddKeyFrameAtTick(shapeName, i);
+      this.promptUserForChangeToModel(ModelPrompts.GET_KEYFRAME_USER,
+          "pos=(10,10), size=(50,50), color=(255,0,0) "
+              + "in format of 0,0,0,0,0,0,0 : \n",
+          "Add the desired KeyFrame parameters.\n",
+          st);
     }
   }
 
@@ -268,18 +319,17 @@ public class DropDownPanel extends JMenu implements ActionListener {
     String shapeName = this.deriveRelevantComponent(StringComponents.SHAPE_NAME, s);
     String shapeTick = this.deriveRelevantComponent(StringComponents.TICK, s);
     Integer i = null;
-    if(shapeName == null || shapeTick == null || !this.delegate.doesShapeExistForName(shapeName)) {
+    if (shapeName == null || shapeTick == null || !this.delegate.doesShapeExistForName(shapeName)) {
       this.displayErrorInfo("Must give an existing shape to delete!\n");
       return;
-    }
-    else {
+    } else {
       try {
         i = Integer.parseInt(shapeTick);
       } catch (NumberFormatException e) {
         this.displayErrorInfo("That tick be janky yo!\n");
         return;
       }
-      if(!this.delegate.deleteKeyFrame(shapeName, i)) {
+      if (!this.delegate.deleteKeyFrame(shapeName, i)) {
         this.displayErrorInfo("This is not the KeyFrame you are looking for...\n");
         return;
       }
