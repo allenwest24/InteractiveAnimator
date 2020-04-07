@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d27255c2-eb8e-46ed-a6fc-3e9a676e4ead" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/controller/EditorViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/controller/EditorViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/controller/VCDelegate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/controller/VCDelegate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/view/DropDownPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/DropDownPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/view/EditorView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/EditorView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/view/ViewDelegate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/ViewDelegate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/view/VisualViewPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/VisualViewPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/AnimationDelegate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/AnimationDelegate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/AnimationModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/AnimationModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/IAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/IAnimation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/Motion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/Motion.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

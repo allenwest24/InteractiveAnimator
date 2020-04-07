@@ -315,35 +315,6 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
         }
         acc++;
       }
-//    Shape shapeToMutate = this.declaredShapes.get(shapeName);
-//    if(!shapeToMutate.getAllTicks().contains(tick)) {
-//      throw iae;
-//    }
-//    if(shapeToMutate.motions.get(0).startComp.tick == tick) {
-//      shapeToMutate.motions.remove(0);
-//      this.refactoredUserInteraction(shapeName, tick);
-//      return;
-//    }
-//    if(shapeToMutate.motions.get(shapeToMutate.motions.size() - 1).endComp.tick == tick) {
-//      shapeToMutate.motions.remove(shapeToMutate.motions.size() - 1);
-//      this.refactoredUserInteraction(shapeName, tick);
-//      return;
-//    }
-//    Motion newMotion = null;
-//    int lastII = 0;
-//    int iterateSize = shapeToMutate.motions.size();
-//    for(int ii = 1; ii < iterateSize; ii++) {
-//      Motion currMotion = shapeToMutate.motions.get(ii);
-//      Motion prevMotion = shapeToMutate.motions.get(ii - 1);
-//      if(tick == currMotion.startComp.tick) {
-//        newMotion = new Motion(prevMotion.startComp, currMotion.endComp, shapeName);
-//        lastII = ii;
-//        break;
-//      }
-//    }
-//    shapeToMutate.motions.set(lastII - 1, newMotion);
-//    shapeToMutate.motions.remove(lastII);
-//    this.refactoredUserInteraction(shapeName, tick);
     }
   }
 
