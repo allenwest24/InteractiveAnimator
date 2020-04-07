@@ -14,11 +14,13 @@ public class DropDownPanel extends JMenu implements ActionListener {
   private JFrame dialogFrame;
   private JMenuItem loopItem;
   private boolean loopChecked;
+  private boolean currDataObtianed;
 
   public DropDownPanel(ViewDelegate delegate, JFrame dialogFrame) {
     super("Settings");
     this.dialogFrame = dialogFrame;
     this.delegate = delegate;
+    this.currDataObtianed = false;
     JMenuItem play = new JMenuItem("Play");
     JMenuItem pause = new JMenuItem("Pause");
     JMenuItem loop = new JCheckBoxMenuItem("Loop");
@@ -98,54 +100,90 @@ public class DropDownPanel extends JMenu implements ActionListener {
         this.promptUserForChangeToModel(ModelPrompts.DELETE_SHAPE,
             "Input shape name to delete:\n",
             "Delete a Shape.\n",
-            "Shape name");
+            "shapeName");
         break;
       case "addkf":
-       // this.promptUserForKeyFrameToAdd();
+        this.promptUserForChangeToModel(ModelPrompts.ADD_KEYFRAME,
+            "Input shape name and tick to add keyframe:\n",
+            "Add a KeyFrame.\n",
+            "shapeName,shapeTick");
         break;
       case "delkf":
-        //this.promptUserForKeyFrameToRemove();
+        this.promptUserForChangeToModel(ModelPrompts.DELETE_KEYFRAME,
+            "Input shape name and tick to remove keyframe:\n",
+            "Delete a KeyFrame.\n",
+            "shapeName,shapeTick");
         break;
       default:
-        //TODOallen: something here
+        this.displayErrorInfo("Unknown menu option!\n");
         break;
     }
   }
 
   private enum ModelPrompts {
-    ADD_SHAPE, DELETE_SHAPE;
+    ADD_SHAPE, DELETE_SHAPE, ADD_KEYFRAME, DELETE_KEYFRAME;
   }
 
   private enum StringComponents {
-    SHAPE_NAME, SHAPE_TYPE;
+    SHAPE_NAME, SHAPE_TYPE, TICK, POSX, POSY, WIDTH, HEIGHT, RED, GREEN, BLUE;
   }
 
   private String deriveRelevantComponent(StringComponents comp, String userInput) {
     String[] parsedInput;
     try {
-     parsedInput = userInput.split(",");
-    }
-    catch(PatternSyntaxException e) {
+      parsedInput = userInput.split(",");
+    } catch (PatternSyntaxException e) {
+      return null;
+    } catch (NullPointerException e) {
       return null;
     }
-    catch(NullPointerException e) {
+    if (parsedInput.length == 0 || parsedInput.length > 7 || !userInput.contains(",")) {
       return null;
     }
-    if(parsedInput.length == 0 || parsedInput.length > 9 || !userInput.contains(",")) {
-      return null;
-    }
-    switch(comp) {
+    switch (comp) {
+      case POSX:
       case SHAPE_NAME:
-        if(parsedInput.length >= 1) {
+        if (parsedInput.length >= 1) {
           return parsedInput[0];
-        }
-        else {
+        } else {
           return null;
-        }      case SHAPE_TYPE:
-        if(parsedInput.length >= 2) {
-          return parsedInput[1];
         }
-        else {
+      case TICK:
+      case POSY:
+      case SHAPE_TYPE:
+        if (parsedInput.length >= 2) {
+          return parsedInput[1];
+        } else {
+          return null;
+        }
+      case WIDTH:
+        if (parsedInput.length >= 3) {
+          return parsedInput[2];
+        } else {
+          return null;
+        }
+      case HEIGHT:
+        if (parsedInput.length >= 4) {
+          return parsedInput[3];
+        } else {
+          return null;
+        }
+      case RED:
+        if (parsedInput.length >= 5) {
+          return parsedInput[4];
+        } else {
+          return null;
+        }
+      case GREEN:
+        if (parsedInput.length >= 6) {
+          return parsedInput[5];
+        } else {
+          return null;
+        }
+      case BLUE:
+        if (parsedInput.length >= 7) {
+          return parsedInput[6];
+        } else {
           return null;
         }
       default:
@@ -160,21 +198,21 @@ public class DropDownPanel extends JMenu implements ActionListener {
         titleString,
         JOptionPane.PLAIN_MESSAGE,
         null, null, initialVal);
-    switch(type) {
+    switch (type) {
       case ADD_SHAPE:
-        if(delegate.doesShapeExistForName(s)) {
+        if (delegate.doesShapeExistForName(s)) {
           this.displayErrorInfo("Shape by this name already exists!\n");
-        }
-        else {
+          return;
+        } else {
           String name = this.deriveRelevantComponent(StringComponents.SHAPE_NAME, s);
           String shapeTypeString = this.deriveRelevantComponent(StringComponents.SHAPE_TYPE, s);
-          if(name == null || shapeTypeString == null) {
+          if (name == null || shapeTypeString == null) {
             this.displayErrorInfo("Oops! Something went wrong with that request! Make sure the"
                 + " request follows the format: \"name,type\"\n");
             return;
           }
           ShapeType shapeType = ShapeType.optionallyDeriveShapeType(shapeTypeString);
-          if(shapeType == null) {
+          if (shapeType == null) {
             this.displayErrorInfo("Invalid shape type!\n");
             return;
           }
@@ -182,15 +220,69 @@ public class DropDownPanel extends JMenu implements ActionListener {
         }
         break;
       case DELETE_SHAPE:
-        if(delegate.doesShapeExistForName(s)) {
+        if (delegate.doesShapeExistForName(s)) {
           delegate.userRequestsDeleteShape(s);
-        }
-         else {
+        } else {
           this.displayErrorInfo("Must give an existing shape to delete!\n");
+          return;
         }
+        break;
+      case DELETE_KEYFRAME:
+        this.deleteKeyFramePrompt(s);
+        break;
+      case ADD_KEYFRAME:
+        this.addKeyFramePrompt(s);
         break;
       default:
         break;
+    }
+  }
+
+  private void addKeyFramePrompt(String s) {
+    String shapeName = this.deriveRelevantComponent(StringComponents.SHAPE_NAME, s);
+    String shapeTick = this.deriveRelevantComponent(StringComponents.TICK, s);
+    Integer i = null;
+    if(shapeName == null || shapeTick == null || !this.delegate.doesShapeExistForName(shapeName)) {
+      this.displayErrorInfo("Must give an existing shape to add a KeyFrame to!\n");
+      return;
+    }
+    else {
+      try {
+        i = Integer.parseInt(shapeTick);
+      } catch (NumberFormatException e) {
+        this.displayErrorInfo("That tick be janky yo!\n");
+        return;
+      }
+      if(i < 0) {
+        this.displayErrorInfo("Invalid KeyFrame for shape!\n");
+        return;
+      }
+      String st = delegate.canAddKeyFrameAtTick(shapeName, i);
+      if(st == null) {
+        
+      }
+    }
+  }
+
+  private void deleteKeyFramePrompt(String s) {
+    String shapeName = this.deriveRelevantComponent(StringComponents.SHAPE_NAME, s);
+    String shapeTick = this.deriveRelevantComponent(StringComponents.TICK, s);
+    Integer i = null;
+    if(shapeName == null || shapeTick == null || !this.delegate.doesShapeExistForName(shapeName)) {
+      this.displayErrorInfo("Must give an existing shape to delete!\n");
+      return;
+    }
+    else {
+      try {
+        i = Integer.parseInt(shapeTick);
+      } catch (NumberFormatException e) {
+        this.displayErrorInfo("That tick be janky yo!\n");
+        return;
+      }
+      if(!this.delegate.deleteKeyFrame(shapeName, i)) {
+        this.displayErrorInfo("This is not the KeyFrame you are looking for...\n");
+        return;
+      }
     }
   }
 

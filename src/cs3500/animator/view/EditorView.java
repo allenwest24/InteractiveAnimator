@@ -145,4 +145,21 @@ public final class EditorView extends JFrame implements IView, ActionListener, V
   public void userRequestsAddShape(ShapeType type, String name) {
     this.vcd.userRequestsAddShape(type, name);
   }
+
+  @Override
+  public boolean deleteKeyFrame(String shapeName, Integer i) {
+    return this.vcd.userRequestsDeleteKeyFrame(shapeName, i);
+  }
+
+  @Override
+  public String canAddKeyFrameAtTick(String shapeName, Integer i) {
+    String potentialDisplay = null;
+    try {
+      potentialDisplay = this.vcd.userRequestAddKeyFrameInfo(shapeName, i);
+    }
+    catch(IllegalArgumentException e) {
+      return null;
+    }
+    return potentialDisplay;
+  }
 }

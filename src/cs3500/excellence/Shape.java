@@ -1,5 +1,6 @@
 package cs3500.excellence;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -76,6 +77,18 @@ public class Shape extends UserInteraction {
   @Override
   public boolean objectAssociatedWithName(String name) {
     return this.name.equals(name);
+  }
+
+  /**
+   * Changed: Added to allow us to access a list of all KeyFrames for a shape.
+   */
+  protected ArrayList<Integer> getAllTicks() {
+    ArrayList<Integer> tickList = new ArrayList<Integer>();
+    for(Motion each: this.motions) {
+      tickList.add(each.startComp.tick);
+      tickList.add(each.endComp.tick);
+    }
+    return tickList;
   }
 
 }

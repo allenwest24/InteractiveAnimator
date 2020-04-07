@@ -135,6 +135,89 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
     }
   }
 
+  /**
+   * Changed: Added to aid with deleting a keyFrame.
+   */
+  @Override
+  public void deleteKeyFrameFromModel(String shapeName, Integer tick) {
+    IllegalArgumentException iae = new IllegalArgumentException("Unable to delete keyframe!");
+    if(!this.declaredShapes.containsKey(shapeName)) {
+      throw iae;
+    }
+    Shape shapeToMutate = this.declaredShapes.get(shapeName);
+    if(!shapeToMutate.getAllTicks().contains(tick)) {
+      throw iae;
+    }
+    if(shapeToMutate.motions.get(0).startComp.tick == tick) {
+      shapeToMutate.motions.remove(0);
+      this.refactoredUserInteraction(shapeName, tick);
+      return;
+    }
+    if(shapeToMutate.motions.get(shapeToMutate.motions.size() - 1).endComp.tick == tick) {
+      shapeToMutate.motions.remove(shapeToMutate.motions.size() - 1);
+      this.refactoredUserInteraction(shapeName, tick);
+      return;
+    }
+    Motion newMotion = null;
+    int lastII = 0;
+    int iterateSize = shapeToMutate.motions.size();
+    for(int ii = 1; ii < iterateSize; ii++) {
+      Motion currMotion = shapeToMutate.motions.get(ii);
+      Motion prevMotion = shapeToMutate.motions.get(ii - 1);
+      if(tick == currMotion.startComp.tick) {
+        newMotion = new Motion(prevMotion.startComp, currMotion.endComp, shapeName);
+        lastII = ii;
+        break;
+      }
+    }
+    shapeToMutate.motions.set(lastII - 1, newMotion);
+    shapeToMutate.motions.remove(lastII);
+    this.refactoredUserInteraction(shapeName, tick);
+  }
+
+  @Override
+  public Motion deriveKeyFrameInfo(String shapeName, Integer i) {
+    ArrayList<Motion> shapeMotions = this.declaredShapes.get(shapeName).motions;
+    Motion moti = null;
+    for(Motion each: shapeMotions) {
+      if(each.startComp.tick <= i && each.endComp.tick >= i) {
+        moti = each;
+        break;
+      }
+    }
+    Motion first = shapeMotions.get(0);
+    Motion last = shapeMotions.get(shapeMotions.size() - 1);
+    if(moti == null && i < first.startComp.tick) {
+      return new Motion(shapeName, i, 0, 0, 0, 0, new Color(0, 0, 0),
+          first.startComp.tick, first.startComp.x, first.startComp.y, first.startComp.width,
+          first.startComp.height, first.startComp.color);
+    }
+    else if(moti == null && i > last.endComp.tick) {
+      return new Motion(shapeName, last.endComp.tick, last.endComp.x, last.endComp.y, last.endComp.width,
+          last.endComp.height, last.endComp.color, i,
+          0, 0, 0, 0, new Color(0, 0, 0));
+    }
+    else {
+      return moti;
+    }
+  }
+
+  /**
+   * Changed: Method refactors history of moves for views.
+   */
+  private void refactoredUserInteraction(String shapeName, Integer tick) {
+    int size = this.allMoves.size();
+    ArrayList<UserInteraction> rev = new ArrayList<UserInteraction>();
+    for(int ii = 0; ii < size; ii++) {
+      UserInteraction curr = this.allMoves.get(ii);
+      if(!curr.motionAssociatedWithNameAndTick(shapeName, tick)) {
+        rev.add(curr);
+      }
+    }
+    this.allMoves.removeAll(this.allMoves);
+    this.allMoves.addAll(rev);
+  }
+
   private Motion optionallyDeriveMotion(int startTick, int endTick, String shapeName,
                                         Integer startX, Integer startY, Integer endX, Integer endY,
                                         Integer startWidth, Integer startHeight, Integer endWidth,

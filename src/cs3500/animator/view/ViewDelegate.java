@@ -19,4 +19,8 @@ public interface ViewDelegate {
   void userRequestsDeleteShape(String s);
 
   void userRequestsAddShape(ShapeType type, String name);
+
+  boolean deleteKeyFrame(String shapeName, Integer i);
+
+  String canAddKeyFrameAtTick(String shapeName, Integer i);
 }

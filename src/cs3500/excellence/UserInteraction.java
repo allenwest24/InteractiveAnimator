@@ -14,4 +14,10 @@ abstract class UserInteraction {
     return false;
   }
 
+  /**
+   * Changed: Added for filtering out removed KeyFrame strings.
+   */
+  public boolean motionAssociatedWithNameAndTick(String name, Integer tick) {
+    return false;
+  }
 }

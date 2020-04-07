@@ -116,7 +116,7 @@ public final class VisualViewPanel extends JPanel {
               int curG = ViewUtils.tweener(this.ticks, each.startComp.color.green,
                       each.endComp.color.green, each.startTick, each.endTick);
               Ellipse2D e = new Ellipse2D.Double(curX + x, curY + y, curW, curH);
-              g2d.setColor(new Color(curR, curB, curG));
+              g2d.setColor(new Color(curR, curG, curB));
               g2d.fill(e);
               break;
             case RECTANGLE:
@@ -135,7 +135,7 @@ public final class VisualViewPanel extends JPanel {
               int rcurG = ViewUtils.tweener(this.ticks, each.startComp.color.green,
                       each.endComp.color.green, each.startTick, each.endTick);
               Rectangle2D r = new Rectangle2D.Double(rcurX + x, rcurY + y, rcurW, rcurH);
-              g2d.setColor(new Color(rcurR, rcurB, rcurG));
+              g2d.setColor(new Color(rcurR, rcurG, rcurB));
               g2d.fill(r);
               break;
             default:

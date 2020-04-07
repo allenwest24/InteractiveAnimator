@@ -80,4 +80,14 @@ public interface IAnimation<K> {
    * @param s
    */
   void deleteShape(String s);
+
+  /**
+   * TODOallen: Make it homie
+   *
+   * @param shapeName
+   * @param i
+   */
+  void deleteKeyFrameFromModel(String shapeName, Integer i);
+
+  Motion deriveKeyFrameInfo(String shapeName, Integer i);
 }

@@ -20,7 +20,7 @@ public class Motion extends UserInteraction {
                    int endTick, Integer endX, Integer endY, Integer endWidth, Integer endHeight,
                    Color endColor) {
     if (associatedShape == null) {
-      throw new IllegalArgumentException("No shape name provided.");
+      throw new IllegalArgumentException("No shape name provided.\n");
     }
     this.associatedShape = associatedShape;
     this.startTick = startTick;
@@ -28,6 +28,20 @@ public class Motion extends UserInteraction {
     this.startComp = new MotionComponent(startTick, startX, startY, startWidth, startHeight,
             startColor);
     this.endComp = new MotionComponent(endTick, endX, endY, endWidth, endHeight, endColor);
+  }
+
+  /**
+   * Changed: Added secondary constructor for use in the sewing together of KeyFrames.
+   */
+  public Motion(MotionComponent startComp, MotionComponent endComp, String name) {
+    if (name == null || startComp == null || endComp == null) {
+      throw new IllegalArgumentException("Something went wrong.\n");
+    }
+    this.associatedShape = name;
+    this.startTick = startComp.tick;
+    this.endTick = endComp.tick;
+    this.startComp = startComp;
+    this.endComp = endComp;
   }
 
   protected static final Motion computeNextMotion(Motion proposedMotion, Motion current) {
@@ -140,5 +154,14 @@ public class Motion extends UserInteraction {
     protected final boolean noHeight() {
       return this.height == null;
     }
+  }
+
+  /**
+   * Changed: Added for filtering out removed KeyFrame strings.
+   */
+  @Override
+  public boolean motionAssociatedWithNameAndTick(String name, Integer tick) {
+    return this.associatedShape.equals(name) &&
+        (this.startComp.tick == tick || this.endComp.tick == tick);
   }
 }
