@@ -141,8 +141,8 @@ public class EditorViewController implements IViewController, VCDelegate<ShapeTy
   /**
    * Method to handle user requests to add key frames from the view.
    *
-   * @param b      boolean value indicating whether or not the user has fulfilled all parameters of this
-   *               request correctly.
+   * @param b      boolean value indicating whether or not the user has fulfilled all parameters of
+   *               this request correctly.
    * @param tempx2 the nullable Integer to represent the new x coordinate associated with this key
    *               frame.
    * @param tempy2 the nullable Integer to represent the new y coordinate associated with this key

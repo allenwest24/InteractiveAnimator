@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
  * A helper to read animation data and construct an animation from it.
  */
 public class AnimationReader {
+
   /**
    * A factory for producing new animations, given a source of shapes and a
    * builder for constructing animations.
@@ -31,7 +32,6 @@ public class AnimationReader {
    * @param <Doc>    The main model interface type describing animations
    * @return
    */
-
   public static <Doc> Doc parseFile(Readable readable, AnimationBuilder<Doc> builder) {
     Objects.requireNonNull(readable, "Must have non-null readable source");
     Objects.requireNonNull(builder, "Must provide a non-null AnimationBuilder");

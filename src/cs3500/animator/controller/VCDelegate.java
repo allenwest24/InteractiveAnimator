@@ -40,16 +40,16 @@ public interface VCDelegate<R> {
    *
    * @param shapeName the name of the Shape that the user would like to add a KeyFrame to.
    * @param i         the tick correlating with the key frame the user would like to add.
-   * @throws IllegalArgumentException if there is any null parameter.
    * @return success or failure based on whether the View controller decides to accept this request.
+   * @throws IllegalArgumentException if there is any null parameter.
    */
   String userRequestAddKeyFrameInfo(String shapeName, Integer i);
 
   /**
    * Method to handle user requests to add key frames from the view.
    *
-   * @param b      boolean value indicating whether or not the user has fulfilled all parameters of this
-   *               request correctly.
+   * @param b      boolean value indicating whether or not the user has fulfilled all parameters of
+   *               this request correctly.
    * @param tempx2 the nullable Integer to represent the new x coordinate associated with this key
    *               frame.
    * @param tempy2 the nullable Integer to represent the new y coordinate associated with this key
