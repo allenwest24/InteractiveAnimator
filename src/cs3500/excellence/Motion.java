@@ -167,7 +167,7 @@ public class Motion extends UserInteraction {
    */
   @Override
   public boolean motionAssociatedWithNameAndTick(String name, Integer tick) {
-    return this.associatedShape.equals(name) &&
-        (this.startComp.tick == tick || this.endComp.tick == tick);
+    return this.associatedShape.equals(name)
+        && (this.startComp.tick == tick || this.endComp.tick == tick);
   }
 }

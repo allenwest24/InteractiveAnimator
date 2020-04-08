@@ -1,10 +1,13 @@
 package cs3500.animator.view;
 
-import java.awt.*;
+import java.awt.FlowLayout;
+import java.awt.Dimension;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
+import javax.swing.Timer;
+import javax.swing.JFrame;
 
 import cs3500.animator.controller.VCDelegate;
 import cs3500.excellence.AnimationDelegate;
@@ -17,11 +20,7 @@ import cs3500.excellence.Shape;
  * interface.
  */
 public final class VisualView extends JFrame implements IView, ActionListener {
-
-  private AnimationDelegate<Shape, Motion> delegate;
   private VisualViewPanel panel;
-  private int speed;
-  private Timer timer;
 
   /**
    * Public constructor for this object.
@@ -31,9 +30,7 @@ public final class VisualView extends JFrame implements IView, ActionListener {
    */
   public VisualView(AnimationDelegate<Shape, Motion> delegate, int speed) {
     super();
-    this.speed = speed;
-    this.delegate = delegate;
-    this.timer = new Timer(1000 / speed, this::actionPerformed);
+    Timer timer = new Timer(1000 / speed, this::actionPerformed);
     this.setTitle("Animator");
     Bounds canvasBounds = delegate.retrieveCanvasBoundaries();
     this.setSize(1000, 1000);
@@ -43,7 +40,7 @@ public final class VisualView extends JFrame implements IView, ActionListener {
     panel.setPreferredSize(new Dimension(1000, 1000));
     this.setVisible(true);
     this.add(panel);
-    this.timer.start();
+    timer.start();
   }
 
   /**

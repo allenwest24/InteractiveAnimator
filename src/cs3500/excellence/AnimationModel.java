@@ -462,7 +462,6 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
   @Override
   public ArrayList<String> retrieveOrderedShapeNames() {
     ArrayList<String> safeCopy = new ArrayList<String>();
-//    this.orderedShapes.stream().map(element -> safeCopy.add(element));
     for (String each: this.orderedShapes) {
       safeCopy.add(each);
     }

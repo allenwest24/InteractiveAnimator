@@ -5,7 +5,13 @@ import cs3500.animator.util.AnimationBuilder;
 import cs3500.animator.util.AnimationReader;
 import cs3500.animator.view.EditorView;
 import cs3500.animator.view.IView;
-import cs3500.excellence.*;
+import cs3500.excellence.ShapeType;
+import cs3500.excellence.IAnimation;
+import cs3500.excellence.Shape;
+import cs3500.excellence.Motion;
+import cs3500.excellence.AnimationDelegate;
+import cs3500.excellence.AnimationModel;
+
 import org.junit.Test;
 
 import java.io.FileNotFoundException;

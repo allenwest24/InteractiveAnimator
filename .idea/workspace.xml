@@ -3,9 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="d27255c2-eb8e-46ed-a6fc-3e9a676e4ead" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/animator/Excellence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/Excellence.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/controller/EditorViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/controller/EditorViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/util/AnimationBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/util/AnimationBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/view/DropDownPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/DropDownPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/view/EditorView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/EditorView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/view/VisualView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/VisualView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/view/VisualViewPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/VisualViewPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/AnimationModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/AnimationModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/Motion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/Motion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/Shape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/Shape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/AnimationViewTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/AnimationViewTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/ControllerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ControllerTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +64,7 @@
       <recent name="cs3500.excellence" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Excellence">
+  <component name="RunManager" selected="JUnit.AnimationViewTests">
     <configuration name="Excellence" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="cs3500.animator.Excellence" />
       <module name="Assignment5" />
@@ -66,6 +75,15 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AnimationViewTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Assignment5" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AnimationViewTests" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -99,30 +117,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ControllerTests.testDeletingShapeThatDoesntExist" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Assignment5" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ControllerTests" />
-      <option name="METHOD_NAME" value="testDeletingShapeThatDoesntExist" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Application.Excellence" />
-      <item itemvalue="JUnit.ControllerTests.testDeletingShapeThatDoesntExist" />
       <item itemvalue="JUnit.ControllerTests.testAddingKeyFrameToShapeThatDoesntExist" />
       <item itemvalue="JUnit.ControllerTests.testDeletingKeyFrameFromShapeThatDoesntExist" />
       <item itemvalue="JUnit.ControllerTests" />
+      <item itemvalue="JUnit.AnimationViewTests" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AnimationViewTests" />
         <item itemvalue="Application.Excellence" />
         <item itemvalue="JUnit.ControllerTests" />
         <item itemvalue="JUnit.ControllerTests.testDeletingKeyFrameFromShapeThatDoesntExist" />
         <item itemvalue="JUnit.ControllerTests.testAddingKeyFrameToShapeThatDoesntExist" />
-        <item itemvalue="JUnit.ControllerTests.testDeletingShapeThatDoesntExist" />
       </list>
     </recent_temporary>
   </component>
@@ -152,10 +160,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="90" y="44" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586381510346">
+    <state x="90" y="44" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586386579671">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="90" y="44" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.768@0.0.1366.768" timestamp="1586381510346" />
+    <state x="90" y="44" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.768@0.0.1366.768" timestamp="1586386579671" />
     <state x="284" y="160" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.971@0.23.1680.971" timestamp="1586195807651" />
     <state x="553" y="307" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1585191519422">
       <screen x="0" y="23" width="1680" height="971" />
@@ -198,25 +206,25 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="120" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1584553027495" />
-    <state width="1323" height="232" key="GridCell.Tab.0.bottom" timestamp="1586381914517">
+    <state width="1323" height="232" key="GridCell.Tab.0.bottom" timestamp="1586387318515">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="232" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1586381914517" />
+    <state width="1323" height="232" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1586387318515" />
     <state width="1597" height="180" key="GridCell.Tab.0.bottom/0.23.1680.971@0.23.1680.971" timestamp="1585265698437" />
-    <state width="1323" height="232" key="GridCell.Tab.0.center" timestamp="1586381914516">
+    <state width="1323" height="232" key="GridCell.Tab.0.center" timestamp="1586387318515">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="232" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1586381914516" />
+    <state width="1323" height="232" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1586387318515" />
     <state width="1597" height="180" key="GridCell.Tab.0.center/0.23.1680.971@0.23.1680.971" timestamp="1585265698436" />
-    <state width="1323" height="232" key="GridCell.Tab.0.left" timestamp="1586381914516">
+    <state width="1323" height="232" key="GridCell.Tab.0.left" timestamp="1586387318515">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="232" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1586381914516" />
+    <state width="1323" height="232" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1586387318515" />
     <state width="1597" height="180" key="GridCell.Tab.0.left/0.23.1680.971@0.23.1680.971" timestamp="1585265698436" />
-    <state width="1323" height="232" key="GridCell.Tab.0.right" timestamp="1586381914517">
+    <state width="1323" height="232" key="GridCell.Tab.0.right" timestamp="1586387318515">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="232" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1586381914517" />
+    <state width="1323" height="232" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1586387318515" />
     <state width="1597" height="180" key="GridCell.Tab.0.right/0.23.1680.971@0.23.1680.971" timestamp="1585265698437" />
     <state x="348" y="64" width="699" height="600" key="NewModule_or_Project.wizard" timestamp="1584553033013">
       <screen x="0" y="0" width="1366" height="728" />
@@ -256,10 +264,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="339" y="172" width="672" height="677" key="run.anything.popup/0.0.1366.768@0.0.1366.768" timestamp="1586125607069" />
-    <state x="394" y="166" width="672" height="534" key="search.everywhere.popup" timestamp="1586201509360">
+    <state x="394" y="166" width="672" height="534" key="search.everywhere.popup" timestamp="1586386054533">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="394" y="166" width="672" height="534" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1586201509360" />
+    <state x="394" y="166" width="672" height="534" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1586386054533" />
     <state x="484" y="233" width="670" height="675" key="search.everywhere.popup/0.23.1680.971@0.23.1680.971" timestamp="1585174094661" />
     <state x="484" y="233" width="670" height="676" key="search.everywhere.popup/0.23.1680.973@0.23.1680.973" timestamp="1582848033332" />
   </component>

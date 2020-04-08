@@ -2,7 +2,11 @@ package cs3500.animator.view;
 
 import cs3500.excellence.ShapeType;
 
-import javax.swing.*;
+import javax.swing.JMenu;
+import javax.swing.JFrame;
+import javax.swing.JMenuItem;
+import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JOptionPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.regex.PatternSyntaxException;
@@ -42,6 +46,7 @@ public final class DropDownPanel extends JMenu implements ActionListener {
     JMenuItem delShape = new JMenuItem("Delete Shape");
     JMenuItem addKeyFrame = new JMenuItem("Add Key Frame");
     JMenuItem delKeyFrame = new JMenuItem("Delete Key Frame");
+    JMenuItem devCred = new JMenuItem("Credits");
 
 
     play.addActionListener(this::actionPerformed);
@@ -53,6 +58,7 @@ public final class DropDownPanel extends JMenu implements ActionListener {
     delShape.addActionListener(this::actionPerformed);
     addKeyFrame.addActionListener(this::actionPerformed);
     delKeyFrame.addActionListener(this::actionPerformed);
+    devCred.addActionListener(this::actionPerformed);
 
 
     play.setActionCommand("play");
@@ -64,6 +70,7 @@ public final class DropDownPanel extends JMenu implements ActionListener {
     delShape.setActionCommand("delshape");
     addKeyFrame.setActionCommand("addkf");
     delKeyFrame.setActionCommand("delkf");
+    devCred.setActionCommand("credWhereItsDue");
 
 
     this.add(play);
@@ -75,6 +82,7 @@ public final class DropDownPanel extends JMenu implements ActionListener {
     this.add(delShape);
     this.add(addKeyFrame);
     this.add(delKeyFrame);
+    this.add(devCred);
 
   }
 
@@ -122,6 +130,10 @@ public final class DropDownPanel extends JMenu implements ActionListener {
             "Input shape name and tick to remove keyframe:\n",
             "Delete a KeyFrame.\n",
             "shapeName,shapeTick");
+        break;
+      case "credWhereItsDue":
+        this.displayErrorInfo("Dev Creds: Luke Andrews, Allen West\n\n" +
+            "       -- life is soup, i am fork");
         break;
       default:
         this.displayErrorInfo("Unknown menu option!\n");

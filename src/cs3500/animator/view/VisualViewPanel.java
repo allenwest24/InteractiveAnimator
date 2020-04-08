@@ -19,11 +19,7 @@ import javax.swing.JPanel;
  * Class to represent a custom JPanel view component.
  */
 public final class VisualViewPanel extends JPanel {
-
   private AnimationDelegate<Shape, Motion> delegate;
-  private int xOffset;
-  private int yOffset;
-  private int speed;
   private int ticks;
   private HashMap<String, Shape> state;
   private boolean shouldLoop;
@@ -42,9 +38,6 @@ public final class VisualViewPanel extends JPanel {
     this.shouldLoop = false;
     this.setBackground(Color.WHITE);
     this.delegate = delegate;
-    this.xOffset = xOrigin;
-    this.yOffset = yOrigin;
-    this.speed = 1;
     this.ticks = 1;
     state = delegate.retrieveCurrentGameState();
   }

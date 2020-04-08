@@ -1,13 +1,19 @@
 package cs3500.animator.view;
 
-import java.awt.*;
+import java.awt.FlowLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
+import javax.swing.Timer;
+import javax.swing.JFrame;
+import javax.swing.JMenuBar;
 
 import cs3500.animator.controller.VCDelegate;
-import cs3500.excellence.*;
+import cs3500.excellence.Motion;
+import cs3500.excellence.AnimationDelegate;
+import cs3500.excellence.ShapeType;
+import cs3500.excellence.Bounds;
 import cs3500.excellence.Shape;
 
 /**
@@ -20,8 +26,6 @@ public final class EditorView extends JFrame implements IView, ActionListener, V
   private VisualViewPanel panel;
   private int speed;
   private Timer timer;
-  private DropDownPanel settings;
-  private JMenuBar bar;
   private boolean currentlyPaused;
   private boolean loopHuh;
   private VCDelegate<ShapeType> vcd;
@@ -48,10 +52,10 @@ public final class EditorView extends JFrame implements IView, ActionListener, V
     this.setSize(canvasBounds.width, canvasBounds.height);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setLayout(new FlowLayout());
-    this.bar = new JMenuBar();
-    this.settings = new DropDownPanel(this, this);
-    this.bar.add(this.settings);
-    this.setJMenuBar(this.bar);
+    JMenuBar bar = new JMenuBar();
+    DropDownPanel settings = new DropDownPanel(this, this);
+    bar.add(settings);
+    this.setJMenuBar(bar);
     panel = new VisualViewPanel(delegate, canvasBounds.x, canvasBounds.y);
     panel.setPreferredSize(new Dimension(canvasBounds.width, canvasBounds.height));
     this.setVisible(true);

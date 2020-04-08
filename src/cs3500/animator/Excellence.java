@@ -8,7 +8,11 @@ import java.io.IOException;
 import cs3500.animator.controller.EditorViewController;
 import cs3500.animator.util.AnimationBuilder;
 import cs3500.animator.util.AnimationReader;
-import cs3500.animator.view.*;
+import cs3500.animator.view.IView;
+import cs3500.animator.view.SVGView;
+import cs3500.animator.view.TextView;
+import cs3500.animator.view.VisualView;
+import cs3500.animator.view.EditorView;
 import cs3500.excellence.AnimationDelegate;
 import cs3500.excellence.AnimationModel;
 import cs3500.excellence.IAnimation;
@@ -107,6 +111,8 @@ public final class Excellence {
       case "edit":
         view = new EditorView(model, speed);
         break;
+      default:
+        return null;
     }
     return view;
   }

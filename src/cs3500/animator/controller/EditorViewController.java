@@ -2,7 +2,11 @@ package cs3500.animator.controller;
 
 import cs3500.animator.view.IView;
 import cs3500.animator.view.ViewUtils;
-import cs3500.excellence.*;
+import cs3500.excellence.IAnimation;
+import cs3500.excellence.Motion;
+import cs3500.excellence.Shape;
+import cs3500.excellence.ShapeType;
+import cs3500.excellence.AnimationDelegate;
 
 /**
  * This is the concrete implementation of a view controller for the animation program.
@@ -10,7 +14,6 @@ import cs3500.excellence.*;
  */
 public final class EditorViewController implements IViewController, VCDelegate<ShapeType> {
   private IAnimation<ShapeType> model;
-  private AnimationDelegate<Shape, Motion> delegateRef;
   private IView viewObject;
   private Integer tickReq;
   private Motion motionReq;
@@ -32,7 +35,6 @@ public final class EditorViewController implements IViewController, VCDelegate<S
     }
     this.tempName = null;
     this.model = model;
-    this.delegateRef = delegateRef;
     this.viewObject = viewObject;
     this.viewObject.acceptViewController(this);
     this.tickReq = null;

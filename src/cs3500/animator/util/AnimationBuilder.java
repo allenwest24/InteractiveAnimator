@@ -1,5 +1,10 @@
 package cs3500.animator.util;
 
+/**
+ * Generic interface using the builder pattern to create animation with different types of models.
+ *
+ * @param <Doc> explicit type of model.
+ */
 public interface AnimationBuilder<Doc> {
   /**
    * Constructs a final document.
