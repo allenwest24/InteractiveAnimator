@@ -106,3 +106,29 @@ Swing Animator implementation. All views are instantiated with an instance
 of the Model paramertarized by it's read-only delegate protocol, such that
 they can access the immutable motion and shape objects that they need to
 render animations.
+
+Assignment 7 README: In this assignment we added a view controller 
+directory that contains an editor view controller in addition to a view 
+controller interface and a view controller delegate interface. The view 
+controller interface has only one method to be called from the main method
+which turns over program control to the view control. The view controller
+is in charge of starting the program and managing interaction between the 
+model and the views. This view controller spins up an editor view which
+is the new addition to our view package. This view uses the "decorator \
+pattern" in addition to the delegate pattern as it creates a visual view and 
+a drop down menu panel independently. This object manages the user 
+interactions with our new drop down panel translating that input into
+input for the mutable copy of the model that it stores. It then also manages
+the visual display of the results of these changes by instructing its sub
+views to update when needed. The changes that we made to existing code 
+include the implementation of three methods on the IAnimation interface
+in our model. These methods allow for the deletion of shapes as well as the 
+the deletion and addition of Key Frames. Luckily, our prior management
+strategy of motions allowed us to accomplish this addition relatively easily.
+
+Furthermore, none of the old view logic was affected and they all still work 
+without a controller per the guidelines of assignment 6. The only other change 
+we made was the abstraction of the 'tweener' function into a static public 
+method on a view utils class so that all views could utilize it.
+That's about it I think.. This time our JAR runs exactly as it's supposed to.
+
