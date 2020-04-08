@@ -73,22 +73,55 @@ public interface IAnimation<K> {
    */
   void setBounds(Bounds bounds);
 
-
   /**
-   * TODOallen: write it up
+   * Delete a Shape from the Model.
    *
-   * @param s
+   * @param s the name of the Shape to delete.
+   * @return true for successful deletion, else false.
    */
   boolean deleteShape(String s);
 
   /**
-   * TODOallen: Make it homie
+   * Delete a KeyFrame at the given tick from the given Shape.
+   *
+   * @param shapeName name of Shape to delete KeyFrame from.
+   * @param i         tick of the KeyFrame to delete.
+   * @throws IllegalArgumentException for invalid KeyFrame or null param.
    */
   void deleteKeyFrameFromModel(String shapeName, Integer i);
 
+  /**
+   * Method for the controller to retrieve an immutable representation of a KeyFrame on the given
+   * Shape, for the given tick.
+   *
+   * @param shapeName name of Shape.
+   * @param i         tick of the KeyFrame.
+   * @return Motion representing the KeyFrame, or null if such a KeyFrame does not exist.
+   */
   Motion deriveKeyFrameInfo(String shapeName, Integer i);
 
-  void mutateKeyFrame(String shapeName, Integer tickReq, Motion motionReq, Integer tempx2,
+  /**
+   * Method for the controller to add or mutate a KeyFrame for the specified Shape.
+   *
+   * @param shapeName name of Shape.
+   * @param tickReq   tick of the KeyFrame.
+   * @param tempx2    the nullable Integer to represent the new x coordinate associated with this
+   *                  key frame.
+   * @param tempy2    the nullable Integer to represent the new y coordinate associated with this
+   *                  key frame.
+   * @param tempw2    the nullable Integer to represent the new width value associated with this
+   *                  key frame.
+   * @param temph2    the nullable Integer to represent the new height value associated with this
+   *                  key frame.
+   * @param tempr2    the nullable Integer to represent the new r Color value associated with this
+   *                  key frame.
+   * @param tempg2    the nullable Integer to represent the new g Color value associated with this
+   *                  key  frame.
+   * @param tempb2    the nullable Integer to represent the new b Color value associated with this
+   *                  key  frame.
+   * @throws IllegalArgumentException for null params or invalid KeyFrames.
+   */
+  void mutateKeyFrame(String shapeName, Integer tickReq, Integer tempx2,
                       Integer tempy2, Integer tempw2, Integer temph2, Integer tempr2,
                       Integer tempg2, Integer tempb2);
 }

@@ -170,7 +170,7 @@ public final class EditorViewController implements IViewController, VCDelegate<S
       return false;
     }
     try {
-      this.model.mutateKeyFrame(this.tempName, this.tickReq, this.motionReq, tempx2, tempy2,
+      this.model.mutateKeyFrame(this.tempName, this.tickReq, tempx2, tempy2,
           tempw2, temph2, tempr2,
           tempg2, tempb2);
     } catch (IllegalArgumentException e) {

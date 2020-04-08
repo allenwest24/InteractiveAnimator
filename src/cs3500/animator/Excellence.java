@@ -65,11 +65,10 @@ public final class Excellence {
     IView viewObject = Excellence.deriveCorrectView(view, delegateRef, numSpeed);
     EditorViewController evc;
     viewObject.makeVisible();
-    if(view.equals("edit")) {
+    if (view.equals("edit")) {
       evc = new EditorViewController(model, delegateRef, viewObject);
       evc.startUp();
-    }
-    else {
+    } else {
       viewObject.makeVisible();
     }
     if (out != null && (!view.equals("visual") && !view.equals("edit"))) {
@@ -86,8 +85,7 @@ public final class Excellence {
         output.append(outputString);
       } catch (IOException e) {
         e.printStackTrace();
-      }
-      catch (UnsupportedOperationException e) {
+      } catch (UnsupportedOperationException e) {
         e.printStackTrace();
       }
     }
