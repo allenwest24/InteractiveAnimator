@@ -8,7 +8,7 @@ import cs3500.excellence.*;
  * This is the concrete implementation of a view controller for the animation program.
  * This view controller serves to facilitate the interaction between animator views and their model.
  */
-public class EditorViewController implements IViewController, VCDelegate<ShapeType> {
+public final class EditorViewController implements IViewController, VCDelegate<ShapeType> {
   IAnimation<ShapeType> model;
   AnimationDelegate<Shape, Motion> delegateRef;
   IView viewObject;

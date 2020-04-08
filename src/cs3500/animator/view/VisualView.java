@@ -46,13 +46,21 @@ public final class VisualView extends JFrame implements IView, ActionListener {
     this.timer.start();
   }
 
+  /**
+   * Get the String version of the output for the specific type of view.
+   *
+   * @return the String representing the view or an empty String if the view is visual.
+   * @throws UnsupportedOperationException for views that do not have a String output.
+   */
   @Override
   public String stringOutputForFile() {
-    return "";
+    throw new UnsupportedOperationException("Can't do that!");
   }
 
   /**
-   * Refresh the view to reflect any changes in the game state.
+   * Refresh the view to reflect any changes in the animator state.
+   *
+   * @throws UnsupportedOperationException for views that do not have a Visual.
    */
   @Override
   public void refresh() {
@@ -60,18 +68,23 @@ public final class VisualView extends JFrame implements IView, ActionListener {
   }
 
   /**
-   * Make the view visible to start the game session.
+   * Make the view visible to start the animator if this view has a visible component.
    */
   @Override
   public void makeVisible() {
     this.setVisible(true);
   }
 
+  /**
+   * Accept a ViewController that owns this View.
+   *
+   * @param vcd the delegate that owns this view.
+   * @throws UnsupportedOperationException for views that do not have an owner.
+   */
   @Override
   public void acceptViewController(VCDelegate vcd) {
     throw new UnsupportedOperationException("Can't do that!");
   }
-
 
   /**
    * Invoked when an action occurs.

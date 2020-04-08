@@ -58,8 +58,7 @@ public final class VisualViewPanel extends JPanel {
     this.state = delegate.retrieveCurrentGameState();
     if (shouldLoop && this.ticks >= this.getLastTick()) {
       this.resetTick();
-    }
-    else {
+    } else {
       this.ticks += 1;
     }
   }
@@ -70,17 +69,17 @@ public final class VisualViewPanel extends JPanel {
 
   protected void shouldLoop(boolean shouldLoop) {
     this.shouldLoop = shouldLoop;
-    if(shouldLoop && this.ticks >= this.getLastTick()) {
+    if (shouldLoop && this.ticks >= this.getLastTick()) {
       this.resetTick();
     }
   }
 
   private int getLastTick() {
     int acc = 0;
-    for(String each: this.state.keySet()) {
+    for (String each : this.state.keySet()) {
       ArrayList<Motion> currMotions = delegate.retrieveMotionsForObjectWithName(each);
-      for(Motion every: currMotions) {
-        if(every.endComp.tick >= acc) {
+      for (Motion every : currMotions) {
+        if (every.endComp.tick >= acc) {
           acc = every.endComp.tick;
         }
       }
@@ -103,38 +102,38 @@ public final class VisualViewPanel extends JPanel {
           switch (renderType) {
             case ELLIPSE:
               int curX = ViewUtils.tweener(this.ticks, each.startComp.x,
-                      each.endComp.x, each.startTick, each.endTick);
+                  each.endComp.x, each.startTick, each.endTick);
               int curY = ViewUtils.tweener(this.ticks, each.startComp.y,
-                      each.endComp.y, each.startTick, each.endTick);
+                  each.endComp.y, each.startTick, each.endTick);
               int curW = ViewUtils.tweener(this.ticks, each.startComp.width,
-                      each.endComp.width, each.startTick, each.endTick);
+                  each.endComp.width, each.startTick, each.endTick);
               int curH = ViewUtils.tweener(this.ticks, each.startComp.height,
-                      each.endComp.height, each.startTick, each.endTick);
+                  each.endComp.height, each.startTick, each.endTick);
               int curR = ViewUtils.tweener(this.ticks, each.startComp.color.red,
-                      each.endComp.color.red, each.startTick, each.endTick);
+                  each.endComp.color.red, each.startTick, each.endTick);
               int curB = ViewUtils.tweener(this.ticks, each.startComp.color.blue,
-                      each.endComp.color.blue, each.startTick, each.endTick);
+                  each.endComp.color.blue, each.startTick, each.endTick);
               int curG = ViewUtils.tweener(this.ticks, each.startComp.color.green,
-                      each.endComp.color.green, each.startTick, each.endTick);
+                  each.endComp.color.green, each.startTick, each.endTick);
               Ellipse2D e = new Ellipse2D.Double(curX + x, curY + y, curW, curH);
               g2d.setColor(new Color(curR, curG, curB));
               g2d.fill(e);
               break;
             case RECTANGLE:
               int rcurX = ViewUtils.tweener(this.ticks, each.startComp.x,
-                      each.endComp.x, each.startTick, each.endTick);
+                  each.endComp.x, each.startTick, each.endTick);
               int rcurY = ViewUtils.tweener(this.ticks, each.startComp.y,
-                      each.endComp.y, each.startTick, each.endTick);
+                  each.endComp.y, each.startTick, each.endTick);
               int rcurW = ViewUtils.tweener(this.ticks, each.startComp.width,
-                      each.endComp.width, each.startTick, each.endTick);
+                  each.endComp.width, each.startTick, each.endTick);
               int rcurH = ViewUtils.tweener(this.ticks, each.startComp.height,
-                      each.endComp.height, each.startTick, each.endTick);
+                  each.endComp.height, each.startTick, each.endTick);
               int rcurR = ViewUtils.tweener(this.ticks, each.startComp.color.red,
-                      each.endComp.color.red, each.startTick, each.endTick);
+                  each.endComp.color.red, each.startTick, each.endTick);
               int rcurB = ViewUtils.tweener(this.ticks, each.startComp.color.blue,
-                      each.endComp.color.blue, each.startTick, each.endTick);
+                  each.endComp.color.blue, each.startTick, each.endTick);
               int rcurG = ViewUtils.tweener(this.ticks, each.startComp.color.green,
-                      each.endComp.color.green, each.startTick, each.endTick);
+                  each.endComp.color.green, each.startTick, each.endTick);
               Rectangle2D r = new Rectangle2D.Double(rcurX + x, rcurY + y, rcurW, rcurH);
               g2d.setColor(new Color(rcurR, rcurG, rcurB));
               g2d.fill(r);

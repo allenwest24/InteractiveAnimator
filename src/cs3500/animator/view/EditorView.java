@@ -31,9 +31,13 @@ public final class EditorView extends JFrame implements IView, ActionListener, V
    *
    * @param delegate model with "read only" access to its states.
    * @param speed    indicates the desired speed for the animation to be played.
+   * @throws IllegalArgumentException for null params.
    */
   public EditorView(AnimationDelegate<Shape, Motion> delegate, int speed) {
     super();
+    if (delegate == null) {
+      throw new IllegalArgumentException("Cannot accept null parameters.");
+    }
     this.loopHuh = false;
     this.currentlyPaused = false;
     this.speed = speed;
@@ -55,13 +59,21 @@ public final class EditorView extends JFrame implements IView, ActionListener, V
     this.timer.start();
   }
 
+  /**
+   * Get the String version of the output for the specific type of view.
+   *
+   * @return the String representing the view or an empty String if the view is visual.
+   * @throws UnsupportedOperationException for views that do not have a String output.
+   */
   @Override
   public String stringOutputForFile() {
-    return "";
+    throw new UnsupportedOperationException("This view does not have a String output.");
   }
 
   /**
    * Refresh the view to reflect any changes in the game state.
+   *
+   * @throws UnsupportedOperationException for views that do not have an owner.
    */
   @Override
   public void refresh() {
@@ -69,13 +81,18 @@ public final class EditorView extends JFrame implements IView, ActionListener, V
   }
 
   /**
-   * Make the view visible to start the game session.
+   * Make the view visible to start the animation session.
    */
   @Override
   public void makeVisible() {
     this.setVisible(true);
   }
 
+  /**
+   * Accept a ViewController that owns this View.
+   *
+   * @throws UnsupportedOperationException for views that do not have an owner.
+   */
   @Override
   public void acceptViewController(VCDelegate vcd) {
     this.vcd = vcd;
@@ -165,8 +182,8 @@ public final class EditorView extends JFrame implements IView, ActionListener, V
   public boolean passNewValuesOnKeyFrame(boolean b, Integer tempx2, Integer tempy2, Integer tempw2,
                                          Integer temph2, Integer tempr2, Integer tempg2,
                                          Integer tempb2) {
-    if(!b) {
-      vcd.passNewValuesOnKeyFrameAgain(false, null,  null, null,
+    if (!b) {
+      vcd.passNewValuesOnKeyFrameAgain(false, null, null, null,
           null, null, null, null);
       return b;
     }

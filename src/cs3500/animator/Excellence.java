@@ -72,7 +72,7 @@ public final class Excellence {
     else {
       viewObject.makeVisible();
     }
-    if (out != null && !view.equals("visual")) {
+    if (out != null && (!view.equals("visual") && !view.equals("edit"))) {
       try {
         FileWriter writer = new FileWriter(out);
         writer.write(viewObject.stringOutputForFile());
@@ -80,10 +80,14 @@ public final class Excellence {
       } catch (IOException e) {
         e.printStackTrace();
       }
-    } else if (!view.equals("visual")) {
+    } else if (!view.equals("visual") && !view.equals("edit")) {
       try {
-        output.append(viewObject.stringOutputForFile());
+        String outputString = viewObject.stringOutputForFile();
+        output.append(outputString);
       } catch (IOException e) {
+        e.printStackTrace();
+      }
+      catch (UnsupportedOperationException e) {
         e.printStackTrace();
       }
     }
@@ -109,5 +113,3 @@ public final class Excellence {
     return view;
   }
 }
-
-

@@ -23,25 +23,46 @@ public final class TextView implements IView {
     this.delegate = delegate;
   }
 
+  /**
+   * Get the String version of the output for the specific type of view.
+   *
+   * @return the String representing the view or an empty String if the view is visual.
+   * @throws UnsupportedOperationException for views that do not have a String output.
+   */
   @Override
   public String stringOutputForFile() {
     Bounds bounds = this.delegate.retrieveCanvasBoundaries();
     return bounds.userMove() + "\n" + delegate.getStringAnimation();
   }
 
+  /**
+   * Refresh the view to reflect any changes in the animator state.
+   *
+   * @throws UnsupportedOperationException for views that do not have a Visual.
+   */
   @Override
   public void refresh() {
-    return;
+    throw new UnsupportedOperationException("This view does not have a Visual.");
   }
 
+  /**
+   * Make the view visible to start the animator.
+   *
+   * @throws UnsupportedOperationException for views that do not have a Visual.
+   */
   @Override
   public void makeVisible() {
     return;
   }
 
+  /**
+   * Accept a ViewController that owns this View.
+   *
+   * @param vcd the delegate that owns this view.
+   * @throws UnsupportedOperationException for views that do not have an owner.
+   */
   @Override
   public void acceptViewController(VCDelegate vcd) {
-    //TODOallen: soemthning
+    throw new UnsupportedOperationException("This view does not have an owner.");
   }
-
 }

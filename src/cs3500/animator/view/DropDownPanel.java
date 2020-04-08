@@ -1,22 +1,33 @@
 package cs3500.animator.view;
 
-import cs3500.excellence.Shape;
 import cs3500.excellence.ShapeType;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.regex.PatternSyntaxException;
 
-public class DropDownPanel extends JMenu implements ActionListener {
+/**
+ * Class to represent a custom JPanel view component.
+ */
+public final class DropDownPanel extends JMenu implements ActionListener {
   private ViewDelegate delegate;
   private JFrame dialogFrame;
   private JMenuItem loopItem;
   private boolean loopChecked;
 
+  /**
+   * Public constructor for this object.
+   *
+   * @param delegate    the non-null VCDelegate that owns this view.
+   * @param dialogFrame the JFrame upon which the messages are presented.
+   * @throws IllegalArgumentException for null params.
+   */
   public DropDownPanel(ViewDelegate delegate, JFrame dialogFrame) {
     super("Settings");
+    if (delegate == null || dialogFrame == null) {
+      throw new IllegalArgumentException("Cannot accept null parameters.");
+    }
     this.dialogFrame = dialogFrame;
     this.delegate = delegate;
     JMenuItem play = new JMenuItem("Play");
@@ -196,7 +207,7 @@ public class DropDownPanel extends JMenu implements ActionListener {
         titleString,
         JOptionPane.PLAIN_MESSAGE,
         null, null, initialVal);
-    if(s == null) {
+    if (s == null) {
       return;
     }
     switch (type) {
@@ -243,7 +254,7 @@ public class DropDownPanel extends JMenu implements ActionListener {
   }
 
   private Integer conditionalInt(String s) {
-    if(s == null) {
+    if (s == null) {
       return null;
     }
     Integer tempVal = null;
@@ -255,7 +266,6 @@ public class DropDownPanel extends JMenu implements ActionListener {
     return tempVal;
   }
 
-  //pos=(10,10), size=(50,50), color=(255,0,0)
   private void passOnNewParams(String s) {
     String tempx = this.deriveRelevantComponent(StringComponents.POSX, s);
     String tempy = this.deriveRelevantComponent(StringComponents.POSY, s);
@@ -274,16 +284,15 @@ public class DropDownPanel extends JMenu implements ActionListener {
     Integer tempb2 = this.conditionalInt(tempb);
 
     System.out.println(s);
-    if((s != null) && (tempx2 == null || tempy2 == null || tempw2 == null || temph2 == null
+    if ((s != null) && (tempx2 == null || tempy2 == null || tempw2 == null || temph2 == null
         || tempr2 == null || tempg2 == null || tempb2 == null)) {
       this.delegate.passNewValuesOnKeyFrame(false, null, null,
           null, null, null, null, null);
       this.displayErrorInfo("Error 404: Clever line not found\n");
       return;
-    }
-    else {
-      boolean success = this.delegate.passNewValuesOnKeyFrame(true, tempx2, tempy2, tempw2, temph2,
-          tempr2, tempg2, tempb2);
+    } else {
+      boolean success = this.delegate.passNewValuesOnKeyFrame(true, tempx2, tempy2, tempw2,
+          temph2, tempr2, tempg2, tempb2);
     }
   }
 
@@ -353,7 +362,7 @@ public class DropDownPanel extends JMenu implements ActionListener {
     }
     if (i != null && i > 0) {
       delegate.setSpeed(i);
-    } else if (s != null && i == null) {
+    } else if (s != null && (i == null || i <= 0)) {
       this.displayErrorInfo("Input must be a positive number!\n");
     }
   }
