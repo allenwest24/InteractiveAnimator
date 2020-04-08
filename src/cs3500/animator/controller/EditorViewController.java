@@ -9,12 +9,12 @@ import cs3500.excellence.*;
  * This view controller serves to facilitate the interaction between animator views and their model.
  */
 public final class EditorViewController implements IViewController, VCDelegate<ShapeType> {
-  IAnimation<ShapeType> model;
-  AnimationDelegate<Shape, Motion> delegateRef;
-  IView viewObject;
-  Integer tickReq;
-  Motion motionReq;
-  String tempName;
+  private IAnimation<ShapeType> model;
+  private AnimationDelegate<Shape, Motion> delegateRef;
+  private IView viewObject;
+  private Integer tickReq;
+  private Motion motionReq;
+  private String tempName;
 
   /**
    * This is a constructor to create an EditorViewController object.

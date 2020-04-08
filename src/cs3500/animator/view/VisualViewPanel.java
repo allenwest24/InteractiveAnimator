@@ -91,8 +91,9 @@ public final class VisualViewPanel extends JPanel {
   protected void paintComponent(Graphics g) {
     super.paintComponent(g);
     Graphics2D g2d = (Graphics2D) g;
+    ArrayList<String> orderedNames = this.delegate.retrieveOrderedShapeNames();
     this.state = this.delegate.retrieveCurrentGameState();
-    for (String name : this.state.keySet()) {
+    for (String name : orderedNames) {
       ShapeType renderType = this.state.get(name).type;
       ArrayList<Motion> shapeMovements = this.delegate.retrieveMotionsForObjectWithName(name);
       int x = this.delegate.retrieveCanvasBoundaries().x;

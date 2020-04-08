@@ -26,8 +26,8 @@ public final class Excellence {
   public static void main(String[] args) {
     String in = null;
     String out = null;
-    String view = "edit";
-    String speed = "10";
+    String view = null;
+    String speed = "1";
     Appendable output = System.out;
 
     for (int ii = 0; ii < args.length; ii += 2) {
@@ -48,15 +48,15 @@ public final class Excellence {
           break;
       }
     }
-    /*if (in == null || view == null) {
+    if (in == null || view == null) {
       throw new IllegalArgumentException("Requirements not satisfied.");
-    }*/
+    }
     int numSpeed = Integer.parseInt(speed);
     AnimationReader reader = new AnimationReader();
     AnimationBuilder<IAnimation<ShapeType>> builder = new AnimationModel.Builder();
     FileReader readableFile = null;
     try {
-      readableFile = new FileReader("src/" + "smalldemo.txt");
+      readableFile = new FileReader("src/" + "buildings.txt");
     } catch (FileNotFoundException e) {
       System.out.println("Failed to find file.");
     }

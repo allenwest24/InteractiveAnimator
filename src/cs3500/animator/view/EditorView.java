@@ -45,7 +45,7 @@ public final class EditorView extends JFrame implements IView, ActionListener, V
     this.timer = new Timer(1000 / this.speed, this::actionPerformed);
     this.setTitle("Animator");
     Bounds canvasBounds = delegate.retrieveCanvasBoundaries();
-    this.setSize(1000, 1000);
+    this.setSize(canvasBounds.width, canvasBounds.height);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setLayout(new FlowLayout());
     this.bar = new JMenuBar();
@@ -53,7 +53,7 @@ public final class EditorView extends JFrame implements IView, ActionListener, V
     this.bar.add(this.settings);
     this.setJMenuBar(this.bar);
     panel = new VisualViewPanel(delegate, canvasBounds.x, canvasBounds.y);
-    panel.setPreferredSize(new Dimension(1000, 1000));
+    panel.setPreferredSize(new Dimension(canvasBounds.width, canvasBounds.height));
     this.setVisible(true);
     this.add(panel);
     this.timer.start();

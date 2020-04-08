@@ -38,4 +38,11 @@ public interface AnimationDelegate<T, K> {
    * @return Nullable Bounds object (value type, therefore safe for passing).
    */
   Bounds retrieveCanvasBoundaries();
+
+  /**
+   * Method to prduce an ordered list of declared Shapes.
+   *
+   * @return Copy-safe list of the names of all Shapes.
+   */
+  ArrayList<String> retrieveOrderedShapeNames();
 }

@@ -16,6 +16,7 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
   private HashMap<String, Shape> declaredShapes;
   private ArrayList<UserInteraction> allMoves;
   private Bounds bounds;
+  private ArrayList<String> orderedShapes;
 
   /**
    * Public constructor to create a model for an exCELlence animator.
@@ -24,6 +25,7 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
     declaredShapes = new HashMap<String, Shape>();
     allMoves = new ArrayList<UserInteraction>();
     bounds = null;
+    orderedShapes = new ArrayList<String>();
   }
 
   /**
@@ -45,6 +47,8 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
     Shape shape = new Shape(type, name);
     declaredShapes.put(name, shape);
     allMoves.add(shape);
+    String safeName = name;
+    orderedShapes.add(safeName);
   }
 
   /**
@@ -132,6 +136,7 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
         }
       }
       this.allMoves = revisedArray;
+      this.orderedShapes.remove(s);
       return true;
     }
     return false;
@@ -450,6 +455,21 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
   }
 
   /**
+   * Method to prduce an ordered list of declared Shapes.
+   *
+   * @return Copy-safe list of the names of all Shapes.
+   */
+  @Override
+  public ArrayList<String> retrieveOrderedShapeNames() {
+    ArrayList<String> safeCopy = new ArrayList<String>();
+//    this.orderedShapes.stream().map(element -> safeCopy.add(element));
+    for (String each: this.orderedShapes) {
+      safeCopy.add(each);
+    }
+    return safeCopy;
+  }
+
+  /**
    * A static builder class that implements the AnimationBuilder interface, such that clients can
    * utilize the animationBuilder interface to construct instances of this specific model
    * implemenation.
@@ -463,7 +483,6 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
      *
      * @return the newly constructed document
      */
-
     @Override
     public IAnimation<ShapeType> build() {
       IAnimation<ShapeType> retVal = this.model;
