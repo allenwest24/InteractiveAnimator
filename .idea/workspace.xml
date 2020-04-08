@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d27255c2-eb8e-46ed-a6fc-3e9a676e4ead" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/AnimationModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/AnimationModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/controller/EditorViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/controller/EditorViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/controller/IViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/controller/IViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/controller/VCDelegate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/controller/VCDelegate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/view/EditorView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/EditorView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,9 +174,10 @@
       <screen x="0" y="23" width="1680" height="971" />
     </state>
     <state x="457" y="420" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.23.1680.971@0.23.1680.971" timestamp="1585184587231" />
-    <state x="594" y="365" width="451" height="276" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1585096042110">
-      <screen x="0" y="23" width="1680" height="971" />
+    <state x="483" y="271" width="408" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1586367573346">
+      <screen x="0" y="0" width="1366" height="768" />
     </state>
+    <state x="483" y="271" width="408" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1366.768@0.0.1366.768" timestamp="1586367573346" />
     <state x="594" y="365" width="451" height="276" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.23.1680.971@0.23.1680.971" timestamp="1585096042110" />
     <state x="582" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1585186227620">
       <screen x="0" y="23" width="1680" height="971" />

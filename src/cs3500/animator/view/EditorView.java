@@ -24,7 +24,7 @@ public final class EditorView extends JFrame implements IView, ActionListener, V
   private JMenuBar bar;
   private boolean currentlyPaused;
   private boolean loopHuh;
-  private VCDelegate vcd;
+  private VCDelegate<ShapeType> vcd;
 
   /**
    * Public constructor for this object.
