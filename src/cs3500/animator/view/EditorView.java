@@ -1,13 +1,10 @@
 package cs3500.animator.view;
 
-import java.awt.FlowLayout;
-import java.awt.Dimension;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.Timer;
-import javax.swing.JFrame;
-import javax.swing.JMenuBar;
+import javax.swing.*;
 
 import cs3500.animator.controller.VCDelegate;
 import cs3500.excellence.Motion;
@@ -28,6 +25,7 @@ public final class EditorView extends JFrame implements IView, ActionListener, V
   private Timer timer;
   private boolean currentlyPaused;
   private boolean loopHuh;
+  private boolean slideHuh;
   private VCDelegate<ShapeType> vcd;
 
   /**
@@ -43,6 +41,7 @@ public final class EditorView extends JFrame implements IView, ActionListener, V
       throw new IllegalArgumentException("Cannot accept null parameters.");
     }
     this.loopHuh = false;
+    this.slideHuh = false;
     this.currentlyPaused = false;
     this.speed = speed;
     this.delegate = delegate;
@@ -57,6 +56,7 @@ public final class EditorView extends JFrame implements IView, ActionListener, V
     bar.add(settings);
     this.setJMenuBar(bar);
     panel = new VisualViewPanel(delegate, canvasBounds.x, canvasBounds.y);
+    panel.scrubbaLubbaDubDub();
     panel.setPreferredSize(new Dimension(canvasBounds.width, canvasBounds.height));
     this.setVisible(true);
     this.add(panel);
@@ -193,5 +193,11 @@ public final class EditorView extends JFrame implements IView, ActionListener, V
     }
     return vcd.passNewValuesOnKeyFrameAgain(true, tempx2, tempy2, tempw2, temph2,
         tempr2, tempg2, tempb2);
+  }
+
+  @Override
+  public void sliderVisible() {
+    this.slideHuh = !this.slideHuh;
+    this.panel.shouldSlide(this.slideHuh);
   }
 }

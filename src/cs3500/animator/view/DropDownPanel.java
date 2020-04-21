@@ -19,6 +19,8 @@ public final class DropDownPanel extends JMenu implements ActionListener {
   private JFrame dialogFrame;
   private JMenuItem loopItem;
   private boolean loopChecked;
+  private JMenuItem sliderItem;
+  private boolean sliderChecked;
 
   /**
    * Public constructor for this object.
@@ -37,9 +39,13 @@ public final class DropDownPanel extends JMenu implements ActionListener {
     JMenuItem play = new JMenuItem("Play");
     JMenuItem pause = new JMenuItem("Pause");
     JMenuItem loop = new JCheckBoxMenuItem("Loop");
+    JMenuItem slider = new JCheckBoxMenuItem("Slider");
     this.loopItem = loop;
+    this.sliderItem = slider;
+    this.sliderChecked = false;
     this.loopChecked = false;
     loop.setSelected(this.loopChecked);
+    slider.setSelected(this.sliderChecked);
     JMenuItem speed = new JMenuItem("Speed");
     JMenuItem reset = new JMenuItem("Reset");
     JMenuItem addShape = new JMenuItem("Add Shape");
@@ -52,6 +58,7 @@ public final class DropDownPanel extends JMenu implements ActionListener {
     play.addActionListener(this::actionPerformed);
     pause.addActionListener(this::actionPerformed);
     loop.addActionListener(this::actionPerformed);
+    slider.addActionListener(this::actionPerformed);
     speed.addActionListener(this::actionPerformed);
     reset.addActionListener(this::actionPerformed);
     addShape.addActionListener(this::actionPerformed);
@@ -64,6 +71,7 @@ public final class DropDownPanel extends JMenu implements ActionListener {
     play.setActionCommand("play");
     pause.setActionCommand("pause");
     loop.setActionCommand("loop");
+    slider.setActionCommand("slider");
     speed.setActionCommand("speed");
     reset.setActionCommand("reset");
     addShape.setActionCommand("addshape");
@@ -76,6 +84,7 @@ public final class DropDownPanel extends JMenu implements ActionListener {
     this.add(play);
     this.add(pause);
     this.add(loop);
+    this.add(slider);
     this.add(speed);
     this.add(reset);
     this.add(addShape);
@@ -100,6 +109,11 @@ public final class DropDownPanel extends JMenu implements ActionListener {
         this.loopChecked = !this.loopChecked;
         this.loopItem.setSelected(this.loopChecked);
         delegate.loopAnimation();
+        break;
+      case "slider":
+        this.sliderChecked = !this.sliderChecked;
+        this.sliderItem.setSelected(this.sliderChecked);
+        delegate.sliderVisible();
         break;
       case "speed":
         this.promptUserForSpeedInput();

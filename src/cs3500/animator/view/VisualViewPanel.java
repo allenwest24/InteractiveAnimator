@@ -1,28 +1,31 @@
 package cs3500.animator.view;
 
-import cs3500.excellence.AnimationDelegate;
-import cs3500.excellence.Motion;
+import cs3500.excellence.*;
 import cs3500.excellence.Shape;
-import cs3500.excellence.ShapeType;
 
-import java.awt.Graphics2D;
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.Color;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import javax.swing.JPanel;
+import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 /**
  * Class to represent a custom JPanel view component.
  */
-public final class VisualViewPanel extends JPanel {
+public final class VisualViewPanel extends JPanel implements ChangeListener {
   private AnimationDelegate<Shape, Motion> delegate;
   private int ticks;
   private HashMap<String, Shape> state;
   private boolean shouldLoop;
+  private JSlider frameSlider;
+  private boolean shouldSlide;
+  private boolean sliderInteraction;
+
 
   /**
    * Public constructor for this object.
@@ -36,10 +39,23 @@ public final class VisualViewPanel extends JPanel {
   VisualViewPanel(AnimationDelegate<Shape, Motion> delegate, int xOrigin, int yOrigin) {
     super();
     this.shouldLoop = false;
+    this.shouldSlide = false;
+    this.sliderInteraction = false;
     this.setBackground(Color.WHITE);
     this.delegate = delegate;
     this.ticks = 1;
     state = delegate.retrieveCurrentGameState();
+  }
+
+  protected void scrubbaLubbaDubDub() {
+      Integer maxTick = this.getLastTick();
+      this.frameSlider = new JSlider(JSlider.HORIZONTAL,
+          0, maxTick, 0);
+      Bounds scrubberBounds = delegate.retrieveCanvasBoundaries();
+      frameSlider.setPreferredSize(new Dimension((int) (scrubberBounds.width * 0.9), 15));
+      this.add(frameSlider);
+      frameSlider.addChangeListener(this);
+      frameSlider.setVisible(false);
   }
 
   /**
@@ -49,15 +65,19 @@ public final class VisualViewPanel extends JPanel {
    */
   protected void updateTick() {
     this.state = delegate.retrieveCurrentGameState();
-    if (shouldLoop && this.ticks >= this.getLastTick()) {
+    if (shouldLoop && !sliderInteraction && this.ticks >= this.getLastTick()) {
       this.resetTick();
-    } else {
+      this.frameSlider.setValue(this.ticks);
+
+    } else if (!sliderInteraction) {
       this.ticks += 1;
+      this.frameSlider.setValue(this.ticks);
     }
   }
 
   protected void resetTick() {
     this.ticks = 0;
+    this.frameSlider.setValue(this.ticks);
   }
 
   protected void shouldLoop(boolean shouldLoop) {
@@ -67,7 +87,7 @@ public final class VisualViewPanel extends JPanel {
     }
   }
 
-  private int getLastTick() {
+  protected int getLastTick() {
     int acc = 0;
     for (String each : this.state.keySet()) {
       ArrayList<Motion> currMotions = delegate.retrieveMotionsForObjectWithName(each);
@@ -137,6 +157,38 @@ public final class VisualViewPanel extends JPanel {
           }
         }
       }
+    }
+  }
+
+  protected void shouldSlide(boolean slideHuh) {
+    this.shouldSlide = slideHuh;
+    if (!this.shouldSlide) {
+      this.frameSlider.setVisible(false);
+    }
+    else {
+      this.frameSlider.setVisible(true);
+    }
+  }
+
+  /**
+   * Invoked when the target of the listener has changed its state.
+   *
+   * @param e a ChangeEvent object
+   */
+  @Override
+  public void stateChanged(ChangeEvent e) {
+    JSlider source = (JSlider)e.getSource();
+    if (!source.getValueIsAdjusting()) {
+      int fps = (int)frameSlider.getValue();
+      this.ticks = fps;
+      this.sliderInteraction = false;
+      this.repaint();
+    }
+    else if (source.getValueIsAdjusting()) {
+      int fps = (int)frameSlider.getValue();
+      this.ticks = fps;
+      this.sliderInteraction = true;
+      this.repaint();
     }
   }
 }
