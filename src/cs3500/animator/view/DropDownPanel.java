@@ -70,6 +70,9 @@ public final class DropDownPanel extends JMenu implements ActionListener {
     delShape.addActionListener(this::actionPerformed);
     addKeyFrame.addActionListener(this::actionPerformed);
     delKeyFrame.addActionListener(this::actionPerformed);
+    addLayer.addActionListener(this::actionPerformed);
+    delLayer.addActionListener(this::actionPerformed);
+    swapLayers.addActionListener(this::actionPerformed);
     devCred.addActionListener(this::actionPerformed);
 
 
@@ -83,6 +86,9 @@ public final class DropDownPanel extends JMenu implements ActionListener {
     delShape.setActionCommand("delshape");
     addKeyFrame.setActionCommand("addkf");
     delKeyFrame.setActionCommand("delkf");
+    addLayer.setActionCommand("addlay");
+    delLayer.setActionCommand("dellay");
+    swapLayers.setActionCommand("swaplays");
     devCred.setActionCommand("credWhereItsDue");
 
 
@@ -96,6 +102,9 @@ public final class DropDownPanel extends JMenu implements ActionListener {
     this.add(delShape);
     this.add(addKeyFrame);
     this.add(delKeyFrame);
+    this.add(addLayer);
+    this.add(delLayer);
+    this.add(swapLayers);
     this.add(devCred);
 
   }
@@ -128,9 +137,10 @@ public final class DropDownPanel extends JMenu implements ActionListener {
         break;
       case "addshape":
         this.promptUserForChangeToModel(ModelPrompts.ADD_SHAPE,
-            "Input shape name and type (rectangle || ellipse) separated by a comma:\n",
+            "Input shape name, type (rectangle || ellipse), and desired layer (optional)"
+                + " all separated by a comma:\n",
             "Add a Shape.\n",
-            "shapeName,shapeType");
+            "shapeName,shapeType,layer");
         break;
       case "delshape":
         this.promptUserForChangeToModel(ModelPrompts.DELETE_SHAPE,
@@ -150,6 +160,24 @@ public final class DropDownPanel extends JMenu implements ActionListener {
             "Delete a KeyFrame.\n",
             "shapeName,shapeTick");
         break;
+      case "addlay":
+        this.promptUserForChangeToModel(ModelPrompts.ADD_LAYER,
+            "Are you sure you would like to create a new layer? (Type 'yes' or 'no'):\n",
+            "Add a Layer.\n",
+            "yes/no");
+        break;
+      case "dellay":
+        this.promptUserForChangeToModel(ModelPrompts.DELETE_LAYER,
+            "Input the number of the layer you would like to delete:\n",
+            "Delete a Layer.\n",
+            "layerNumber");
+        break;
+      case "swaplays":
+        this.promptUserForChangeToModel(ModelPrompts.SWAP_LAYERS,
+            "Input the two layer numbers you would like to swap:\n",
+            "Swap two Layers.\n",
+            "layerNumber1,layerNumber2");
+        break;
       case "credWhereItsDue":
         this.displayErrorInfo("Dev Creds: Luke Andrews, Allen West\n\n" +
             "       -- life is soup, i am fork");
@@ -161,11 +189,13 @@ public final class DropDownPanel extends JMenu implements ActionListener {
   }
 
   private enum ModelPrompts {
-    ADD_SHAPE, DELETE_SHAPE, ADD_KEYFRAME, DELETE_KEYFRAME, GET_KEYFRAME_USER;
+    ADD_SHAPE, DELETE_SHAPE, ADD_KEYFRAME, DELETE_KEYFRAME, GET_KEYFRAME_USER, ADD_LAYER,
+    DELETE_LAYER, SWAP_LAYERS;
   }
 
   private enum StringComponents {
-    SHAPE_NAME, SHAPE_TYPE, TICK, POSX, POSY, WIDTH, HEIGHT, RED, GREEN, BLUE;
+    SHAPE_NAME, SHAPE_TYPE, TICK, POSX, POSY, WIDTH, HEIGHT, RED, GREEN, BLUE, LAYER1, LAYER2,
+    TO_LAYER;
   }
 
   private String deriveRelevantComponent(StringComponents comp, String userInput) {
@@ -183,6 +213,7 @@ public final class DropDownPanel extends JMenu implements ActionListener {
     switch (comp) {
       case POSX:
       case SHAPE_NAME:
+      case LAYER1:
         if (parsedInput.length >= 1) {
           return parsedInput[0];
         } else {
@@ -191,12 +222,14 @@ public final class DropDownPanel extends JMenu implements ActionListener {
       case TICK:
       case POSY:
       case SHAPE_TYPE:
+      case LAYER2:
         if (parsedInput.length >= 2) {
           return parsedInput[1];
         } else {
           return null;
         }
       case WIDTH:
+      case TO_LAYER:
         if (parsedInput.length >= 3) {
           return parsedInput[2];
         } else {
@@ -249,6 +282,7 @@ public final class DropDownPanel extends JMenu implements ActionListener {
         } else {
           String name = this.deriveRelevantComponent(StringComponents.SHAPE_NAME, s);
           String shapeTypeString = this.deriveRelevantComponent(StringComponents.SHAPE_TYPE, s);
+          String toLayer = this.deriveRelevantComponent(StringComponents.TO_LAYER, s);
           if (name == null || shapeTypeString == null) {
             this.displayErrorInfo("Oops! Something went wrong with that request! Make sure the"
                 + " request follows the format: \"name,type\"\n");
@@ -259,7 +293,17 @@ public final class DropDownPanel extends JMenu implements ActionListener {
             this.displayErrorInfo("Invalid shape type!\n");
             return;
           }
-          delegate.userRequestsAddShape(shapeType, name);
+          if (toLayer == null) {
+            delegate.userRequestsAddShape(shapeType, name, 0);
+          }
+          else {
+            Integer toLayerAsInt = conditionalInt(toLayer);
+            if (toLayerAsInt == null) {
+              this.displayErrorInfo("Invalid layer was given!\n");
+              return;
+            }
+            delegate.userRequestsAddShape(shapeType, name, toLayerAsInt);
+          }
         }
         break;
       case DELETE_SHAPE:
@@ -279,8 +323,61 @@ public final class DropDownPanel extends JMenu implements ActionListener {
       case GET_KEYFRAME_USER:
         this.passOnNewParams(s);
         break;
+      case ADD_LAYER:
+        if (s.equals("no")) {
+          return;
+        } else if (s.equals("yes")) {
+          this.userAddLayer();
+        }
+        else {
+          this.displayErrorInfo("Invalid command!\n");
+        }
+        break;
+      case DELETE_LAYER:
+        this.userDeleteLayer(s);
+        break;
+      case SWAP_LAYERS:
+        this.userSwapLayers(s);
+        break;
       default:
         break;
+    }
+  }
+
+  private void userAddLayer() {
+    this.delegate.addLayer();
+  }
+
+  private void userDeleteLayer(String s) {
+    Integer layerToDelete = this.conditionalInt(s);
+    if (layerToDelete != null) {
+      if (this.delegate.deleteLayer(layerToDelete)) {
+        return;
+      }
+      else {
+        this.displayErrorInfo("That layer was fake. Change my mind.\n");
+      }
+    }
+    else {
+      this.displayErrorInfo("Invalid layer!\n");
+    }
+  }
+
+  private void userSwapLayers(String s) {
+    String component1 =  this.deriveRelevantComponent(StringComponents.LAYER1, s);
+    String component2 = this.deriveRelevantComponent(StringComponents.LAYER2, s);
+    Integer layer1 = this.conditionalInt(component1);
+    Integer layer2 = this.conditionalInt(component2);
+    if (layer1 != null && layer2 != null) {
+      if (this.delegate.swapLayers(layer1, layer2)) {
+        return;
+      }
+      else {
+        this.displayErrorInfo("At least one of those layers wasn't even real bro.\n");
+      }
+    }
+     else {
+      this.displayErrorInfo("One or more invalid layers!\n");
     }
   }
 

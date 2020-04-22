@@ -22,7 +22,7 @@ public interface VCDelegate<R> {
    * @param type the generic type of the Shape that the user would like to add.
    * @param name the name of the Shape that the user would like to add.
    */
-  void userRequestsAddShape(R type, String name);
+  void userRequestsAddShape(R type, String name, int layer);
 
   /**
    * This method handle a request from the user to delete a KeyFrame from the view so that the
@@ -69,4 +69,26 @@ public interface VCDelegate<R> {
   boolean passNewValuesOnKeyFrameAgain(boolean b, Integer tempx2, Integer tempy2, Integer tempw2,
                                        Integer temph2, Integer tempr2, Integer tempg2,
                                        Integer tempb2);
+
+  /**
+   * Inform the model that the user requests to add a new layer.
+   */
+  void userRequestAddLayer();
+
+  /**
+   * Inform the model that the user requests to delete a new layer.
+   *
+   * @param layer the number of the layer that the user wishes to delete.
+   * @return whether given valid input or not.
+   */
+  boolean userRequestDeleteLayer(int layer);
+
+  /**
+   * Inform the model that the user requests to swap two layers.
+   *
+   *  @param layer1 first layer the user wants to swap.
+   * @param layer2 second layer the user wants to swap.
+   * @return whether given valid input or not.
+   */
+  boolean userRequestSwapLayers(int layer1, int layer2);
 }

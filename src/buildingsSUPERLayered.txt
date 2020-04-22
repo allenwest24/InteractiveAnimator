@@ -1,11 +1,12 @@
 canvas 0 0 800 800
 layer 0
 shape background rectangle
+layer 1
 shape B0 rectangle
 shape B1 rectangle
 shape B2 rectangle
 shape B3 rectangle
-layer 1
+layer 2
 shape window000 rectangle
 shape window001 rectangle
 shape window010 rectangle
@@ -23,6 +24,7 @@ shape window061 rectangle
 shape window100 rectangle
 shape window101 rectangle
 shape window110 rectangle
+layer 3
 shape window111 rectangle
 shape window120 rectangle
 shape window121 rectangle
@@ -39,7 +41,7 @@ shape window171 rectangle
 shape window180 rectangle
 shape window181 rectangle
 shape window200 rectangle
-layer 2
+layer 4
 shape window201 rectangle
 shape window210 rectangle
 shape window211 rectangle
@@ -69,9 +71,10 @@ shape window350 rectangle
 shape window351 rectangle
 shape window360 rectangle
 shape window361 rectangle
-layer 3
+layer 5
 shape moon ellipse
 shape eclipse ellipse
+layer 6
 shape star0 ellipse
 shape star1 ellipse
 shape star2 ellipse

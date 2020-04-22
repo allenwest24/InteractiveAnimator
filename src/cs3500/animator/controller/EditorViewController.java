@@ -70,9 +70,9 @@ public final class EditorViewController implements IViewController, VCDelegate<S
    * @param name the name of the Shape that the user would like to add.
    */
   @Override
-  public void userRequestsAddShape(ShapeType type, String name) {
+  public void userRequestsAddShape(ShapeType type, String name, int layer) {
     try {
-      model.declareShape(type, name);
+      model.declareShapeToLayer(type, name, layer);
     } catch (IllegalArgumentException e) {
       return;
     }
@@ -182,5 +182,36 @@ public final class EditorViewController implements IViewController, VCDelegate<S
     this.tickReq = null;
     this.tempName = null;
     return true;
+  }
+
+  /**
+   * Inform the model that the user requests to add a new layer.
+   */
+  @Override
+  public void userRequestAddLayer() {
+    this.model.addLayer();
+  }
+
+  /**
+   * Inform the model that the user requests to delete a new layer.
+   *
+   * @param layer the number of the layer that the user wishes to delete.
+   * @return whether given valid input or not.
+   */
+  @Override
+  public boolean userRequestDeleteLayer(int layer) {
+    return this.model.deleteLayer(layer);
+  }
+
+  /**
+   * Inform the model that the user requests to swap two layers.
+   *
+   * @param layer1 first layer the user wants to swap.
+   * @param layer2 second layer the user wants to swap.
+   * @return whether given valid input or not.
+   */
+  @Override
+  public boolean userRequestSwapLayers(int layer1, int layer2) {
+    return this.model.swapLayers(layer1, layer2);
   }
 }

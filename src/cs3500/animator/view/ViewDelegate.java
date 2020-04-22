@@ -51,11 +51,11 @@ public interface ViewDelegate {
 
   /**
    * Method for a sub-view to attempt to add a Shape.
-   *
-   * @param type type of Shape to add.
+   *  @param type type of Shape to add.
    * @param name name of the new Shape.
+   * @param toLayerAsInt the optional layer to which the new Shape should be added.
    */
-  void userRequestsAddShape(ShapeType type, String name);
+  void userRequestsAddShape(ShapeType type, String name, Integer toLayerAsInt);
 
   /**
    * Method for a sub-view to attempt to delete a KeyFrame.
@@ -99,5 +99,28 @@ public interface ViewDelegate {
   boolean passNewValuesOnKeyFrame(boolean b, Integer tempx2, Integer tempy2, Integer tempw2,
                                   Integer temph2, Integer tempr2, Integer tempg2, Integer tempb2);
 
+  /**
+   * Method to handle user requests to show the slider.
+   */
   void sliderVisible();
+
+  /**
+   * Method to handle user requests to add a new layer.
+   */
+  void addLayer();
+
+  /**
+   * Method to handle user requests to delete the given layer.
+   *
+   * @param layer number of layer to delete.
+   */
+  boolean deleteLayer(Integer layer);
+
+  /**
+   * Method to handle user requests to swap two layers.
+   *
+   * @param layer1 first layer number to swap.
+   * @param layer2 second layer number to swap.
+   */
+  boolean swapLayers(Integer layer1, Integer layer2);
 }

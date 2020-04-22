@@ -50,7 +50,7 @@ public class ControllerTests {
   public void testAddingShape() {
     setUp("smalldemo.txt", 10);
     int numLines = this.delegateRef.retrieveCurrentGameState().keySet().size();
-    this.controller.userRequestsAddShape(ShapeType.RECTANGLE, "L");
+    this.controller.userRequestsAddShape(ShapeType.RECTANGLE, "L", 0);
     int numLineAfterAddition = this.delegateRef.retrieveCurrentGameState().keySet().size();
     assertTrue(numLines + 1 == numLineAfterAddition);
   }
@@ -59,7 +59,7 @@ public class ControllerTests {
   public void testAddingExistingShapeDoesNothing() {
     setUp("smalldemo.txt", 10);
     int numLines = this.delegateRef.retrieveCurrentGameState().keySet().size();
-    this.controller.userRequestsAddShape(ShapeType.RECTANGLE, "R");
+    this.controller.userRequestsAddShape(ShapeType.RECTANGLE, "R", 0);
     int numLineAfterAddition = this.delegateRef.retrieveCurrentGameState().keySet().size();
     assertTrue(numLines == numLineAfterAddition);
   }

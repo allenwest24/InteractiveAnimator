@@ -162,8 +162,8 @@ public final class EditorView extends JFrame implements IView, ActionListener, V
   }
 
   @Override
-  public void userRequestsAddShape(ShapeType type, String name) {
-    this.vcd.userRequestsAddShape(type, name);
+  public void userRequestsAddShape(ShapeType type, String name, Integer toLayerAsInt) {
+    this.vcd.userRequestsAddShape(type, name, toLayerAsInt);
   }
 
   @Override
@@ -199,5 +199,26 @@ public final class EditorView extends JFrame implements IView, ActionListener, V
   public void sliderVisible() {
     this.slideHuh = !this.slideHuh;
     this.panel.shouldSlide(this.slideHuh);
+  }
+
+  @Override
+  public void addLayer() {
+    this.vcd.userRequestAddLayer();
+  }
+
+  @Override
+  public boolean deleteLayer(Integer layer) {
+    if (layer != null) {
+      return this.vcd.userRequestDeleteLayer(layer);
+    }
+    return false;
+  }
+
+  @Override
+  public boolean swapLayers(Integer layer1, Integer layer2) {
+    if (layer2 != null && layer2 != null) {
+      return this.vcd.userRequestSwapLayers(layer1, layer2);
+    }
+    return false;
   }
 }

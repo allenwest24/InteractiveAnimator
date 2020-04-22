@@ -18,6 +18,17 @@ public interface IAnimation<K> {
   void declareShape(K type, String name);
 
   /**
+   * Method to add a new Shape to the Animation model for a specific layer.
+   *
+   * @param type a generic type representing some form of shape.
+   * @param name a non-null String representing the name to be associated with the new shape.
+   * @param layer the layer we want to add the shape to.
+   * @throws IllegalArgumentException if the provided String is null or already in use.
+   * @throws IllegalArgumentException if the type is unhandled or null.
+   */
+  void declareShapeToLayer(K type, String name, int layer);
+
+  /**
    * Method to apply various modifications (motions) to previously declared shapes.
    *
    * @param startTick   int to represent the starting tick.
@@ -131,4 +142,26 @@ public interface IAnimation<K> {
    * @param layerNum specifies the layer we will be adding shapes to.
    */
   void updateLayer(Integer layerNum);
+
+  /**
+   * Add a layer to model state.
+   */
+  void addLayer();
+
+  /**
+   * Delete a layer from model state.
+   *
+   * @param layer number of layer to delete.
+   * @return whether given valid input or not.
+   */
+  boolean deleteLayer(int layer);
+
+  /**
+   * Swap two layers within the model state.
+   *
+   * @param layer1 number of first layer to swap.
+   * @param layer2 number of second layer to swap.
+   * @return whether given valid input or not.
+   */
+  boolean swapLayers(int layer1, int layer2);
 }

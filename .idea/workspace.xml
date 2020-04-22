@@ -2,15 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d27255c2-eb8e-46ed-a6fc-3e9a676e4ead" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/buildingsLayered.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/buildingsSUPERLayered.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/util/AnimationBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/util/AnimationBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/util/AnimationReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/util/AnimationReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/view/VisualViewPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/VisualViewPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/AnimationDelegate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/AnimationDelegate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/buildingsSUPERLayered.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/buildingsSUPERLayered.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/controller/EditorViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/controller/EditorViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/controller/VCDelegate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/controller/VCDelegate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/view/DropDownPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/DropDownPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/view/EditorView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/EditorView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/view/ViewDelegate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/ViewDelegate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/AnimationModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/AnimationModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/IAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/IAnimation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/ControllerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ControllerTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,13 +65,21 @@
     <configuration name="Excellence" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="cs3500.animator.Excellence" />
       <module name="Assignment5" />
-      <option name="PROGRAM_PARAMETERS" value="-view edit -speed 100 -in buildingsLayered.txt" />
+      <option name="PROGRAM_PARAMETERS" value="-view edit -speed 100 -in buildingsSUPERLayered.txt" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cs3500.animator.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in Assignment5" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Assignment5" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -93,16 +102,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ControllerTests.testAddingKeyFrameToShapeThatDoesntExist" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Assignment5" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ControllerTests" />
-      <option name="METHOD_NAME" value="testAddingKeyFrameToShapeThatDoesntExist" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ControllerTests.testDeletingKeyFrameFromShapeThatDoesntExist" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Assignment5" />
       <option name="PACKAGE_NAME" value="" />
@@ -115,18 +114,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.Excellence" />
-      <item itemvalue="JUnit.ControllerTests.testAddingKeyFrameToShapeThatDoesntExist" />
       <item itemvalue="JUnit.ControllerTests.testDeletingKeyFrameFromShapeThatDoesntExist" />
       <item itemvalue="JUnit.ControllerTests" />
       <item itemvalue="JUnit.AnimationViewTests" />
+      <item itemvalue="JUnit.All in Assignment5" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Excellence" />
+        <item itemvalue="JUnit.All in Assignment5" />
         <item itemvalue="JUnit.AnimationViewTests" />
         <item itemvalue="JUnit.ControllerTests" />
         <item itemvalue="JUnit.ControllerTests.testDeletingKeyFrameFromShapeThatDoesntExist" />
-        <item itemvalue="JUnit.ControllerTests.testAddingKeyFrameToShapeThatDoesntExist" />
       </list>
     </recent_temporary>
   </component>
@@ -156,19 +155,19 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="90" y="44" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587574611525">
+    <state x="90" y="44" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587579721214">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="90" y="44" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.768@0.0.1366.768" timestamp="1587574611525" />
+    <state x="90" y="44" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.768@0.0.1366.768" timestamp="1587579721214" />
     <state x="284" y="160" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.971@0.23.1680.971" timestamp="1586195807651" />
     <state x="553" y="307" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1585191519422">
       <screen x="0" y="23" width="1680" height="971" />
     </state>
     <state x="553" y="307" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1680.971@0.23.1680.971" timestamp="1585191519422" />
-    <state x="514" y="152" key="#com.intellij.ide.util.MemberChooser" timestamp="1587571006792">
+    <state x="514" y="152" key="#com.intellij.ide.util.MemberChooser" timestamp="1587580801605">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="514" y="152" key="#com.intellij.ide.util.MemberChooser/0.0.1366.768@0.0.1366.768" timestamp="1587571006792" />
+    <state x="514" y="152" key="#com.intellij.ide.util.MemberChooser/0.0.1366.768@0.0.1366.768" timestamp="1587580801605" />
     <state x="632" y="215" key="#com.intellij.ide.util.MemberChooser/0.23.1680.971@0.23.1680.971" timestamp="1585198660291" />
     <state x="632" y="215" key="#com.intellij.ide.util.MemberChooser/0.23.1680.973@0.23.1680.973" timestamp="1582848846448" />
     <state x="453" y="208" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1586382474190">
@@ -202,25 +201,25 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="120" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1584553027495" />
-    <state width="1323" height="232" key="GridCell.Tab.0.bottom" timestamp="1587574836160">
+    <state width="1323" height="232" key="GridCell.Tab.0.bottom" timestamp="1587581991874">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="232" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1587574836160" />
+    <state width="1323" height="232" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1587581991874" />
     <state width="1597" height="180" key="GridCell.Tab.0.bottom/0.23.1680.971@0.23.1680.971" timestamp="1585265698437" />
-    <state width="1323" height="232" key="GridCell.Tab.0.center" timestamp="1587574836160">
+    <state width="1323" height="232" key="GridCell.Tab.0.center" timestamp="1587581991874">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="232" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1587574836160" />
+    <state width="1323" height="232" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1587581991874" />
     <state width="1597" height="180" key="GridCell.Tab.0.center/0.23.1680.971@0.23.1680.971" timestamp="1585265698436" />
-    <state width="1323" height="232" key="GridCell.Tab.0.left" timestamp="1587574836160">
+    <state width="1323" height="232" key="GridCell.Tab.0.left" timestamp="1587581991873">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="232" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1587574836160" />
+    <state width="1323" height="232" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1587581991873" />
     <state width="1597" height="180" key="GridCell.Tab.0.left/0.23.1680.971@0.23.1680.971" timestamp="1585265698436" />
-    <state width="1323" height="232" key="GridCell.Tab.0.right" timestamp="1587574836160">
+    <state width="1323" height="232" key="GridCell.Tab.0.right" timestamp="1587581991874">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="232" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1587574836160" />
+    <state width="1323" height="232" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1587581991874" />
     <state width="1597" height="180" key="GridCell.Tab.0.right/0.23.1680.971@0.23.1680.971" timestamp="1585265698437" />
     <state x="348" y="64" width="699" height="600" key="NewModule_or_Project.wizard" timestamp="1584553033013">
       <screen x="0" y="0" width="1366" height="728" />
@@ -252,10 +251,10 @@
       <screen x="0" y="23" width="1680" height="971" />
     </state>
     <state x="213" y="121" key="new project wizard/0.23.1680.971@0.23.1680.971" timestamp="1583893516736" />
-    <state x="425" y="14" key="refactoring.ChangeSignatureDialog" timestamp="1586224203308">
+    <state x="425" y="14" key="refactoring.ChangeSignatureDialog" timestamp="1587580435715">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="425" y="14" key="refactoring.ChangeSignatureDialog/0.0.1366.768@0.0.1366.768" timestamp="1586224203308" />
+    <state x="425" y="14" key="refactoring.ChangeSignatureDialog/0.0.1366.768@0.0.1366.768" timestamp="1587580435715" />
     <state x="339" y="172" width="672" height="677" key="run.anything.popup" timestamp="1586125607069">
       <screen x="0" y="0" width="1366" height="768" />
     </state>

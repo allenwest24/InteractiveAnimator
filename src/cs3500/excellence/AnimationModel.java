@@ -60,6 +60,34 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
   }
 
   /**
+   * Method to add a new Shape to the Animation model for a specific layer.
+   *
+   * @param type  a generic type representing some form of shape.
+   * @param name  a non-null String representing the name to be associated with the new shape.
+   * @param layer the layer we want to add the shape to.
+   * @throws IllegalArgumentException if the provided String is null or already in use.
+   * @throws IllegalArgumentException if the type is unhandled or null.
+   */
+  @Override
+  public void declareShapeToLayer(ShapeType type, String name, int layer) {
+    if (type == null || name == null) {
+      throw new IllegalArgumentException("Cannot have null parameters.");
+    }
+    if (declaredShapes.containsKey(name)) {
+      throw new IllegalArgumentException("Already have a shape with provided name");
+    }
+    if (layer < 0 || layer >= orderedLayers.size()) {
+      throw new IllegalArgumentException("Cannot declare a Shape to a layer that doesn't exist");
+    }
+    Shape shape = new Shape(type, name);
+    declaredShapes.put(name, shape);
+    allMoves.add(shape);
+    String safeName = name;
+    orderedShapes.add(safeName);
+    orderedLayers.get(layer).add(safeName);
+  }
+
+  /**
    * Method to apply various modifications (motions) to previously declared shapes.
    *
    * @param startTick   int to represent the starting tick.
@@ -345,6 +373,52 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
       currlayer = layerNum;
     }
     return;
+  }
+
+  /**
+   * Add a layer to model state.
+   */
+  @Override
+  public void addLayer() {
+    this.orderedLayers.add(new ArrayList<String>());
+  }
+
+  /**
+   * Delete a layer from model state.
+   *
+   * @param layer number of layer to delete.
+   * @return whether given valid input or not.
+   */
+  @Override
+  public boolean deleteLayer(int layer) {
+    if (layer >= this.orderedLayers.size() || this.orderedLayers.get(layer).isEmpty()) {
+      return false;
+    }
+    else {
+      this.orderedLayers.remove(layer);
+      return true;
+    }
+  }
+
+  /**
+   * Swap two layers within the model state.
+   *
+   * @param layer1 number of first layer to swap.
+   * @param layer2 number of second layer to swap.
+   * @return whether given valid input or not.
+   */
+  @Override
+  public boolean swapLayers(int layer1, int layer2) {
+    if (layer1 >= this.orderedLayers.size() || layer2 >= this.orderedLayers.size() ||
+        this.orderedLayers.get(layer1).isEmpty() || this.orderedLayers.get(layer2).isEmpty()) {
+      return false;
+    }
+    else {
+      ArrayList<String> temp = this.orderedLayers.get(layer1);
+      this.orderedLayers.set(layer1, this.orderedLayers.get(layer2));
+      this.orderedLayers.set(layer2, temp);
+      return true;
+    }
   }
 
   /**
