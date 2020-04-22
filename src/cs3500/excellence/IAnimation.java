@@ -124,4 +124,11 @@ public interface IAnimation<K> {
   void mutateKeyFrame(String shapeName, Integer tickReq, Integer tempx2,
                       Integer tempy2, Integer tempw2, Integer temph2, Integer tempr2,
                       Integer tempg2, Integer tempb2);
+
+  /**
+   * Assigns a new layer for shapes to be placed upon.
+   *
+   * @param layerNum specifies the layer we will be adding shapes to.
+   */
+  void updateLayer(Integer layerNum);
 }

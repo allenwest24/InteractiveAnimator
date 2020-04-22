@@ -67,17 +67,22 @@ public final class VisualViewPanel extends JPanel implements ChangeListener {
     this.state = delegate.retrieveCurrentGameState();
     if (shouldLoop && !sliderInteraction && this.ticks >= this.getLastTick()) {
       this.resetTick();
-      this.frameSlider.setValue(this.ticks);
-
+      if (frameSlider != null) {
+        this.frameSlider.setValue(this.ticks);
+      }
     } else if (!sliderInteraction) {
       this.ticks += 1;
-      this.frameSlider.setValue(this.ticks);
+      if (frameSlider != null) {
+        this.frameSlider.setValue(this.ticks);
+      }
     }
   }
 
   protected void resetTick() {
     this.ticks = 0;
-    this.frameSlider.setValue(this.ticks);
+    if (frameSlider != null) {
+      this.frameSlider.setValue(this.ticks);
+    }
   }
 
   protected void shouldLoop(boolean shouldLoop) {
@@ -104,7 +109,15 @@ public final class VisualViewPanel extends JPanel implements ChangeListener {
   protected void paintComponent(Graphics g) {
     super.paintComponent(g);
     Graphics2D g2d = (Graphics2D) g;
-    ArrayList<String> orderedNames = this.delegate.retrieveOrderedShapeNames();
+    ArrayList<String> orderedNames = new ArrayList<String>();
+    ArrayList<ArrayList<String>> orderedLayers = this.delegate.retrieveOrderedLayers();
+    for (ArrayList<String> layer: orderedLayers) {
+      if (!layer.isEmpty()) {
+        for (String name: layer) {
+          orderedNames.add(name);
+        }
+      }
+    }
     this.state = this.delegate.retrieveCurrentGameState();
     for (String name : orderedNames) {
       ShapeType renderType = this.state.get(name).type;

@@ -62,6 +62,7 @@ public interface AnimationBuilder<Doc> {
 
   /**
    * Adds an individual keyframe to the growing document.
+   *
    * @param name The name of the shape (added with {@link AnimationBuilder#declareShape})
    * @param t    The time for this keyframe
    * @param x    The x-position of the shape
@@ -75,4 +76,11 @@ public interface AnimationBuilder<Doc> {
    */
   AnimationBuilder<Doc> addKeyframe(String name,
                                     int t, int x, int y, int w, int h, int r, int g, int b);
+
+  /**
+   * Adds a layer to the growing document.
+   *
+   * @param name The name of the layer (added with {@link AnimationBuilder#declareLayer})
+   */
+  AnimationBuilder<Doc> declareLayer(String name);
 }

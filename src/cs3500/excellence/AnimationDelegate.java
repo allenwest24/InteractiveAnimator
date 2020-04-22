@@ -45,4 +45,11 @@ public interface AnimationDelegate<T, K> {
    * @return Copy-safe list of the names of all Shapes.
    */
   ArrayList<String> retrieveOrderedShapeNames();
+
+  /**
+   * Method to produce an ordered 2D list of declared layers.
+   *
+   * @return Copy-safe list of the names of all layers.
+   */
+  ArrayList<ArrayList<String>> retrieveOrderedLayers();
 }

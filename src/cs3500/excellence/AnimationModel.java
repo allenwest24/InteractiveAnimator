@@ -17,6 +17,8 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
   private ArrayList<UserInteraction> allMoves;
   private Bounds bounds;
   private ArrayList<String> orderedShapes;
+  private ArrayList<ArrayList<String>> orderedLayers;
+  private int currlayer;
 
   /**
    * Public constructor to create a model for an exCELlence animator.
@@ -26,6 +28,11 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
     allMoves = new ArrayList<UserInteraction>();
     bounds = null;
     orderedShapes = new ArrayList<String>();
+    orderedLayers = new ArrayList<ArrayList<String>>();
+    currlayer = 0;
+    for (int ii = 0; ii < 100; ii++) {
+      orderedLayers.add(ii, new ArrayList<String>());
+    }
   }
 
   /**
@@ -49,6 +56,7 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
     allMoves.add(shape);
     String safeName = name;
     orderedShapes.add(safeName);
+    orderedLayers.get(currlayer).add(safeName);
   }
 
   /**
@@ -137,6 +145,11 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
       }
       this.allMoves = revisedArray;
       this.orderedShapes.remove(s);
+      for (ArrayList<String> each: this.orderedLayers) {
+        if (!each.isEmpty()) {
+          each.remove(s);
+        }
+      }
       return true;
     }
     return false;
@@ -322,6 +335,19 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
   }
 
   /**
+   * Assigns a new layer for shapes to be placed upon.
+   *
+   * @param layerNum specifies the layer we will be adding shapes to.
+   */
+  @Override
+  public void updateLayer(Integer layerNum) {
+    if (layerNum != null) {
+      currlayer = layerNum;
+    }
+    return;
+  }
+
+  /**
    * Changed: Method refactors history of moves for views.
    */
   private void refactoredUserInteraction(String shapeName, Integer tick) {
@@ -469,9 +495,23 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
   }
 
   /**
+   * Method to produce an ordered 2D list of declared layers.
+   *
+   * @return Copy-safe list of the names of all layers.
+   */
+  @Override
+  public ArrayList<ArrayList<String>> retrieveOrderedLayers() {
+    ArrayList<ArrayList<String>> safeCopy = new ArrayList<ArrayList<String>>();
+    for (ArrayList<String> each: this.orderedLayers) {
+      safeCopy.add(each);
+    }
+    return safeCopy;
+  }
+
+  /**
    * A static builder class that implements the AnimationBuilder interface, such that clients can
    * utilize the animationBuilder interface to construct instances of this specific model
-   * implemenation.
+   * implementation.
    */
   public static final class Builder implements AnimationBuilder<IAnimation<ShapeType>> {
 
@@ -594,6 +634,25 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
       } catch (IllegalArgumentException e) {
         System.out.println("Unable to add keyframe due to invalid parameters.");
       }
+      return this;
+    }
+
+    /**
+     * Adds a layer to the growing document.
+     *
+     * @param name The name of the layer (added with {@link AnimationBuilder#declareLayer})
+     */
+    @Override
+    public AnimationBuilder<IAnimation<ShapeType>> declareLayer(String name) {
+      Integer layerNum;
+      try {
+        layerNum = Integer.valueOf(name);
+      }
+      catch (NumberFormatException e) {
+        System.out.println("Not a valid layer, all shapes will remain on default layer.");
+        return this;
+      }
+      this.model.updateLayer(layerNum);
       return this;
     }
   }

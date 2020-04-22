@@ -21,6 +21,9 @@ public final class DropDownPanel extends JMenu implements ActionListener {
   private boolean loopChecked;
   private JMenuItem sliderItem;
   private boolean sliderChecked;
+//  The ability to add new layers, add shapes to a specific layer, delete layers
+//  (and all the shapes in them), and to reorder layers. (Editing keyframes should continue to
+//  work as before.)
 
   /**
    * Public constructor for this object.
@@ -52,8 +55,10 @@ public final class DropDownPanel extends JMenu implements ActionListener {
     JMenuItem delShape = new JMenuItem("Delete Shape");
     JMenuItem addKeyFrame = new JMenuItem("Add Key Frame");
     JMenuItem delKeyFrame = new JMenuItem("Delete Key Frame");
+    JMenuItem addLayer = new JMenuItem("Add Layer");
+    JMenuItem delLayer = new JMenuItem("Delete Layer");
+    JMenuItem swapLayers = new JMenuItem("Swap Two Layers");
     JMenuItem devCred = new JMenuItem("Credits");
-
 
     play.addActionListener(this::actionPerformed);
     pause.addActionListener(this::actionPerformed);

@@ -50,6 +50,9 @@ public class AnimationReader {
         case "motion":
           readMotion(s, builder);
           break;
+        case "layer":
+          readLayer(s, builder);
+          break;
         default:
           throw new IllegalStateException("Unexpected keyword: " + word + s.nextLine());
       }
@@ -80,6 +83,16 @@ public class AnimationReader {
       throw new IllegalStateException("Shape: Expected a type, but no more input available");
     }
     builder.declareShape(name, type);
+  }
+
+  private static <Doc> void readLayer(Scanner s, AnimationBuilder<Doc> builder) {
+    String name;
+    if (s.hasNext()) {
+      name = s.next();
+    } else {
+      throw new IllegalStateException("Layer: Expected a number, but no more input available");
+    }
+    builder.declareLayer(name);
   }
 
   private static <Doc> void readMotion(Scanner s, AnimationBuilder<Doc> builder) {
