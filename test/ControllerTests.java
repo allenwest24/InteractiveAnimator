@@ -16,9 +16,9 @@ import org.junit.Test;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.ArrayList;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * Class to test the IviewController and VCDelegate interface methods.
@@ -112,4 +112,62 @@ public class ControllerTests {
     setUp("smalldemo.txt", 10);
     assertFalse(this.controller.userRequestsDeleteKeyFrame("k", 0));
   }
+
+  @Test
+  public void testAddNewLayer() {
+    setUp("buildingsLayered.txt", 10);
+    int prevLayerNum = delegateRef.retrieveOrderedLayers().size();
+    controller.userRequestAddLayer();
+    int newLayerNum = delegateRef.retrieveOrderedLayers().size();
+    assertEquals(newLayerNum - 1, prevLayerNum);
+  }
+
+  @Test
+  public void testDeleteLayer() {
+    setUp("buildingsLayered.txt", 10);
+    int prevLayerNum = delegateRef.retrieveOrderedLayers().size();
+    controller.userRequestDeleteLayer(0);
+    int newLayerNum = delegateRef.retrieveOrderedLayers().size();
+    assertEquals(newLayerNum + 1, prevLayerNum);
+  }
+
+  @Test
+  public void testDeleteBogusLayerStaysSameLength() {
+    setUp("buildingsLayered.txt", 10);
+    int prevLayerNum = delegateRef.retrieveOrderedLayers().size();
+    controller.userRequestDeleteLayer(75);
+    int newLayerNum = delegateRef.retrieveOrderedLayers().size();
+    assertEquals(newLayerNum, prevLayerNum);
+  }
+
+  @Test
+  public void testDeleteReturnsSuccess() {
+      setUp("buildingsLayered.txt", 10);
+      assertTrue(controller.userRequestDeleteLayer(0));
+  }
+
+  @Test
+  public void testDeleteReturnsFailure() {
+    setUp("buildingsLayered.txt", 10);
+    assertFalse(controller.userRequestDeleteLayer(75));
+  }
+
+  @Test
+  public void testSwapLayersWorks() {
+    setUp("buildingsLayered.txt", 10);
+    ArrayList<String> prevLayer = delegateRef.retrieveOrderedLayers().get(0);
+    controller.userRequestSwapLayers(0,1);
+    ArrayList<String> newLayer = delegateRef.retrieveOrderedLayers().get(1);
+    assertEquals(prevLayer, newLayer);
+  }
+
+  @Test
+  public void testSwapLayersBad() {
+    setUp("buildingsLayered.txt", 10);
+    ArrayList<String> prevLayer = delegateRef.retrieveOrderedLayers().get(0);
+    controller.userRequestSwapLayers(0,75);
+    ArrayList<String> newLayer = delegateRef.retrieveOrderedLayers().get(1);
+    assertNotEquals(prevLayer, newLayer);
+  }
 }
+

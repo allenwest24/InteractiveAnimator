@@ -391,7 +391,7 @@ public final class DropDownPanel extends JMenu implements ActionListener {
     } catch (NumberFormatException e) {
       return null;
     }
-    return tempVal;
+    return tempVal >= 0 ? tempVal : null;
   }
 
   private void passOnNewParams(String s) {
