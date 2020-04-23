@@ -3,6 +3,8 @@ layer 0
 shape background rectangle
 layer 1
 shape B0 rectangle
+rotate B0 1 80 0 350
+rotate B0 80 90 350 359
 shape B1 rectangle
 shape B2 rectangle
 shape B3 rectangle

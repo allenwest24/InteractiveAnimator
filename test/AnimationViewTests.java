@@ -15,7 +15,7 @@ import cs3500.excellence.Motion;
 import cs3500.excellence.Shape;
 import cs3500.excellence.ShapeType;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * Test class for the IView interface, which contains the public methods needed for the view.
@@ -670,5 +670,125 @@ public class AnimationViewTests {
     this.view.makeVisible();
     output = this.view.stringOutputForFile();
     assertTrue(output.equals(expectedOutput));
+  }
+
+  @Test
+  public void testRotationSVG() {
+    this.setUp("smallDemoAltered.txt", true, 50);
+    String expectedOutput = "<svg width=\"360\" height=\"360\" version=\"1.1\" xmlns=\"" +
+        "http://www.w3.org/2000/svg\">\n" +
+        "<rect id=\"R\" x=\"200\" y=\"200\" width=\"50\" height=\"100\" fill=\"rgb(255,0,0)\" " +
+        "visibility=\"visible\" >\n" +
+        "<animate attributeType=\"xml\" begin=\"20ms\" dur=\"180ms\" attributeName=\"x\" " +
+        "from=\"200\" to=\"200\" fill=\"freeze\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"20ms\" dur=\"180ms\" attributeName=\"y\" " +
+        "from=\"200\" to=\"200\" fill=\"freeze\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"20ms\" dur=\"180ms\" attributeName=\"width\" " +
+        "from=\"50\" to=\"50\" fill=\"freeze\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"20ms\" dur=\"180ms\" attributeName=\"height\" " +
+        "from=\"100\" to=\"100\" fill=\"freeze\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"20ms\" dur=\"180ms\" attributeName=\"fill\" " +
+        "from=\"rgb(255,0,0)\" to=\"rgb(255,0,0)\" fill=\"freeze\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"200ms\" dur=\"800ms\" attributeName=\"x\" " +
+        "from=\"200\" to=\"300\" fill=\"freeze\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"200ms\" dur=\"800ms\" attributeName=\"y\" " +
+        "from=\"200\" to=\"300\" fill=\"freeze\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"200ms\" dur=\"800ms\" attributeName=\"width\" " +
+        "from=\"50\" to=\"50\" fill=\"freeze\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"200ms\" dur=\"800ms\" attributeName=\"height\" " +
+        "from=\"100\" to=\"100\" fill=\"freeze\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"200ms\" dur=\"800ms\" attributeName=\"fill\" " +
+        "from=\"rgb(255,0,0)\" to=\"rgb(255,0,0)\" fill=\"freeze\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"1000ms\" dur=\"20ms\" attributeName=\"x\" " +
+        "from=\"300\" to=\"300\" fill=\"freeze\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"1000ms\" dur=\"20ms\" attributeName=\"y\" " +
+        "from=\"300\" to=\"300\" fill=\"freeze\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"1000ms\" dur=\"20ms\" attributeName=\"width\" " +
+        "from=\"50\" to=\"50\" fill=\"freeze\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"1000ms\" dur=\"20ms\" attributeName=\"height\" " +
+        "from=\"100\" to=\"100\" fill=\"freeze\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"1000ms\" dur=\"20ms\" attributeName=\"fill\" " +
+        "from=\"rgb(255,0,0)\" to=\"rgb(255,0,0)\" fill=\"freeze\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"1020ms\" dur=\"380ms\" attributeName=\"x\" " +
+        "from=\"300\" to=\"300\" fill=\"freeze\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"1020ms\" dur=\"380ms\" attributeName=\"y\" " +
+        "from=\"300\" to=\"300\" fill=\"freeze\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"1020ms\" dur=\"380ms\" attributeName=\"width\" " +
+        "from=\"50\" to=\"25\" fill=\"freeze\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"1020ms\" dur=\"380ms\" attributeName=\"height\" " +
+        "from=\"100\" to=\"100\" fill=\"freeze\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"1020ms\" dur=\"380ms\" attributeName=\"fill\" " +
+        "from=\"rgb(255,0,0)\" to=\"rgb(255,0,0)\" fill=\"freeze\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"1400ms\" dur=\"600ms\" attributeName=\"x\" " +
+        "from=\"300\" to=\"200\" fill=\"freeze\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"1400ms\" dur=\"600ms\" attributeName=\"y\" " +
+        "from=\"300\" to=\"200\" fill=\"freeze\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"1400ms\" dur=\"600ms\" attributeName=\"width\" " +
+        "from=\"25\" to=\"25\" fill=\"freeze\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"1400ms\" dur=\"600ms\" attributeName=\"height\" " +
+        "from=\"100\" to=\"100\" fill=\"freeze\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"1400ms\" dur=\"600ms\" attributeName=\"fill\" " +
+        "from=\"rgb(255,0,0)\" to=\"rgb(255,0,0)\" fill=\"freeze\" />\n" +
+        "<animateTransform attributeName=\"transform\" attributeType=\"XML\" type=\"rotate\" " +
+        "from=\"0 225 250\" to=\"200 200 200\" dur=\"39\" repeatCount=\"1\"/>\n" +
+        "</rect>\n" +
+        "<ellipse id=\"C\" cx=\"440\" cy=\"70\" rx=\"120\" ry=\"60\" fill=\"rgb(0,0,255)\" " +
+        "visibility=\"visible\" >\n" +
+        "<animate attributeType=\"xml\" begin=\"120ms\" dur=\"280ms\" attributeName=\"cx\" " +
+        "from=\"440\" to=\"440\" fill=\"remove\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"120ms\" dur=\"280ms\" attributeName=\"cy\" " +
+        "from=\"70\" to=\"70\" fill=\"remove\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"120ms\" dur=\"280ms\" attributeName=\"rx\" " +
+        "from=\"120\" to=\"120\" fill=\"remove\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"120ms\" dur=\"280ms\" attributeName=\"ry\" " +
+        "from=\"60\" to=\"60\" fill=\"remove\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"120ms\" dur=\"280ms\" attributeName=\"fill\" " +
+        "from=\"rgb(0,0,255)\" to=\"rgb(0,0,255)\" fill=\"remove\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"400ms\" dur=\"600ms\" attributeName=\"cx\" " +
+        "from=\"440\" to=\"440\" fill=\"remove\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"400ms\" dur=\"600ms\" attributeName=\"cy\" " +
+        "from=\"70\" to=\"250\" fill=\"remove\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"400ms\" dur=\"600ms\" attributeName=\"rx\"" +
+        " from=\"120\" to=\"120\" fill=\"remove\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"400ms\" dur=\"600ms\" attributeName=\"ry\" " +
+        "from=\"60\" to=\"60\" fill=\"remove\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"400ms\" dur=\"600ms\" attributeName=\"fill\" " +
+        "from=\"rgb(0,0,255)\" to=\"rgb(0,0,255)\" fill=\"remove\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"1000ms\" dur=\"400ms\" attributeName=\"cx\" " +
+        "from=\"440\" to=\"440\" fill=\"remove\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"1000ms\" dur=\"400ms\" attributeName=\"cy\" " +
+        "from=\"250\" to=\"370\" fill=\"remove\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"1000ms\" dur=\"400ms\" attributeName=\"rx\" " +
+        "from=\"120\" to=\"120\" fill=\"remove\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"1000ms\" dur=\"400ms\" attributeName=\"ry\" " +
+        "from=\"60\" to=\"60\" fill=\"remove\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"1000ms\" dur=\"400ms\" attributeName=\"fill\" " +
+        "from=\"rgb(0,0,255)\" to=\"rgb(0,170,85)\" fill=\"remove\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"1400ms\" dur=\"200ms\" attributeName=\"cx\" " +
+        "from=\"440\" to=\"440\" fill=\"remove\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"1400ms\" dur=\"200ms\" attributeName=\"cy\" " +
+        "from=\"370\" to=\"370\" fill=\"remove\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"1400ms\" dur=\"200ms\" attributeName=\"rx\"" +
+        " from=\"120\" to=\"120\" fill=\"remove\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"1400ms\" dur=\"200ms\" attributeName=\"ry\"" +
+        " from=\"60\" to=\"60\" fill=\"remove\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"1400ms\" dur=\"200ms\" attributeName=\"fill\" " +
+        "from=\"rgb(0,170,85)\" to=\"rgb(0,255,0)\" fill=\"remove\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"1600ms\" dur=\"400ms\" attributeName=\"cx\" " +
+        "from=\"440\" to=\"440\" fill=\"remove\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"1600ms\" dur=\"400ms\" attributeName=\"cy\" " +
+        "from=\"370\" to=\"370\" fill=\"remove\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"1600ms\" dur=\"400ms\" attributeName=\"rx\"" +
+        " from=\"120\" to=\"120\" fill=\"remove\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"1600ms\" dur=\"400ms\" attributeName=\"ry\"" +
+        " from=\"60\" to=\"60\" fill=\"remove\" />\n" +
+        "<animate attributeType=\"xml\" begin=\"1600ms\" dur=\"400ms\" attributeName=\"fill\" " +
+        "from=\"rgb(0,255,0)\" to=\"rgb(0,255,0)\" fill=\"remove\" />\n" +
+        "</ellipse>\n" +
+        "</svg>";
+    String output = this.view.stringOutputForFile();
+    this.view.makeVisible();
+    output = this.view.stringOutputForFile();
+    assertEquals(output, expectedOutput);
   }
 }

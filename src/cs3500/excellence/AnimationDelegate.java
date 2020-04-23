@@ -52,4 +52,13 @@ public interface AnimationDelegate<T, K> {
    * @return Copy-safe list of the names of all layers.
    */
   ArrayList<ArrayList<String>> retrieveOrderedLayers();
+
+  /**
+   * Retrieve the Rotation associated with the object correlating with the NON-NULL String name.
+   *
+   * @param name a non-null String representing the name to be associated with the new shape.
+   * @throws IllegalArgumentException if the provided String is null, or the name is not associated
+   *                                  with a Shape.
+   */
+  ArrayList<Rotation> retrieveRotationsForObjectWithName(String name);
 }

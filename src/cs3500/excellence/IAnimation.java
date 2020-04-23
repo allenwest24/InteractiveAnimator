@@ -1,5 +1,7 @@
 package cs3500.excellence;
 
+import cs3500.animator.util.AnimationBuilder;
+
 /**
  * An interface representing the mandatory functionality for an Animation model.
  *
@@ -164,4 +166,15 @@ public interface IAnimation<K> {
    * @return whether given valid input or not.
    */
   boolean swapLayers(int layer1, int layer2);
+
+  /**
+   * Adds a rotation to the doc.
+   *
+   * @param name the name of the shape to add a rotation to.
+   * @param startTick the tick to start the rotation.
+   * @param endTick the tick to end the rotation.
+   * @param startRadian start radian to rotate from.
+   * @param endRadian end radian to rotate to.
+   */
+  void addRotation(String name, int startTick, int endTick, int startRadian, int endRadian);
 }

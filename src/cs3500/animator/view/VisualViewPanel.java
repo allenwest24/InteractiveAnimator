@@ -5,6 +5,7 @@ import cs3500.excellence.Shape;
 
 import java.awt.*;
 import java.awt.Color;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
@@ -122,10 +123,19 @@ public final class VisualViewPanel extends JPanel implements ChangeListener {
     for (String name : orderedNames) {
       ShapeType renderType = this.state.get(name).type;
       ArrayList<Motion> shapeMovements = this.delegate.retrieveMotionsForObjectWithName(name);
+      ArrayList<Rotation> retrievedRotations =
+          this.delegate.retrieveRotationsForObjectWithName(name);
       int x = this.delegate.retrieveCanvasBoundaries().x;
       int y = this.delegate.retrieveCanvasBoundaries().y;
       for (Motion each : shapeMovements) {
         if (this.ticks >= each.startTick && this.ticks <= each.endTick) {
+          Rotation currRotation = null;
+          for (Rotation every : retrievedRotations) {
+            if (this.ticks >= every.startTick) {
+              currRotation = every;
+              break;
+            }
+          }
           switch (renderType) {
             case ELLIPSE:
               int curX = ViewUtils.tweener(this.ticks, each.startComp.x,
@@ -144,7 +154,18 @@ public final class VisualViewPanel extends JPanel implements ChangeListener {
                   each.endComp.color.green, each.startTick, each.endTick);
               Ellipse2D e = new Ellipse2D.Double(curX + x, curY + y, curW, curH);
               g2d.setColor(new Color(curR, curG, curB));
-              g2d.fill(e);
+              if (currRotation != null) {
+                int rotation = ViewUtils.tweener(this.ticks, currRotation.startRadian,
+                    currRotation.endRadian, currRotation.startTick, currRotation.endTick);
+                AffineTransform transform = new AffineTransform();
+                transform.rotate(Math.toRadians(rotation), curX + curW / 2,
+                    curY + curH / 2);
+                java.awt.Shape transformed = transform.createTransformedShape(e);
+                g2d.fill(transformed);
+              }
+              else {
+                g2d.fill(e);
+              }
               break;
             case RECTANGLE:
               int rcurX = ViewUtils.tweener(this.ticks, each.startComp.x,
@@ -163,7 +184,18 @@ public final class VisualViewPanel extends JPanel implements ChangeListener {
                   each.endComp.color.green, each.startTick, each.endTick);
               Rectangle2D r = new Rectangle2D.Double(rcurX + x, rcurY + y, rcurW, rcurH);
               g2d.setColor(new Color(rcurR, rcurG, rcurB));
-              g2d.fill(r);
+              if (currRotation != null) {
+                int rectRotation = ViewUtils.tweener(this.ticks, currRotation.startRadian,
+                    currRotation.endRadian, currRotation.startTick, currRotation.endTick);
+                AffineTransform transform = new AffineTransform();
+                transform.rotate(Math.toRadians(rectRotation), rcurX + rcurW / 2,
+                    rcurY + rcurH / 2);
+                java.awt.Shape transformed = transform.createTransformedShape(r);
+                g2d.fill(transformed);
+              }
+              else {
+                g2d.fill(r);
+              }
               break;
             default:
               break;

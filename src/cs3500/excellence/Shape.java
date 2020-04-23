@@ -10,6 +10,7 @@ public class Shape extends UserInteraction {
   public final ShapeType type;
   protected final String name;
   protected final ArrayList<Motion> motions;
+//  protected final ArrayList<Rotation> rotations;
 
   /**
    * Protected constructor for creating an immutable shape.

@@ -5,12 +5,7 @@ import cs3500.animator.util.AnimationBuilder;
 import cs3500.animator.util.AnimationReader;
 import cs3500.animator.view.EditorView;
 import cs3500.animator.view.IView;
-import cs3500.excellence.ShapeType;
-import cs3500.excellence.IAnimation;
-import cs3500.excellence.Shape;
-import cs3500.excellence.Motion;
-import cs3500.excellence.AnimationDelegate;
-import cs3500.excellence.AnimationModel;
+import cs3500.excellence.*;
 
 import org.junit.Test;
 
@@ -168,6 +163,13 @@ public class ControllerTests {
     controller.userRequestSwapLayers(0,75);
     ArrayList<String> newLayer = delegateRef.retrieveOrderedLayers().get(1);
     assertNotEquals(prevLayer, newLayer);
+  }
+
+  @Test
+  public void addRotation() {
+    setUp("buildingsSUPERLayered.txt", 50);
+    ArrayList<Rotation> prevLayer = delegateRef.retrieveRotationsForObjectWithName("B0");
+    assertTrue(prevLayer.size() == 2);
   }
 }
 

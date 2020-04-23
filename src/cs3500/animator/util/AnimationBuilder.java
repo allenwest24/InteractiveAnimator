@@ -83,4 +83,17 @@ public interface AnimationBuilder<Doc> {
    * @param name The name of the layer (added with {@link AnimationBuilder#declareLayer})
    */
   AnimationBuilder<Doc> declareLayer(String name);
+
+  /**
+   * Adds a rotation to the doc.
+   *
+   * @param name the name of the shape to add a rotation to.
+   * @param startTick the tick to start the rotation.
+   * @param endTick the tick to end the rotation.
+   * @param startRadian start radian to rotate from.
+   * @param endRadian end radian to rotate to.
+   * @return This {@link AnimationBuilder}
+   */
+  AnimationBuilder<Doc> addRotation(String name, int startTick, int endTick, int startRadian,
+                                    int endRadian);
 }

@@ -19,6 +19,8 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
   private ArrayList<String> orderedShapes;
   private ArrayList<ArrayList<String>> orderedLayers;
   private int currlayer;
+  private HashMap<String, ArrayList<Rotation>> declaredRotatingBois;
+
 
   /**
    * Public constructor to create a model for an exCELlence animator.
@@ -29,6 +31,7 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
     bounds = null;
     orderedShapes = new ArrayList<String>();
     orderedLayers = new ArrayList<ArrayList<String>>();
+    declaredRotatingBois = new HashMap<String, ArrayList<Rotation>>();
     currlayer = 0;
     for (int ii = 0; ii < 100; ii++) {
       orderedLayers.add(ii, new ArrayList<String>());
@@ -173,7 +176,7 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
       }
       this.allMoves = revisedArray;
       this.orderedShapes.remove(s);
-      for (ArrayList<String> each: this.orderedLayers) {
+      for (ArrayList<String> each : this.orderedLayers) {
         if (!each.isEmpty()) {
           each.remove(s);
         }
@@ -393,8 +396,7 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
   public boolean deleteLayer(int layer) {
     if (layer >= this.orderedLayers.size() || this.orderedLayers.get(layer).isEmpty()) {
       return false;
-    }
-    else {
+    } else {
       this.orderedLayers.remove(layer);
       return true;
     }
@@ -412,12 +414,32 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
     if (layer1 >= this.orderedLayers.size() || layer2 >= this.orderedLayers.size() ||
         this.orderedLayers.get(layer1).isEmpty() || this.orderedLayers.get(layer2).isEmpty()) {
       return false;
-    }
-    else {
+    } else {
       ArrayList<String> temp = this.orderedLayers.get(layer1);
       this.orderedLayers.set(layer1, this.orderedLayers.get(layer2));
       this.orderedLayers.set(layer2, temp);
       return true;
+    }
+  }
+
+  /**
+   * Adds a rotation to the doc.
+   *
+   * @param name        the name of the shape to add a rotation to.
+   * @param startTick   the tick to start the rotation.
+   * @param endTick     the tick to end the rotation.
+   * @param startRadian start radian to rotate from.
+   * @param endRadian   end radian to rotate to.
+   */
+  @Override
+  public void addRotation(String name, int startTick, int endTick, int startRadian, int endRadian) {
+    Rotation rotation = new Rotation(name, startTick, endTick, startRadian, endRadian);
+    if (this.declaredRotatingBois.containsKey(name)) {
+      declaredRotatingBois.get(name).add(rotation);
+    } else {
+      ArrayList<Rotation> bunchaRotateys = new ArrayList<Rotation>();
+      bunchaRotateys.add(rotation);
+      declaredRotatingBois.put(name, bunchaRotateys);
     }
   }
 
@@ -562,7 +584,7 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
   @Override
   public ArrayList<String> retrieveOrderedShapeNames() {
     ArrayList<String> safeCopy = new ArrayList<String>();
-    for (String each: this.orderedShapes) {
+    for (String each : this.orderedShapes) {
       safeCopy.add(each);
     }
     return safeCopy;
@@ -576,10 +598,32 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
   @Override
   public ArrayList<ArrayList<String>> retrieveOrderedLayers() {
     ArrayList<ArrayList<String>> safeCopy = new ArrayList<ArrayList<String>>();
-    for (ArrayList<String> each: this.orderedLayers) {
+    for (ArrayList<String> each : this.orderedLayers) {
       safeCopy.add(each);
     }
     return safeCopy;
+  }
+
+  /**
+   * Retrieve the Rotation associated with the object correlating with the NON-NULL String name.
+   *
+   * @param name a non-null String representing the name to be associated with the new shape.
+   * @throws IllegalArgumentException if the provided String is null, or the name is not associated
+   *                                  with a Shape.
+   */
+  @Override
+  public ArrayList<Rotation> retrieveRotationsForObjectWithName(String name) {
+    ArrayList<Rotation> rotations = new ArrayList<Rotation>();
+    if (name == null) {
+      throw new IllegalArgumentException("Null or invalid parameter.");
+    } else if (!declaredRotatingBois.containsKey(name)) {
+      return new ArrayList<Rotation>();
+    } else {
+      for (Rotation each : declaredRotatingBois.get(name)) {
+        rotations.add(each);
+      }
+      return rotations;
+    }
   }
 
   /**
@@ -721,12 +765,29 @@ public class AnimationModel implements IAnimation<ShapeType>, AnimationDelegate<
       Integer layerNum;
       try {
         layerNum = Integer.valueOf(name);
-      }
-      catch (NumberFormatException e) {
+      } catch (NumberFormatException e) {
         System.out.println("Not a valid layer, all shapes will remain on default layer.");
         return this;
       }
       this.model.updateLayer(layerNum);
+      return this;
+    }
+
+    /**
+     * Adds a rotation to the doc.
+     *
+     * @param name        the name of the shape to add a rotation to.
+     * @param startTick   the tick to start the rotation.
+     * @param endTick     the tick to end the rotation.
+     * @param startRadian start radian to rotate from.
+     * @param endRadian   end radian to rotate to.
+     * @return This {@link AnimationBuilder}
+     */
+    @Override
+    public AnimationBuilder<IAnimation<ShapeType>> addRotation(String name, int startTick,
+                                                               int endTick, int startRadian,
+                                                               int endRadian) {
+      this.model.addRotation(name, startTick, endTick, startRadian, endRadian);
       return this;
     }
   }
