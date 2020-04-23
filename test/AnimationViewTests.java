@@ -15,7 +15,8 @@ import cs3500.excellence.Motion;
 import cs3500.excellence.Shape;
 import cs3500.excellence.ShapeType;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Test class for the IView interface, which contains the public methods needed for the view.

@@ -10,7 +10,6 @@ public class Shape extends UserInteraction {
   public final ShapeType type;
   protected final String name;
   protected final ArrayList<Motion> motions;
-//  protected final ArrayList<Rotation> rotations;
 
   /**
    * Protected constructor for creating an immutable shape.
@@ -39,7 +38,6 @@ public class Shape extends UserInteraction {
     }
   }
 
-  // Nullable function (optional emulation)
   protected final Motion retrieveLatestMotion() {
     if (this.motions.isEmpty()) {
       return null;

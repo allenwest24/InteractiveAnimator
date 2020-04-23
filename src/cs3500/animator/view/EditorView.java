@@ -1,10 +1,13 @@
 package cs3500.animator.view;
 
-import java.awt.*;
+import java.awt.FlowLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.Timer;
+import javax.swing.JMenuBar;
 
 import cs3500.animator.controller.VCDelegate;
 import cs3500.excellence.Motion;

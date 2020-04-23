@@ -1,7 +1,5 @@
 package cs3500.excellence;
 
-import cs3500.animator.util.AnimationBuilder;
-
 /**
  * An interface representing the mandatory functionality for an Animation model.
  *

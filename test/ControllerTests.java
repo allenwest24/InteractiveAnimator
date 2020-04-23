@@ -5,7 +5,13 @@ import cs3500.animator.util.AnimationBuilder;
 import cs3500.animator.util.AnimationReader;
 import cs3500.animator.view.EditorView;
 import cs3500.animator.view.IView;
-import cs3500.excellence.*;
+import cs3500.excellence.ShapeType;
+import cs3500.excellence.IAnimation;
+import cs3500.excellence.Shape;
+import cs3500.excellence.Motion;
+import cs3500.excellence.AnimationDelegate;
+import cs3500.excellence.AnimationModel;
+import cs3500.excellence.Rotation;
 
 import org.junit.Test;
 
@@ -13,7 +19,10 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 
 /**
  * Class to test the IviewController and VCDelegate interface methods.
@@ -137,8 +146,8 @@ public class ControllerTests {
 
   @Test
   public void testDeleteReturnsSuccess() {
-      setUp("buildingsLayered.txt", 10);
-      assertTrue(controller.userRequestDeleteLayer(0));
+    setUp("buildingsLayered.txt", 10);
+    assertTrue(controller.userRequestDeleteLayer(0));
   }
 
   @Test
@@ -151,7 +160,7 @@ public class ControllerTests {
   public void testSwapLayersWorks() {
     setUp("buildingsLayered.txt", 10);
     ArrayList<String> prevLayer = delegateRef.retrieveOrderedLayers().get(0);
-    controller.userRequestSwapLayers(0,1);
+    controller.userRequestSwapLayers(0, 1);
     ArrayList<String> newLayer = delegateRef.retrieveOrderedLayers().get(1);
     assertEquals(prevLayer, newLayer);
   }
@@ -160,7 +169,7 @@ public class ControllerTests {
   public void testSwapLayersBad() {
     setUp("buildingsLayered.txt", 10);
     ArrayList<String> prevLayer = delegateRef.retrieveOrderedLayers().get(0);
-    controller.userRequestSwapLayers(0,75);
+    controller.userRequestSwapLayers(0, 75);
     ArrayList<String> newLayer = delegateRef.retrieveOrderedLayers().get(1);
     assertNotEquals(prevLayer, newLayer);
   }

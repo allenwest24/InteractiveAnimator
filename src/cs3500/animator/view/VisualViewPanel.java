@@ -1,9 +1,15 @@
 package cs3500.animator.view;
 
-import cs3500.excellence.*;
 import cs3500.excellence.Shape;
+import cs3500.excellence.Motion;
+import cs3500.excellence.AnimationDelegate;
+import cs3500.excellence.Bounds;
+import cs3500.excellence.ShapeType;
+import cs3500.excellence.Rotation;
 
-import java.awt.*;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Dimension;
 import java.awt.Color;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Ellipse2D;
@@ -11,7 +17,8 @@ import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -49,14 +56,14 @@ public final class VisualViewPanel extends JPanel implements ChangeListener {
   }
 
   protected void scrubbaLubbaDubDub() {
-      Integer maxTick = this.getLastTick();
-      this.frameSlider = new JSlider(JSlider.HORIZONTAL,
-          0, maxTick, 0);
-      Bounds scrubberBounds = delegate.retrieveCanvasBoundaries();
-      frameSlider.setPreferredSize(new Dimension((int) (scrubberBounds.width * 0.9), 15));
-      this.add(frameSlider);
-      frameSlider.addChangeListener(this);
-      frameSlider.setVisible(false);
+    Integer maxTick = this.getLastTick();
+    this.frameSlider = new JSlider(JSlider.HORIZONTAL,
+        0, maxTick, 0);
+    Bounds scrubberBounds = delegate.retrieveCanvasBoundaries();
+    frameSlider.setPreferredSize(new Dimension((int) (scrubberBounds.width * 0.9), 15));
+    this.add(frameSlider);
+    frameSlider.addChangeListener(this);
+    frameSlider.setVisible(false);
   }
 
   /**
@@ -112,9 +119,9 @@ public final class VisualViewPanel extends JPanel implements ChangeListener {
     Graphics2D g2d = (Graphics2D) g;
     ArrayList<String> orderedNames = new ArrayList<String>();
     ArrayList<ArrayList<String>> orderedLayers = this.delegate.retrieveOrderedLayers();
-    for (ArrayList<String> layer: orderedLayers) {
+    for (ArrayList<String> layer : orderedLayers) {
       if (!layer.isEmpty()) {
-        for (String name: layer) {
+        for (String name : layer) {
           orderedNames.add(name);
         }
       }
@@ -162,8 +169,7 @@ public final class VisualViewPanel extends JPanel implements ChangeListener {
                     curY + curH / 2);
                 java.awt.Shape transformed = transform.createTransformedShape(e);
                 g2d.fill(transformed);
-              }
-              else {
+              } else {
                 g2d.fill(e);
               }
               break;
@@ -192,8 +198,7 @@ public final class VisualViewPanel extends JPanel implements ChangeListener {
                     rcurY + rcurH / 2);
                 java.awt.Shape transformed = transform.createTransformedShape(r);
                 g2d.fill(transformed);
-              }
-              else {
+              } else {
                 g2d.fill(r);
               }
               break;
@@ -209,8 +214,7 @@ public final class VisualViewPanel extends JPanel implements ChangeListener {
     this.shouldSlide = slideHuh;
     if (!this.shouldSlide) {
       this.frameSlider.setVisible(false);
-    }
-    else {
+    } else {
       this.frameSlider.setVisible(true);
     }
   }
@@ -222,15 +226,14 @@ public final class VisualViewPanel extends JPanel implements ChangeListener {
    */
   @Override
   public void stateChanged(ChangeEvent e) {
-    JSlider source = (JSlider)e.getSource();
+    JSlider source = (JSlider) e.getSource();
     if (!source.getValueIsAdjusting()) {
-      int fps = (int)frameSlider.getValue();
+      int fps = (int) frameSlider.getValue();
       this.ticks = fps;
       this.sliderInteraction = false;
       this.repaint();
-    }
-    else if (source.getValueIsAdjusting()) {
-      int fps = (int)frameSlider.getValue();
+    } else if (source.getValueIsAdjusting()) {
+      int fps = (int) frameSlider.getValue();
       this.ticks = fps;
       this.sliderInteraction = true;
       this.repaint();

@@ -21,9 +21,6 @@ public final class DropDownPanel extends JMenu implements ActionListener {
   private boolean loopChecked;
   private JMenuItem sliderItem;
   private boolean sliderChecked;
-//  The ability to add new layers, add shapes to a specific layer, delete layers
-//  (and all the shapes in them), and to reorder layers. (Editing keyframes should continue to
-//  work as before.)
 
   /**
    * Public constructor for this object.
@@ -295,8 +292,7 @@ public final class DropDownPanel extends JMenu implements ActionListener {
           }
           if (toLayer == null) {
             delegate.userRequestsAddShape(shapeType, name, 0);
-          }
-          else {
+          } else {
             Integer toLayerAsInt = conditionalInt(toLayer);
             if (toLayerAsInt == null) {
               this.displayErrorInfo("Invalid layer was given!\n");
@@ -328,8 +324,7 @@ public final class DropDownPanel extends JMenu implements ActionListener {
           return;
         } else if (s.equals("yes")) {
           this.userAddLayer();
-        }
-        else {
+        } else {
           this.displayErrorInfo("Invalid command!\n");
         }
         break;
@@ -353,30 +348,26 @@ public final class DropDownPanel extends JMenu implements ActionListener {
     if (layerToDelete != null) {
       if (this.delegate.deleteLayer(layerToDelete)) {
         return;
-      }
-      else {
+      } else {
         this.displayErrorInfo("That layer was fake. Change my mind.\n");
       }
-    }
-    else {
+    } else {
       this.displayErrorInfo("Invalid layer!\n");
     }
   }
 
   private void userSwapLayers(String s) {
-    String component1 =  this.deriveRelevantComponent(StringComponents.LAYER1, s);
+    String component1 = this.deriveRelevantComponent(StringComponents.LAYER1, s);
     String component2 = this.deriveRelevantComponent(StringComponents.LAYER2, s);
     Integer layer1 = this.conditionalInt(component1);
     Integer layer2 = this.conditionalInt(component2);
     if (layer1 != null && layer2 != null) {
       if (this.delegate.swapLayers(layer1, layer2)) {
         return;
-      }
-      else {
+      } else {
         this.displayErrorInfo("At least one of those layers wasn't even real bro.\n");
       }
-    }
-     else {
+    } else {
       this.displayErrorInfo("One or more invalid layers!\n");
     }
   }

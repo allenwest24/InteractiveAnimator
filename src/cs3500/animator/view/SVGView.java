@@ -4,7 +4,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import cs3500.animator.controller.VCDelegate;
-import cs3500.excellence.*;
+import cs3500.excellence.AnimationDelegate;
+import cs3500.excellence.Bounds;
+import cs3500.excellence.Shape;
+import cs3500.excellence.Motion;
+import cs3500.excellence.ShapeType;
+import cs3500.excellence.Rotation;
 
 /**
  * Concrete implementation of a svg "IView" with the mandatory functionality demanded by that
@@ -77,7 +82,8 @@ public final class SVGView implements IView {
   }
 
   private void applyEllipseAnimationXML(StringBuilder newBuilder,
-                                        ArrayList<Motion> pertinentMotions, ArrayList<Rotation> anything) {
+                                        ArrayList<Motion> pertinentMotions,
+                                        ArrayList<Rotation> anything) {
     for (int i = 0; i < pertinentMotions.size(); i++) {
       Motion curMotion = pertinentMotions.get(i);
       int ticksPerSecond = curMotion.startComp.tick * 1000 / speed;
@@ -112,17 +118,14 @@ public final class SVGView implements IView {
       Motion accompanyingMotion = findRelevantMotion(every.associatedShape, every.startTick);
       newBuilder.append("<animateTransform attributeName=\"transform\" attributeType=\"XML\" "
           + "type=\"rotate\" from=\"" + every.startRadian + " "
-          + (accompanyingMotion.startComp.x + (accompanyingMotion.endComp.width/2))
-          + " " + (accompanyingMotion.startComp.y + (accompanyingMotion.endComp.height/2)) + "\""
+          + (accompanyingMotion.startComp.x + (accompanyingMotion.endComp.width / 2))
+          + " " + (accompanyingMotion.startComp.y + (accompanyingMotion.endComp.height / 2)) + "\""
           + " to=\"" + every.endRadian + " " + accompanyingMotion.endComp.x
           + " " + accompanyingMotion.endComp.y + "\""
           + " dur=\"" + (every.endTick - every.startTick) + "\" repeatCount=\""
           + "1\"/>\n");
     }
   }
-
-  // rcurX + rcurW / 2,
-  //                    rcurY + rcurH / 2);
 
   private String getEllipseXML(Motion originalMotion) {
     return " cx=\"" + originalMotion.startComp.x + "\" cy=\""
@@ -173,8 +176,8 @@ public final class SVGView implements IView {
       Motion accompanyingMotion = findRelevantMotion(every.associatedShape, every.startTick);
       newBuilder.append("<animateTransform attributeName=\"transform\" attributeType=\"XML\" "
           + "type=\"rotate\" from=\"" + every.startRadian + " "
-          + (accompanyingMotion.startComp.x + (accompanyingMotion.endComp.width/2))
-          + " " + (accompanyingMotion.startComp.y + (accompanyingMotion.endComp.height/2)) + "\""
+          + (accompanyingMotion.startComp.x + (accompanyingMotion.endComp.width / 2))
+          + " " + (accompanyingMotion.startComp.y + (accompanyingMotion.endComp.height / 2)) + "\""
           + " to=\"" + every.endRadian + " " + accompanyingMotion.endComp.x
           + " " + accompanyingMotion.endComp.y + "\""
           + " dur=\"" + (every.endTick - every.startTick) + "\" repeatCount=\""
