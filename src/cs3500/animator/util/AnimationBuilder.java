@@ -1,5 +1,7 @@
 package cs3500.animator.util;
 
+// Credit for majority of this interface to Dr. Clark Freifeld
+// https://www.khoury.northeastern.edu/people/clark-freifeld/
 /**
  * Generic interface using the builder pattern to create animation with different types of models.
  *

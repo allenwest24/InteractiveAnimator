@@ -4,6 +4,8 @@ import java.util.Objects;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+// Credit for majority of this class to Dr. Clark Freifeld
+// https://www.khoury.northeastern.edu/people/clark-freifeld/
 /**
  * A helper to read animation data and construct an animation from it.
  */

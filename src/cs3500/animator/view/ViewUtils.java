@@ -6,7 +6,7 @@ package cs3500.animator.view;
 public class ViewUtils {
 
   /**
-   * static 'tweener' function to calculate the values in between keyframes.
+   * Static 'tweener' function to calculate the values in between keyframes.
    *
    * @param time  the tick to calculate.
    * @param a     a parameter to the tweener function.
