@@ -6,6 +6,9 @@ Utilizes [Inbetweening](https://en.wikipedia.org/wiki/Inbetweening) for computin
 
 Developed by Luke Andrews and Allen West.
 
+## Animator in action!
+![](buildings.gif)
+
 ### Supported Functionality:
 - Looping animations.
 - Dynamic addition/deletion of visuals.
