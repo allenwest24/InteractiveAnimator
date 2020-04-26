@@ -60,7 +60,7 @@ public final class Excellence {
     AnimationBuilder<IAnimation<ShapeType>> builder = new AnimationModel.Builder();
     FileReader readableFile = null;
     try {
-      readableFile = new FileReader(in);
+      readableFile = new FileReader("src/" + in);
     } catch (FileNotFoundException e) {
       System.out.println("Failed to find file.");
     }
