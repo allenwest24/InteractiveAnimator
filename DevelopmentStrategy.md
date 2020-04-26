@@ -1,8 +1,8 @@
-# exCELlence
-A java swing animator, utilizing the delegate/MVC pattern.
+# Interactive Animator
+A java swing animator, utilizing the delegate, MVC, decorator, and builder patterns.
 Developed by Luke Andrews and Allen West.
 
-Assignment 5 (Model implementation README):
+## Phase 1:  Model Implementation:
 The key data structures of our design begin with the two interfaces
 (first of which is tagged below). The first, IAnimation, is a loosely coupled
 interface that defines the mandatory functionality of an Animation (namely
@@ -69,8 +69,8 @@ the differences between shapes and motions (we just call the userMove
 method on each object on the array, and via dynamic dispatch the correct
 string output is formulated, whether that be a shape or a motion.).
 
-Assignment 6 README (Views, JAR, Animator, SVG + Text compiler):
-For this assignment, we made several changes to our code for Assignment 5.
+## Phase 2: Swing view, first pass at JAR, SVG + Text compiler for output:
+For this phase, we made several changes to our code from the first phase.
 Firstly, we created a new static Builder class within our AnimationModel
 implementation. This class implements the AnimationBuilder interface,
 parameterized to the IAnimation interface that AnimationModel itself
@@ -107,10 +107,10 @@ of the Model paramertarized by it's read-only delegate protocol, such that
 they can access the immutable motion and shape objects that they need to
 render animations.
 
-Assignment 7 README: In this assignment we added a view controller 
-directory that contains an editor view controller in addition to a view 
-controller interface and a view controller delegate interface. The view 
-controller interface has only one method to be called from the main method
+## Phase 3: View Controller, robust control additions:
+For this phase, we added a new directory that contains an editor view controller
+in addition to a view controller interface and a view controller delegate interface.
+The view controller interface has only one method to be called from the main method
 which turns over program control to the view control. The view controller
 is in charge of starting the program and managing interaction between the 
 model and the views. This view controller spins up an editor view which
@@ -126,9 +126,8 @@ in our model. These methods allow for the deletion of shapes as well as the
 the deletion and addition of Key Frames. Luckily, our prior management
 strategy of motions allowed us to accomplish this addition relatively easily.
 
-Furthermore, none of the old view logic was affected and they all still work 
-without a controller per the guidelines of assignment 6. The only other change 
-we made was the abstraction of the 'tweener' function into a static public 
-method on a view utils class so that all views could utilize it.
-That's about it I think.. This time our JAR runs exactly as it's supposed to.
+We also added various controls to the Swing GUI for the animator, including
+looping, keyframe manipulation, state management of objects being animated,
+a scrubber, rotation for shapes, and layering of animation components.
+
 
